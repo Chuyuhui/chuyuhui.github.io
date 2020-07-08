@@ -1,3 +1,547 @@
-<html>
-just for test.
-</html>
+<!DOCTYPE html>
+<html><head>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta charset="utf-8">
+  <title>undefined</title>
+  <style type="text/css">
+    p {
+    margin: 0px;
+}
+h1 {
+    margin: 0px;
+}
+h2 {
+    margin: 0px;
+}
+h3 {
+    margin: 0px;
+}</style>
+  <style type="text/css">
+    html,
+    body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+    body {
+    background-color: transparent;
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    -moz-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+    perspective: 1400px;
+    -webkit-perspective: 1400px;
+    -moz-perspective: 1400px;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+}
+  
+  </style>
+  
+
+<style type="text/css">#pagedeck { overflow: hidden !important; }</style></head>
+
+<body>
+  <style type="text/css">input[type="range"] {
+    overflow: hidden;
+    width: 50%;
+    height: 20px;
+    outline: none;
+    background: none;
+  }
+  
+    /*
+    thumbHeight = 20px,
+    thumbBorderWidth = 4px,
+    trackColor = #ccc,
+    activeTrackColor = #777,
+    trackHeight = 4px,
+    thumbColor = red,
+    activeThumbColor = darkOrange
+    */
+
+    input[type="range"] {
+      width: 50%;
+      height: 28px; /* thumbHeight + (2 x thumbBorderWidth)*/
+      -webkit-appearance: none; /*remove the line*/
+      outline: none;
+      /*background-color:cyan;*/
+      border: 0; /*for firefox on android*/
+      padding: 0 8px; /*for IE*/
+      margin: 8px 0;
+    }
+
+    /*chrome and opera*/
+    input[type="range"]::-webkit-slider-runnable-track {
+      background: #ccc; /*trackColor*/
+      height: 4px; /*trackHeight*/
+      border-radius: 4px; /*trackHeight*/
+      transition: 0.3s;
+    }
+
+    input[type="range"]:hover::-webkit-slider-runnable-track,
+    input[type="range"]:active::-webkit-slider-runnable-track {
+      background: #777; /*activeTrackColor*/
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background: #bbb; /*thumbColor*/
+      width: 20px; /* thumbHeight + (2 x thumbBorderWidth)*/
+      height: 20px; /* thumbHeight + (2 x thumbBorderWidth)*/
+      border-radius: 50%;
+      margin-top: -8px; /* -[thumbHeight + (2 x thumbBorderWidth) - trackHeight]/2*/
+      cursor: pointer;
+      border: 0px solid #000; /*border-width should be equal to thumbBorderWidth if you want same border width across all browsers and border-color should match the background*/
+      transition: 0.3s;
+    }
+
+    input[type="range"]:hover::-webkit-slider-thumb,
+    input[type="range"]:active::-webkit-slider-thumb {
+      background: red; /*activeThumbColor*/
+    }
+
+    
+    /*firefox*/
+    input[type="range"]::-moz-focus-outer {
+      border: 0;
+    }
+
+    input[type="range"]::-moz-range-track {
+      background: #ccc; /*trackColor*/
+      height: 4px; /*trackHeight*/
+      border-radius: 4px; /*trackHeight*/
+      /*background isn't animatable, so can't use transition*/
+    }
+
+    input[type="range"]:hover::-moz-range-track,
+    input[type="range"]:focus::-moz-range-track {
+      background: #777; /*activeTrackColor*/
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      background: red; /*thumbColor*/
+      width: 20px; /*thumbHeight*/
+      height: 20px; /*thumbHeight*/
+      border-radius: 50%;
+      cursor: pointer;
+      border: 4px solid #fff; /*border-width = thumbBorderWidth, border-color should match the background*/
+    }
+
+    input[type="range"]:hover::-moz-range-thumb,
+    input[type="range"]:active::-moz-range-thumb {
+      background: red; /*activeThumbColor*/
+    }
+
+    input[type="range"]::-moz-range-progress {
+      background: red; /*thumbColor*/
+      border-radius: 4px; /*trackHeight*/
+      height: 4px; /*trackHeight*/
+    }
+
+    input[type="range"]:hover::-moz-range-progress,
+    input[type="range"]:focus::-moz-range-progress {
+      background: darkOrange; /*activeThumbColor*/
+    }
+
+    /*edge and IE*/
+    input[type="range"]::-ms-track {
+      background: #ccc; /*trackColor*/
+      height: 4px; /*trackHeight*/
+      border-radius: 4px; /*trackHeight*/
+      border: none;
+      color: transparent;
+    }
+
+    input[type="range"]:hover::-ms-track,
+    input[type="range"]:active::-ms-track {
+      background: #777; /*activeTrackColor*/
+    }
+
+    input[type="range"]::-ms-thumb {
+      background: #bbb; /*thumbColor*/
+      width: 20px; /*thumbHeight*/
+      height: 20px; /*thumbHeight*/
+      border-radius: 50%;
+      border: none;
+      margin: 0 0px 0; /*0 thumbBorderWidth 0*/
+      box-shadow: 0 0 0 0px #fff; /*0 0 0 thumbBorderWidth #fff, box-shadow color should match the background*/
+      /*cursor:pointer; doesn't work*/
+    }
+
+    input[type="range"]:hover::-ms-thumb,
+    input[type="range"]:active::-ms-thumb {
+      background: red; /*activeThumbColor*/
+    }
+
+    input[type="range"]::-ms-tooltip {
+      display: none; /*tooltip makes thumb sliding lagy*/
+    }
+
+    input[type="range"]::-ms-fill-lower {
+      background: #bbb; /*thumbColor*/
+      border-radius: 4px; /*trackHeight*/
+    }
+
+    input[type="range"]:hover::-ms-fill-lower,
+    input[type="range"]:active::-ms-fill-lower {
+      background: red; /*activeThumbColor*/
+    }
+
+    .vertically-stacked-slider {
+      padding: 8px;
+    }
+
+    .vertically-stacked-slider > input[type="range"] {
+      padding: 0;
+    }
+
+    .horizontally-stacked-slider {
+      display: flex;
+      align-items: center;
+    }
+
+    .horizontally-stacked-slider > .title {
+      flex: 1;
+      padding: 8px;
+    }
+
+    .horizontally-stacked-slider > input[type="range"] {
+      flex: 1;
+    }
+
+  
+  </style>
+  
+  
+  
+  <div data-role="page" class="google form" id="whole" align="center" style="font-family:Microsoft JhengHei;font-size:100%">
+
+
+    <form action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSfzOo5rmqiuAGwNdBlf8TQE1Rc1ZklReffOUk4cPqqOkbBnWA/formResponse" method="post">
+      <div id="part_Name_Stage_Sample" name="part_Name_Stage_Sample"><br>
+         參與者編號：
+        <input type="text" name="entry.726136822"><br>
+        <br>
+         體驗階段　：
+        <input type="text" name="entry.1175304058"><br>
+        <br>
+         樣本編號　：
+        <input type="text" name="entry.972880170"><br>
+        <br>        
+        <button type="button" style="font-family:Microsoft JhengHei;" onclick="javascript:showVAS();" ontouchstart="javascript: showVAS();">繼續</button>
+      </div>
+      <div id="part_ADJ" style="display:none;"><br>
+         本問卷共有20組左右相反的形容詞。<br>
+        <br>
+         在每組形容詞中，<br>
+         越往
+        <b>兩端</b>代表該感受越為<b>強烈</b>，<br>
+         越
+        <b>中間</b>則代表對於兩邊的形容詞<b>都沒有明顯的感受</b>。<br>
+        <br>
+         請您在與每一個滑鼠互動後，<br>
+         依序針對每組形容詞評價您所感受到的意象。<br>
+        <br>
+        
+        <div class="ADJ">
+          <div id="div_ADJ_1">
+            <p>
+              小巧的
+              <input type="range" name="entry.511407135" id="ADJSCORE_1" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_1.value = ADJSCORE_1.value">
+              碩大的
+            </p>
+          </div>
+          <div id="div_ADJ_2" style="display: none;">
+            <p>
+              細紋路的
+              <input type="range" name="entry.1152870785" id="ADJSCORE_2" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_2.value = ADJSCORE_2.value">
+              <output name="ADJ_2" id="ADJSCORE_2"></output>
+              粗紋路的
+            </p>
+          </div>
+          <div id="div_ADJ_3" style="display: none;">
+            <p>
+              簡約的
+              <input type="range" name="entry.1079921585" id="ADJSCORE_3" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_3.value = ADJSCORE_3.value">
+              <output name="ADJ_3" id="ADJSCORE_3"></output>
+              複雜的
+            </p>
+          </div>
+          <div id="div_ADJ_4" style="display: none;">
+            <p>
+              　低噪的
+              <input type="range" name="entry.927862003" ,="" id="ADJSCORE_4" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_4.value = ADJSCORE_4.value">
+              <output name="ADJ_4" id="ADJSCORE_4"></output>
+              非低噪的
+            </p>
+          </div>
+          <div id="div_ADJ_5" style="display: none;">
+            <p>
+              有回饋的
+              <input type="range" name="entry.1883799580" ,="" id="ADJSCORE_5" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_5.value = ADJSCORE_5.value">
+              <output name="ADJ_5" id="ADJSCORE_5"></output>
+              無回饋的
+            </p>
+          </div>
+          <div id="div_ADJ_6" style="display: none;">
+            <p>
+              　回饋聲音清晰的
+              <input type="range" name="entry.1465052067" id="ADJSCORE_6" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_6.value = ADJSCORE_6.value">
+              <output name="ADJ_6" id="ADJSCORE_6"></output>
+              回饋聲音不清晰的
+            </p>
+          </div>
+          <div id="div_ADJ_7" style="display: none;">
+            <p>
+              　便攜的
+              <input type="range" name="entry.985700968" id="ADJSCORE_7" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_7.value = ADJSCORE_7.value">
+              <output name="ADJ_7" id="ADJSCORE_7"></output>
+              不便攜的
+            </p>
+          </div>
+          <div id="div_ADJ_8" style="display: none;">
+            <p>
+              　手感明確的
+              <input type="range" name="entry.418613732" id="ADJSCORE_8" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_8.value = ADJSCORE_8.value">
+              <output name="ADJ_8" id="ADJSCORE_8"></output>
+              手感不明確的
+            </p>
+          </div>
+          <div id="div_ADJ_9" style="display: none;">
+            <p>
+              　好按的
+              <input type="range" name="entry.94031112" id="ADJSCORE_9" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_9.value = ADJSCORE_9.value">
+              <output name="ADJ_9" id="ADJSCORE_9"></output>
+              不好按的
+            </p>
+          </div>
+          <div id="div_ADJ_10" style="display: none;">
+            <p>
+              　　輕鬆掌握的
+              <input type="range" name="entry.1120322361" id="ADJSCORE_10" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_10.value = ADJSCORE_10.value">
+              <output name="ADJ_10" id="ADJSCORE_10"></output>
+              無法輕鬆掌握的
+            </p>
+          </div>
+          <div id="div_ADJ_11" style="display: none;">
+            <p>
+              　舒適的
+              <input type="range" name="entry.156344772" id="ADJSCORE_11" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_11.value = ADJSCORE_11.value">
+              <output name="entry.1428082092" id="ADJSCORE_11"></output>
+              不舒適的
+            </p>
+          </div>
+          <div id="div_ADJ_12" style="display: none;">
+            <p>
+              　堅固的
+              <input type="range" name="entry.1428082092" id="ADJSCORE_12" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_12.value = ADJSCORE_12.value">
+              <output name="ADJ_12" id="ADJSCORE_12"></output>
+              不堅固的
+            </p>
+          </div>
+          <div id="div_ADJ_13" style="display: none;">
+            <p>
+              輕薄的
+              <input type="range" name="entry.1292637192" id="ADJSCORE_13" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_13.value = ADJSCORE_13.value">
+              <output name="ADJ_13" id="ADJSCORE_13"></output>
+              厚重的
+            </p>
+          </div>
+          <div id="div_ADJ_14" style="display: none;">
+            <p>
+              　符合人體工學的
+              <input type="range" name="entry.423724387" id="ADJSCORE_14" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_14.value = ADJSCORE_14.value">
+              <output name="ADJ_14" id="ADJSCORE_14"></output>
+              不符合人體工學的
+            </p>
+          </div>
+          <div id="div_ADJ_15" style="display: none;">
+            <p>
+              　包覆性的
+              <input type="range" name="entry.1755300774" id="ADJSCORE_15" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_15.value = ADJSCORE_15.value">
+              <output name="ADJ_15" id="ADJSCORE_15"></output>
+              非包覆性的
+            </p>
+          </div>
+          <div id="div_ADJ_16" style="display: none;">
+            <p>
+              　耐髒的
+              <input type="range" name="entry.1164985306" id="ADJSCORE_16" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_16.value = ADJSCORE_16.value">
+              <output name="ADJ_16" id="ADJSCORE_16"></output>
+              不耐髒的
+            </p>
+          </div>
+          <div id="div_ADJ_17" style="display: none;">
+            <p>
+              　靈敏的
+              <input type="range" name="entry.1902800109" id="ADJSCORE_17" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_17.value = ADJSCORE_17.value">
+              <output name="ADJ_17" id="ADJSCORE_17"></output>
+              不靈敏的
+            </p>
+          </div>
+          <div id="div_ADJ_18" style="display: none;">
+            <p>
+              　精準的
+              <input type="range" name="entry.814714499" id="ADJSCORE_18" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_18.value = ADJSCORE_18.value">
+              <output name="ADJ_18" id="ADJSCORE_18"></output>
+              不精準的
+            </p>
+          </div>
+          <div id="div_ADJ_19" style="display: none;">
+            <p>
+              　滿意的
+              <input type="range" name="entry.202069723" id="ADJSCORE_19" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_19.value = ADJSCORE_19.value">
+              <output name="ADJ_19" id="ADJSCORE_19"></output>
+              不滿意的
+            </p>
+          </div>
+          <div id="div_ADJ_20" style="display: none;">
+            <p>
+              　想購買的
+              <input type="range" name="entry.31311220" id="ADJSCORE_20" value="50" min="0" max="100" step="0.1" oninput="ADJSCORE_20.value = ADJSCORE_20.value">
+              <output name="ADJ_20" id="ADJSCORE_20"></output>
+              不想購買的
+            </p>
+          </div>
+        </div>
+        <div class="button"><br>
+          
+          <div id="button_Back_Next">
+            <input class="back" id="back" type="button" value="Back <<" onclick="buttonBackADJ();" style="font-family:Microsoft JhengHei;">
+            <input class="next" id="next" type="button" value="Next >>" onclick="buttonNextADJ();" style="font-family:Microsoft JhengHei;">
+          </div>
+          
+          <div id="button_Submit" style="display:none;">
+            <p><br>              
+              <input type="submit" style="font-family:Microsoft JhengHei;" value="提交">
+            </p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  <table id="table" style="display: none;">
+    <tbody>
+      <tr>
+        <th>ADJ_1</th>
+        <th>ADJ_2</th>
+        <th>ADJ_3</th>
+        <th>ADJ_4</th>
+        <th>ADJ_5</th>
+        <th>ADJ_6</th>
+        <th>ADJ_7</th>
+        <th>ADJ_8</th>
+        <th>ADJ_9</th>
+        <th>ADJ_10</th>
+        <th>ADJ_11</th>
+        <th>ADJ_12</th>
+        <th>ADJ_13</th>
+        <th>ADJ_14</th>
+        <th>ADJ_15</th>
+        <th>ADJ_16</th>
+        <th>ADJ_17</th>
+        <th>ADJ_18</th>
+        <th>ADJ_19</th>
+        <th>ADJ_20</th>
+      </tr>
+      <tr>
+        <td id="input_1"></td>
+        <td id="input_2"></td>
+        <td id="input_3"></td>
+        <td id="input_4"></td>
+        <td id="input_5"></td>
+        <td id="input_6"></td>
+        <td id="input_7"></td>
+        <td id="input_8"></td>
+        <td id="input_9"></td>
+        <td id="input_10"></td>
+        <td id="input_11"></td>
+        <td id="input_12"></td>
+        <td id="input_13"></td>
+        <td id="input_14"></td>
+        <td id="input_15"></td>
+        <td id="input_16"></td>
+        <td id="input_17"></td>
+        <td id="input_18"></td>
+        <td id="input_19"></td>
+        <td id="input_20"></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <button class="button" type="button" style="font-family:Microsoft JhengHei;"  onClick="javascript:showVAS();">繼續</button>
+  
+  <button class="button" id="newsBtn" type="button">News</button>
+  <div id="newsDisplay" class= "boite"></div>
+  
+</body></html>
+  
+  
+  <script language="JavaScript" type="text/javascript">
+    
+    function showVAS() {
+      document.getElementById('part_Name_Stage_Sample').style.display = 'none';
+      document.getElementById('part_ADJ').style.display = '';
+    }
+
+    var ADJ_i = 1;
+    var ADJ = new Array();
+
+    // Users want to proceed after doing the scales
+    function buttonNextADJ() {
+      var score = document.getElementById('ADJSCORE_' + ADJ_i).value;
+      ADJ[ADJ_i - 1] = score;
+      //alert(ADJ[ADJ_i-1]);
+
+      if (ADJ_i == 20) {
+        alert("It's the last adjective!");
+      } else {
+        // Bye bye ADJ i, hello ADJ i+1
+        document.getElementById('div_ADJ_' + ADJ_i).style.display = 'none';
+        ADJ_i += 1;
+        document.getElementById('div_ADJ_' + ADJ_i).style.display = '';
+        if (ADJ_i == 20) document.getElementById('button_Submit').style.display = '';
+      }
+      return true;
+    }
+
+    function buttonBackADJ() {
+      if (ADJ_i == 1) {
+        alert("It's the first adjective!");
+      } else {
+        // Bye bye ADJ i, hello ADJ i-1
+        document.getElementById('div_ADJ_' + ADJ_i).style.display = 'none';
+        ADJ_i -= 1;
+        document.getElementById('div_ADJ_' + ADJ_i).style.display = '';
+      }
+      return true;
+    }
+    
+    /* JavaScript */
+    var btn = document.getElementById("newsBtn");
+
+    var news = ['a','b','c','d','e',];
+
+    function newNews (e) {
+      e.preventDefault();
+      var randomNumber = Math.floor(Math.random()*(news.length));
+      document.getElementById('newsDisplay').innerHTML = news[randomNumber];
+    }
+
+    btn.addEventListener("click", newNews);
+    btn.addEventListener("touchstart", newNews);
+    
+    const el = document.getElementById('tbutton');
+    function handleInteraction(evt) {
+      evt.preventDefault();
+      showVAS();
+    }
+
+  </script>
+
+
+
+
