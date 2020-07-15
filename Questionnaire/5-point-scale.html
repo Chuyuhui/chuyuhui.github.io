@@ -174,7 +174,7 @@
                 </tr>
               </table>
             </div>
-            
+
             <div id="not yet" style="display:none;color:red;">
               <b>尚未評價此形容詞</b>
             </div>
@@ -187,14 +187,14 @@
               </div>
               <br>
               <div id="button_Submit" style="display:none;">
-                <input id="submit" type="submit" disabled="true" style="font-family:Microsoft JhengHei;" onclick="fix20()" ontouchstart="fix20()" value="提交">
+                <input id="submit" type="submit" disabled="true" style="font-family:Microsoft JhengHei;" value="提交">
               </div>
             </div>
 
           </div>
 
         </div>
-        
+
         <!--放分數的隱藏的表-->
         <table id="table_ADJ_hidden" style="display:none;">
           <tr id="tr_ADJ_hidden">
@@ -211,75 +211,75 @@
   var ADJ_i = 1;
   var ADJ_Score = new Array();
   var ADJ_Word = [
-      "小巧的","碩大的",
-      "細紋路的","粗紋路的",
-      "簡約的","複雜的",
-      "低噪的","非低噪的",
-      "有回饋的","無回饋的",
-      "回饋聲音清晰的","回饋聲音不清晰的",
-      "便攜的","不便攜的",
-      "手感明確的","手感不明確的",
-      "好按的","不好按的",
-      "輕鬆掌握的","無法輕鬆掌握的",
-      "舒適的","不舒適的",
-      "堅固的","不堅固的",
-      "輕薄的","厚重的",
-      "符合人體工學的","不符合人體工學的",
-      "包覆性的","非包覆性的",
-      "耐髒的","不耐髒的",
-      "靈敏的","不靈敏的",
-      "精準的","不精準的",
-      "滿意的","不滿意的",
-      "想購買的","不想購買的"];
+    "小巧的","碩大的",
+    "細紋路的","粗紋路的",
+    "簡約的","複雜的",
+    "低噪的","非低噪的",
+    "有回饋的","無回饋的",
+    "回饋聲音清晰的","回饋聲音不清晰的",
+    "便攜的","不便攜的",
+    "手感明確的","手感不明確的",
+    "好按的","不好按的",
+    "輕鬆掌握的","無法輕鬆掌握的",
+    "舒適的","不舒適的",
+    "堅固的","不堅固的",
+    "輕薄的","厚重的",
+    "符合人體工學的","不符合人體工學的",
+    "包覆性的","非包覆性的",
+    "耐髒的","不耐髒的",
+    "靈敏的","不靈敏的",
+    "精準的","不精準的",
+    "滿意的","不滿意的",
+    "想購買的","不想購買的"];
 
-    var ADJ_Entry = [
-      "entry.511407135",
-      "entry.1152870785",
-      "entry.1079921585",
-      "entry.927862003",
-      "entry.1883799580",
-      "entry.1465052067",
-      "entry.985700968",
-      "entry.418613732",
-      "entry.94031112",
-      "entry.1120322361",
-      "entry.156344772",
-      "entry.1428082092",
-      "entry.1292637192",
-      "entry.423724387",
-      "entry.1755300774",
-      "entry.1164985306",
-      "entry.1902800109",
-      "entry.814714499",
-      "entry.202069723",
-      "entry.31311220"];
-  
-  
+  var ADJ_Entry = [
+    "entry.511407135",
+    "entry.1152870785",
+    "entry.1079921585",
+    "entry.927862003",
+    "entry.1883799580",
+    "entry.1465052067",
+    "entry.985700968",
+    "entry.418613732",
+    "entry.94031112",
+    "entry.1120322361",
+    "entry.156344772",
+    "entry.1428082092",
+    "entry.1292637192",
+    "entry.423724387",
+    "entry.1755300774",
+    "entry.1164985306",
+    "entry.1902800109",
+    "entry.814714499",
+    "entry.202069723",
+    "entry.31311220"];
+
+
   function recordScore(score){
-      ADJ_Score[ADJ_i - 1] = score;
-      document.getElementById('not yet').style.display = 'none';
-      if (ADJ_i == 20) document.getElementById('submit').disabled = false;
+    ADJ_Score[ADJ_i - 1] = score;
+    document.getElementById('not yet').style.display = 'none';
+    if (ADJ_i == 20) document.getElementById('submit').disabled = false;
 
-      var input_exist = document.getElementById("ADJSCORE_" + ADJ_i);
-      if(input_exist) input_exist.value = ADJ_Score[ADJ_i-1];
-      else{
-        var tr = document.getElementById("tr_ADJ_hidden");
-        var td = document.createElement('td');
-        var input = document.createElement('input');
-        input.type = "hidden";
-        input.id = "ADJSCORE_" + ADJ_i;
-        input.name = ADJ_Entry[ADJ_i-1];
-        input.value = ADJ_Score[ADJ_i-1];
-        td.appendChild(input);
-        tr.appendChild(td);
-      }
+    var input_exist = document.getElementById("ADJSCORE_" + ADJ_i);
+    if(input_exist) input_exist.value = ADJ_Score[ADJ_i-1];
+    else{
+      var tr = document.getElementById("tr_ADJ_hidden");
+      var td = document.createElement('td');
+      var input = document.createElement('input');
+      input.type = "hidden";
+      input.id = "ADJSCORE_" + ADJ_i;
+      input.name = ADJ_Entry[ADJ_i-1];
+      input.value = ADJ_Score[ADJ_i-1];
+      td.appendChild(input);
+      tr.appendChild(td);
+    }
   }
-  
+
   function changeADJ(){
-    
+
     document.getElementById("td_left").innerHTML = ADJ_Word[(ADJ_i-1)*2];
     document.getElementById("td_right").innerHTML = ADJ_Word[(ADJ_i-1)*2+1];
-    
+
     for(i=1;i<=5;i++)
     {
       document.getElementById("ADJ_RadioButton_"+i).checked = false;
