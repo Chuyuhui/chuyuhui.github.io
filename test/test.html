@@ -114,7 +114,7 @@
       overflow: hidden;
       position: relative;
       vertical-align:middle;
-      direction:rtl !important;
+      /*direction:rtl !important;不適用於iOS*/
     }
 
     /*chrome and opera*/
@@ -644,9 +644,8 @@
     "entry.31311220"];
   
   function recordScore(score){
-    if(scaleType=="Range") score = 100-score;
+    if(scaleType=="Range") score = (100-score).toFixed(1);
     ADJ_Score[ADJ_i - 1] = score;
-    alert(score.toFixed(1));
     document.getElementById('not yet').style.display = 'none';
     if (ADJ_i == 20) document.getElementById('submit').disabled = false;
     var input_exist = document.getElementById("ADJSCORE_" + ADJ_i);
@@ -777,20 +776,12 @@
   }
   function setCrossPosition(){
     var cross = document.getElementById('cross');
-    if(ADJ_Score[ADJ_i-1] > 0){
+    if(ADJ_Score[ADJ_i-1]){
       cross.style.webkitTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
       cross.style.MozTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
       cross.style.msTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
       cross.style.OTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
       cross.style.transform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
-      cross.style.opacity = 1;
-    }
-    else if(ADJ_Score[ADJ_i-1] == 0){
-      cross.style.webkitTransform = "translateX(9rem)";
-      cross.style.MozTransform = "translateX(9rem)";
-      cross.style.msTransform = "translateX(9rem)";
-      cross.style.OTransform = "translateX(9rem)";
-      cross.style.transform = "translateX(9rem)";
       cross.style.opacity = 1;
     }
     else cross.style.opacity = 0;
