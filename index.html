@@ -135,7 +135,7 @@
     input[type="range"]::-webkit-slider-thumb {
       -webkit-appearance: none;
       background: transparent; /*thumbColor*/
-      width: 0px; /* thumbHeight + (2 x thumbBorderWidth)*/
+      width: 0.1px; /* thumbHeight + (2 x thumbBorderWidth)*/
       height: 1.5rem; /* thumbHeight + (2 x thumbBorderWidth)*/
       margin-top: -12px; /* -[thumbHeight + (2 x thumbBorderWidth) - trackHeight]/2*/
       cursor: pointer;
@@ -179,7 +179,7 @@
 
     input[type="range"]::-moz-range-thumb {
       background: transparent; /*thumbColor*/
-      width: 0px; /*thumbHeight*/
+      width: 0.1px; /*thumbHeight*/
       height: 1.5rem; /*thumbHeight*/
       cursor: pointer;
       border: 0px solid #fff; /*border-width = thumbBorderWidth, border-color should match the background*/      
@@ -230,7 +230,7 @@
 
     input[type="range"]::-ms-thumb {
       background: transparent; /*thumbColor*/
-      width: 0px; /*thumbHeight*/
+      width: 0.1px; /*thumbHeight*/
       height: 1.5rem; /*thumbHeight*/
       border: none;
       margin: 0 0px 0; /*0 thumbBorderWidth 0*/
@@ -1060,5 +1060,5 @@
   //isFilled是要不要填，true代表我先輸好
   //scale有Range和RadioButton
   
-  fillInData(true,1,1,1,'G01','RadioButton');
+  fillInData(true,1,1,1,'G01','Range');
 </script>
