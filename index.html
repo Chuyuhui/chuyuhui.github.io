@@ -25,7 +25,8 @@
       width: 100%;
       height: 100%;
       margin: 0px;
-      font-size:16x;
+      font-size:16px;
+      font-family:Microsoft JhengHei;
     }
     body {
 
@@ -139,7 +140,7 @@
       margin-top: -12px; /* -[thumbHeight + (2 x thumbBorderWidth) - trackHeight]/2*/
       cursor: pointer;
       border: 0px solid #000; /*border-width should be equal to thumbBorderWidth if you want same border width across all browsers and border-color should match the background*/
-      visibility:hidden;
+      visibility:visible;
       background-image: url("https://imgur.com/06zVfHc.png");
       background-size:100%,100%;
     }
@@ -182,7 +183,7 @@
       height: 1.5rem; /*thumbHeight*/
       cursor: pointer;
       border: 0px solid #fff; /*border-width = thumbBorderWidth, border-color should match the background*/      
-      visibility:hidden;
+      visibility:visible;
       background-image: url("https://imgur.com/06zVfHc.png");
       background-size:100%,100%;
     }
@@ -234,7 +235,7 @@
       border: none;
       margin: 0 0px 0; /*0 thumbBorderWidth 0*/
       box-shadow: 0 0 0 0px #fff; /*0 0 0 thumbBorderWidth #fff, box-shadow color should match the background*/      
-      visibility:hidden;
+      visibility:visible;
       background-image: url("https://imgur.com/06zVfHc.png");
       background-size:100%,100%;
 
@@ -356,9 +357,7 @@
 
   <body>
 
-
-
-    <div data-role="page" class="google form" id="whole" align="center" style="font-family:Microsoft JhengHei;font-size:100%">
+    <div data-role="page" class="google form" id="whole" align="center">
       <form name="theme" action="" method="post">
         <div id="part_Name_Stage_Order_Sample"><br>
           參與者編號：
@@ -465,15 +464,15 @@
                   <td><input type="radio" name="entry.511407135" id="ADJ_RadioButton_5" value="1" onchange="recordScore(this.value)"></td>
                   <td id="td_right_RadioButton" align="left">碩大的</td>
                 </tr>
+                <tr style="display:block;line-height:0.25rem;"><td>　</td></tr>
               </table>
             </div>
-
+            
             <div id="not yet" style="display:none;color:red;">
               <b>尚未評價此形容詞</b>
             </div>
 
             <div class="button">
-              <br>
               <div id="button_Back_Next" style="position:relative;vertical-align: middle;">
                 <span style="font-family:Microsoft JhengHei;">---填寫進度---</span><br>
                 <table>
@@ -486,7 +485,7 @@
               </div>
               <br>
               <div id="button_Submit" style="display:none;">
-                <input id="submit" type="submit" disabled="true" style="font-family:Microsoft JhengHei;"  onclick="clearInputName();" ontouchstart="clearInputName();" value="提交">
+                <input id="submit" type="submit" disabled="true" style="font-family:Microsoft JhengHei;"  onclick="submitForm();" ontouchstart="submitForm();" value="提交">
               </div>
             </div>
 
@@ -501,10 +500,13 @@
         </table>
 
       </form>
+      
+      <div id="finish" style="height:250px;display:none">
+        <sapn style="font-size:5rem;line-height:250px;"><b>完成填寫</b></sapn>
+      </div>
     </div>
 
   </body></html>
-
 
 <script language="JavaScript" type="text/javascript">
   /*共用，不需調整*/
@@ -718,7 +720,11 @@
     document.getElementById("ADJ_Range").setAttribute("name","");
     for(i=1;i<=5;i++) document.getElementById("ADJ_RadioButton_"+i).setAttribute("name","");
   }
-  
+  function submitForm(){
+    clearInputName();
+    document.getElementById("part_ADJ").style.display='none';
+    document.getElementById("finish").style.display='';
+  }
 
   /*共用，注意Range 跟 RadioButton不同的地方用scaleType判斷。*/
   var scaleType = ""; //設定本單形式： Range / RadioButton；不指定時可用radio選擇
@@ -1054,9 +1060,5 @@
   //isFilled是要不要填，true代表我先輸好
   //scale有Range和RadioButton
   
-  //fillInData(true,1,1,1,'G01','Range');
+  fillInData(true,1,1,1,'G01','RadioButton');
 </script>
-
-
-
-
