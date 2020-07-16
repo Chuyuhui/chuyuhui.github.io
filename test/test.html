@@ -422,7 +422,7 @@
               <table id="table_ADJ_Range" class="Range" style="display:none;min-width:36rem;" cellpadding="1px">
                 <tr id="tr_ADJ" style="height:1.5rem;" >
                   <td id="td_left_Range" align="right" style="width:8rem;">小巧的</td>
-                  <td colspan="5" id="td_middle" height="100%" style="width:21rem;" ><input type="range" name="entry.511407135" id="ADJ_Range" value="50" min="0" max="100" step="0.1" onclick="recordScore(this.value);"  onchange="recordScore(this.value);"  ontouchstart="recordScore(this.value);" onmouseenter="isCrossHoverFocusActive();"><div id="container_overlay"><div class="overlay"><img id="cross" src="https://imgur.com/06zVfHc.png"></div>
+                  <td colspan="5" id="td_middle" height="100%" style="width:21rem;" ><input type="range" name="entry.511407135" id="ADJ_Range" value="50" min="0" max="100" step="0.1" onclick="recordScore(this.value);"  onchange="recordScore(this.value);"  ontouchend="recordScore(this.value);" onmouseenter="isCrossHoverFocusActive();"><div id="container_overlay"><div class="overlay"><img id="cross" src="https://imgur.com/06zVfHc.png"></div>
                     </div></td>
                   <td id="td_right_Range" align="left" style="width:8rem;">碩大的</td>
                 </tr>
@@ -791,7 +791,6 @@
     var cross = document.getElementById('cross');
     cross.src= "https://imgur.com/94YyvTo.png";
     setCrossPosition();
-    alert("123");
   }
   function notCrossHoverFocusActive(){
     var cross = document.getElementById('cross');
