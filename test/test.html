@@ -645,7 +645,7 @@
   function recordScore(score){
     if(scaleType=="Range") score = 100-score;
     ADJ_Score[ADJ_i - 1] = score;
-    alert(score);
+    alert(score.toFixed(1));
     document.getElementById('not yet').style.display = 'none';
     if (ADJ_i == 20) document.getElementById('submit').disabled = false;
     var input_exist = document.getElementById("ADJSCORE_" + ADJ_i);
@@ -729,7 +729,7 @@
       addRangeEvent.addEventListener("mousemove touchmove", () => {if(!down)return;isCrossHoverFocusActive();});
       addRangeEvent.addEventListener("mouseup touchend", () => {down=false;});
 */
-      //RangeTouch.setup(inputRange);
+      RangeTouch.setup(inputRange);
     }
     else if(scaleType=='RadioButton'){
       document.theme.action = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSflGs_MBw2e_ad5h2qzEu5Z7Rad5q6Zi2-U_DF1s03W7j1NNw/formResponse";
