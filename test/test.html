@@ -728,7 +728,7 @@
       addRangeEvent.addEventListener("mousemove touchmove", () => {if(!down)return;isCrossHoverFocusActive();});
       addRangeEvent.addEventListener("mouseup touchend", () => {down=false;});
 */
-      RangeTouch.setup(inputRange);
+      RangeTouch.setup(inputRange,{direction:rtl});
     }
     else if(scaleType=='RadioButton'){
       document.theme.action = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSflGs_MBw2e_ad5h2qzEu5Z7Rad5q6Zi2-U_DF1s03W7j1NNw/formResponse";
