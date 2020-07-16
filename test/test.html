@@ -114,6 +114,7 @@
       overflow: hidden;
       position: relative;
       vertical-align:middle;
+      direction:rtl !important;
     }
 
     /*chrome and opera*/
@@ -776,12 +777,20 @@
   }
   function setCrossPosition(){
     var cross = document.getElementById('cross');
-    if(ADJ_Score[ADJ_i-1]){
+    if(ADJ_Score[ADJ_i-1] > 0){
       cross.style.webkitTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
       cross.style.MozTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
       cross.style.msTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
       cross.style.OTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
       cross.style.transform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
+      cross.style.opacity = 1;
+    }
+    else if(ADJ_Score[ADJ_i-1] == 0){
+      cross.style.webkitTransform = "translateX(9rem)";
+      cross.style.MozTransform = "translateX(9rem)";
+      cross.style.msTransform = "translateX(9rem)";
+      cross.style.OTransform = "translateX(9rem)";
+      cross.style.transform = "translateX(9rem)";
       cross.style.opacity = 1;
     }
     else cross.style.opacity = 0;
