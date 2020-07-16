@@ -646,7 +646,6 @@
   function recordScore(score){
     if(scaleType=="Range") score = (100-score).toFixed(1);
     ADJ_Score[ADJ_i - 1] = score;
-    alert(score);
     document.getElementById('not yet').style.display = 'none';
     if (ADJ_i == 20) document.getElementById('submit').disabled = false;
     var input_exist = document.getElementById("ADJSCORE_" + ADJ_i);
