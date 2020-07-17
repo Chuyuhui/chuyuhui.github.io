@@ -139,9 +139,9 @@
           本問卷旨在了解不同體驗階段時，<br>
           哪種感官感受是影響您評價的 <b>主要</b> 參考依據。<br><br>
           請問您認為在 <b>這個階段</b> 與滑鼠互動後所產生的感受，<br>
-          主要是來自於何種 <b>感官</b> 接收到的刺激呢？<br><br>
+          主要是來自於何種 <b>感官</b> 接收到的刺激呢？<br>
           
-          <div id="explanation">
+          <div id="explanation"><br>
             <b>————————————範例————————————</b><br><br>
             若您在可以<b>看見</b>、<b>聽見</b>、<b>觸摸</b>「頭戴式耳機」的情況下，<br>
             主要以它的「<b>跟耳朵接觸的部分</b>」進行感受評價，<br>
@@ -214,9 +214,9 @@
                 <span style="font-family:Microsoft JhengHei;">---填寫進度---</span><br>
                 <table>
                   <tr>
-                    <td><input class="back" id="back" type="button" value="Back <<" onclick="buttonBackADJ();" style="font-family:Microsoft JhengHei;" disabled="true"></td>
+                    <td><input class="back" id="back" type="button" value="Back <<" onclick="buttonBackQ();" style="font-family:Microsoft JhengHei;" disabled="true"></td>
                     <td><div id="pb1" class="progress" role="progressbar"   style="width:150px;" aria-labelledby="pb1_label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="3" tabindex="0" align="left"></div></td>  
-                    <td><input class="next" id="next" type="button" value="Next >>" onclick="buttonNextADJ();" style="font-family:Microsoft JhengHei;"></td>
+                    <td><input class="next" id="next" type="button" value="Next >>" onclick="buttonNextQ();" style="font-family:Microsoft JhengHei;"></td>
                   </tr>
                 </table>
               </div>
@@ -380,7 +380,7 @@
      else if(browser=='Firefox') c.insertRule("#ADJ_Range#ADJ_Range::-moz-range-thumb {visibility:visible;}", 0);
      */
   }
-  function buttonNextADJ() {
+  function buttonNextQ() {
     if(!Ans_Array[Ans_i - 1]) document.getElementById('not yet').style.display = '';
     else{
       document.getElementById('back').disabled = false;
@@ -397,7 +397,7 @@
     }
     return true;
   }
-  function buttonBackADJ() {
+  function buttonBackQ() {
 
     document.getElementById('back').disabled = false;
     document.getElementById('next').disabled = false;
@@ -411,7 +411,7 @@
     return true;
   }
   function submitForm(){
-    document.getElementById("part_ADJ").style.display='none';
+    document.getElementById("part_Choose").style.display='none';
     document.getElementById("finish").style.display='';
   }
 
@@ -648,9 +648,9 @@
 
   } // end updateValBox()
 
-  //順序：isFilled, participant, stage, order, sample, scale
+  //順序：isFilled, participant, stage
   //isFilled是要不要填，true代表我先輸好
   //scale有Range和RadioButton
   
-  //fillInData(true,1,1,1,'G01','RadioButton');
+  //fillInData(true,1,1);
 </script>
