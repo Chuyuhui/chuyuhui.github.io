@@ -423,7 +423,7 @@
               <table id="table_ADJ_Range" class="Range" style="display:none;min-width:36rem;" cellpadding="1px">
                 <tr id="tr_ADJ" style="height:1.5rem;" >
                   <td id="td_left_Range" align="right" style="width:8rem;">小巧的</td>
-                  <td colspan="5" id="td_middle" height="100%" style="width:21rem;" ><input type="range" name="entry.511407135" id="ADJ_Range" value="50" min="0" max="100" step="0.1" onclick="recordScore(this.value);"  onchange="recordScore(this.value);"  ontouchend="recordScore(this.value);"><div id="container_overlay"><div class="overlay"><img id="cross" src="https://imgur.com/06zVfHc.png"></div>
+                  <td colspan="5" id="td_middle" height="100%" style="width:21rem;" ><input type="range" name="entry.511407135" id="ADJ_Range" value="50" min="0" max="100" step="0.1" onclick="recordScore(this.value);"  onchange="recordScore(this.value);"  ontouchend="recordScore(this.value);" ><div id="container_overlay"><div class="overlay"><img id="cross" src="https://imgur.com/06zVfHc.png"></div>
                     </div></td>
                   <td id="td_right_Range" align="left" style="width:8rem;">碩大的</td>
                 </tr>
@@ -643,8 +643,11 @@
     "entry.814714499",
     "entry.202069723",
     "entry.31311220"];
-  
+    
+  var entered = false;
+  var changed = false;
   function recordScore(score){
+    changed = true;
     if(scaleType=="Range") score = (100-score).toFixed(1);
     ADJ_Score[ADJ_i - 1] = score;
     document.getElementById('not yet').style.display = 'none';
@@ -672,6 +675,7 @@
     isCrossHoverFocusActive();
   }
   function buttonNextADJ() {
+    changed = false;
     if(!ADJ_Score[ADJ_i - 1]) document.getElementById('not yet').style.display = '';
     else{
       document.getElementById('back').disabled = false;
@@ -689,7 +693,7 @@
     return true;
   }
   function buttonBackADJ() {
-
+    changed = false;  
     document.getElementById('back').disabled = false;
     document.getElementById('next').disabled = false;
     document.getElementById('not yet').style.display = 'none';
@@ -723,13 +727,12 @@
       document.getElementById('explanation_pic').src="https://imgur.com/OJjHpne.png";
       var Ranges = document.getElementsByClassName('Range');
       for(var i = 0; i < Ranges.length; i++) Ranges[i].style.display = '';
+      $("#ADJ_Range").hover(function(){isCrossHoverFocusActive();},function(){if(!changed) notCrossHoverFocusActive();});
+      $("#ADJ_Range").blur(function(){notCrossHoverFocusActive();});
+      document.getElementById('back').addEventListener("mousedown",()=>{notCrossHoverFocusActive();});
+      document.getElementById('next').addEventListener("mousedown",()=>{notCrossHoverFocusActive();});
+      inputRange.addEventListener("mouseleave touchend", () => {if(!changed)notCrossHoverFocusActive();});
       var inputRange = document.getElementById("ADJ_Range");
-/*      var down = false;
-      addRangeEvent.addEventListener("input",isCrossHoverFocusActive());
-      addRangeEvent.addEventListener("mousedown touchstart", () => {down=true;});
-      addRangeEvent.addEventListener("mousemove touchmove", () => {if(!down)return;isCrossHoverFocusActive();});
-      addRangeEvent.addEventListener("mouseup touchend", () => {down=false;});
-*/
       RangeTouch.setup(inputRange);
     }
     else if(scaleType=='RadioButton'){
@@ -1048,5 +1051,5 @@
   //isFilled是要不要填，true代表我先輸好
   //scale有Range和RadioButton
   
-  fillInData(true,1,1,1,'G01','Range');
+  //fillInData(true,1,1,1,'G01','RadioButton');
 </script>
