@@ -114,6 +114,7 @@
       overflow: hidden;
       position: relative;
       vertical-align:middle;
+      pointer-events:all;
       /*direction:rtl !important;不適用於iOS*/
     }
 
@@ -378,7 +379,7 @@
           越 <b>中間</b> 代表對於兩邊的形容詞 <b>都沒有明顯的感受</b> ，<br>
           越往 <b>兩端</b> 則代表該感受越為 <b>強烈</b> 。<br><br>
           <p id="explanation">
-            <img id="explanation_pic" src="" width="40%"><br>
+            <img id="explanation_pic" src="" style="width:29rem;"><br>
             請您在與滑鼠互動後，<br>
             依序針對每組形容詞評價您所感受到的意象。<br><br><br>
           </p>
@@ -388,13 +389,13 @@
             <div id="example_Range" class="Range" style="display:none;">
               <b>---以下為填寫範例---</b><br><br>
               若您認為它 <b style="color:red;">不偏向</b> 華麗或樸素，感受處於中立，請點擊較 <b>中間</b> 的位置。<br>
-              <img src="https://imgur.com/H06A9OA.png" width="40%"><br><br><br>
+              <img src="https://imgur.com/H06A9OA.png" style="width:29rem;"><br><br>
 
               若您認為它 <b style="color:red;">非常樸素</b>，請根據您感受的程度點擊偏 <b>右方</b> 的位置。（越靠近「樸素的」代表程度越 <b>大</b>）<br>
-              <img src="https://imgur.com/tWhN3v9.png" width="40%"><br><br><br>
+              <img src="https://imgur.com/tWhN3v9.png" style="width:29rem;"><br><br>
 
               若您認為它 <b style="color:red;">有點華麗</b>，請根據您感受的程度點擊偏 <b>左方</b> 的位置。（越靠近中央代表程度越 <b>小</b>）<br>
-              <img src="https://imgur.com/CNILxlw.png" width="40%"><br><br>
+              <img src="https://imgur.com/CNILxlw.png" style="width:29rem;"><br><br>
 
             </div>
 
@@ -1047,5 +1048,5 @@
   //isFilled是要不要填，true代表我先輸好
   //scale有Range和RadioButton
   
-  //fillInData(true,1,1,1,'G01','RadioButton');
+  fillInData(true,1,1,1,'G01','Range');
 </script>

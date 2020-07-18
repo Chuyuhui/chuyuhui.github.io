@@ -139,26 +139,28 @@
           本問卷旨在了解不同體驗階段時，<br>
           哪種感官感受是影響您評價的 <b>主要</b> 參考依據。<br><br>
           請問您認為在 <b>這個階段</b> 與滑鼠互動後所產生的感受，<br>
-          主要是來自於何種 <b>感官</b> 接收到的刺激呢？<br>
+          主要是來自於何種 <b>感官</b> 接收到的刺激呢？<br><br>
           
-          <div id="explanation"><br>
+          <div id="explanation">
             <b>————————————範例————————————</b><br><br>
             若您在可以<b>看見</b>、<b>聽見</b>、<b>觸摸</b>「頭戴式耳機」的情況下，<br>
             主要以它的「<b>跟耳朵接觸的部分</b>」進行感受評價，<br>
             「<b>聽起來的感覺</b>」次之，則在觸覺與聽覺之中選擇「<b>觸覺</b>」：<br><br>
-
+<!--
             <b>*問題：</b>請問您剛才回答時，主要是依據何種感官刺激？<br>
             ○ 觸覺<br>
             ○ 聽覺<br><br>
-
+-->
+            <img src="https://imgur.com/pC74pKe.png" style="width:24rem;"><br>
             看到上述問題時，選擇 <b style="color:red;">觸覺</b> 即可。<br><br><br>
 
-            如您評價時受到「<b>音質</b>」影響較大，「<b>外觀</b>」影響較小，則填答<br><br>
-
+            如您評價時受到「<b>音質</b>」影響較大，「<b>外觀</b>」影響較小，則填答下方問題<br><br>
+<!--
             <b>*問題：</b>請問您剛才回答時，主要是依據何種感官刺激？<br>
             ○ 視覺<br>
             ○ 聽覺<br><br>
-
+-->
+            <img src="https://imgur.com/77UEoDc.png" style="width:24rem;"><br>
             時，選擇 <b style="color:red;">聽覺</b> 即可。<br><br>
 
             如無其他問題，請按下方按鍵開始填答。<br><br>
@@ -170,8 +172,6 @@
           </div>
 
           <div id="container_progress&Radio" style="display:none;">
-            ————————————————————————————<br>
-            請問您剛才回答時，主要是依據何種感官刺激？<br><br>
             <div id="Q1" style="">
 <!--
               <input type="radio" name="entry.727990184" id="RadioButton_1_V" value="視覺" onchange="recordScore(this.value,this.name,this.id);" required>
@@ -180,7 +180,7 @@
               <label>觸覺</label><br><br>
 -->
               <input type="button" name="entry.727990184" id="Button_1_V" value="視覺" class="AnsButton Q1Button" onclick="recordScore(this.value,this.name,this.id);" ontouchstart="recordScore(this.value,this.name,this.id);">&emsp;&emsp;
-              <input type="button" name="entry.727990184" id="Button_1_T" value="觸覺" class="AnsButton Q1Button" onclick="recordScore(this.value,this.name,this.id);" ontouchstart="recordScore(this.value,this.name,this.id);"><br>
+              <input type="button" name="entry.727990184" id="Button_1_T" value="觸覺" class="AnsButton Q1Button" onclick="recordScore(this.value,this.name,this.id);" ontouchstart="recordScore(this.value,this.name,this.id);">
             </div>
             
             <div id="Q2" style="display:none;">
@@ -191,7 +191,7 @@
               <label>聽覺</label><br><br>
               -->
               <input type="button" name="entry.2073835214" id="Button_2_V" value="視覺" class="AnsButton Q2Button" onclick="recordScore(this.value,this.name,this.id);" ontouchstart="recordScore(this.value,this.name,this.id);">&emsp;&emsp;
-              <input type="button" name="entry.2073835214" id="Button_2_A" value="聽覺" class="AnsButton Q2Button" onclick="recordScore(this.value,this.name,this.id);" ontouchstart="recordScore(this.value,this.name,this.id);"><br>
+              <input type="button" name="entry.2073835214" id="Button_2_A" value="聽覺" class="AnsButton Q2Button" onclick="recordScore(this.value,this.name,this.id);" ontouchstart="recordScore(this.value,this.name,this.id);">
             </div>
             
             <div id="Q3" style="display:none;">
@@ -202,9 +202,9 @@
               <label>聽覺</label><br><br>
               -->
               <input type="button" name="entry.1677724600" id="Button_3_T" value="觸覺" class="AnsButton Q3Button" onclick="recordScore(this.value,this.name,this.id);" ontouchstart="recordScore(this.value,this.name,this.id);">&emsp;&emsp;
-              <input type="button" name="entry.1677724600" id="Button_3_A" value="聽覺" class="AnsButton Q3Button" onclick="recordScore(this.value,this.name,this.id);" ontouchstart="recordScore(this.value,this.name,this.id);"><br>
+              <input type="button" name="entry.1677724600" id="Button_3_A" value="聽覺" class="AnsButton Q3Button" onclick="recordScore(this.value,this.name,this.id);" ontouchstart="recordScore(this.value,this.name,this.id);">
             </div>
-
+            <br>
             <div id="not yet" style="display:none;color:red;">
               <b>尚未答題</b>
             </div>
@@ -398,7 +398,6 @@
     return true;
   }
   function buttonBackQ() {
-
     document.getElementById('back').disabled = false;
     document.getElementById('next').disabled = false;
     document.getElementById('not yet').style.display = 'none';
@@ -406,7 +405,6 @@
     Ans_i -= 1;
     document.getElementById("Q"+Ans_i).style.display='';
     doBackwards();
-    if(scaleType=="Range") notCrossHoverFocusActive();
     if (Ans_i == 1) document.getElementById('back').disabled = true;
     return true;
   }
