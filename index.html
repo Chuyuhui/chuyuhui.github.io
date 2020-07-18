@@ -729,9 +729,8 @@
       for(var i = 0; i < Ranges.length; i++) Ranges[i].style.display = '';
       $("#ADJ_Range").hover(function(){isCrossHoverFocusActive();},function(){if(!changed) notCrossHoverFocusActive();});
       $("#ADJ_Range").blur(function(){notCrossHoverFocusActive();});
-      document.getElementById('back').addEventListener("mousedown",()=>{notCrossHoverFocusActive();});
-      document.getElementById('next').addEventListener("mousedown",()=>{notCrossHoverFocusActive();});
-      inputRange.addEventListener("mouseleave touchend", () => {if(!changed)notCrossHoverFocusActive();});
+      document.getElementById('back').addEventListener("mousedown touchstart",()=>{notCrossHoverFocusActive();});
+      document.getElementById('next').addEventListener("mousedown touchstart",()=>{notCrossHoverFocusActive();});
       var inputRange = document.getElementById("ADJ_Range");
       RangeTouch.setup(inputRange);
     }
