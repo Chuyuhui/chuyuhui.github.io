@@ -4,7 +4,79 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://cdn.rangetouch.com/2.0.1/rangetouch.js"></script>
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Expires" content="0"><meta charset="utf-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <meta charset="utf-8">
+  
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style>
+  #custom-handle {
+    width: 1.5em;
+    height: 1.5em;
+    text-align: center;
+    line-height: 1.5em;
+    top:-0.625em;
+    background-image: url("https://imgur.com/06zVfHc.png");
+    background-size: cover;
+    border: 0px black solid;
+    outline:none;
+  }
+    #slider{
+      background: #ccc;
+      border: 0px black solid;
+      width: 36em;
+      height:0.25em;
+      margin: 0 auto;
+    }
+
+  </style>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+  <script>
+  $( function() {
+    var handle = $( "#custom-handle" );
+    var track = $( "#slider" );
+
+    track.slider({
+      range:false,
+      step: 0.1,
+      min:0,
+      max:100,
+      create: function() {
+        $( "#slider" ).slider("value",50);
+        handle.text( $( this ).slider( "value" ) );
+        handle.css("background-size", "cover");
+        handle.css("background-color", "transparent");
+        handle.css("border", "0px black solid");
+      },
+      slide: function( event, ui ) {
+        recordScore(Math.abs(ui.value));
+        handle.text( ui.value );
+        handle.css("background-image", "url('https://imgur.com/94YyvTo.png')");
+        track.css("background","#777");
+        handle.show();
+    }});
+    track.hover(()=>{
+      track.css("background","#777");
+      handle.css("background-image", "url('https://imgur.com/94YyvTo.png')");
+    },()=>{
+      track.css("background","#ccc");
+      handle.css("background-image", "url('https://imgur.com/06zVfHc.png')");});
+    track.focus(()=>{
+      track.css("background","#777");
+      handle.css("background-image", "url('https://imgur.com/94YyvTo.png')");
+    });
+    track.blur(()=>{
+      track.css("background","#ccc");
+      handle.css("background-image", "url('https://imgur.com/06zVfHc.png')");});
+    
+  } );
+    
+  </script>
+  
+  
   <title>形容詞感受量表（VAS/5-point Likert Scale）</title>
   
   <style type="text/css" id="css_Base">
@@ -339,10 +411,12 @@
   </head>
 
   <body>
-
+   
     <div data-role="page" class="google form" id="whole" align="center">
       <form name="theme" action="" method="post">
-        <div id="part_Name_Stage_Order_Sample"><br>
+        
+        <div id="part_Name_Stage_Order_Sample">
+          <br>
           參與者編號：
           <input id="participant" type="text" name="entry.726136822" onchange="closeNoText()"><br>
           <br>
@@ -423,8 +497,17 @@
               <table id="table_ADJ_Range" class="Range" style="display:none;min-width:36rem;" cellpadding="1px">
                 <tr id="tr_ADJ" style="height:1.5rem;" >
                   <td id="td_left_Range" align="right" style="width:8rem;">小巧的</td>
-                  <td colspan="5" id="td_middle" height="100%" style="width:21rem;" ><input type="range" name="entry.511407135" id="ADJ_Range" value="50" min="0" max="100" step="0.1" onclick="recordScore(this.value);"  onchange="recordScore(this.value);"  ontouchend="recordScore(this.value);" ><div id="container_overlay"><div class="overlay"><img id="cross" src="https://imgur.com/06zVfHc.png"></div>
-                    </div></td>
+                  <td colspan="5" id="td_middle" height="100%" style="width:21rem;" >
+                    <input type="range" name="entry.511407135" id="ADJ_Range" value="50" min="0" max="100" step="0.1" onclick="recordScore(this.value);"  onchange="recordScore(this.value);"  ontouchend="recordScore(this.value);" >
+                    <div id="container_overlay">
+                      <div class="overlay"><img id="cross" src="https://imgur.com/06zVfHc.png"></div>
+                    </div>
+<!--iPad用jQueryUI版本
+                    <div id="slider" style="width:18rem;">
+                      <div id="custom-handle" class="ui-slider-handle"></div>
+                    </div>
+-->
+                  </td>
                   <td id="td_right_Range" align="left" style="width:8rem;">碩大的</td>
                 </tr>
               </table>
@@ -727,8 +810,8 @@
       document.getElementById('explanation_pic').src="https://imgur.com/OJjHpne.png";
       var Ranges = document.getElementsByClassName('Range');
       for(var i = 0; i < Ranges.length; i++) Ranges[i].style.display = '';
-      $("#ADJ_Range").hover(function(){isCrossHoverFocusActive();},function(){if(!changed) notCrossHoverFocusActive();});
-      $("#ADJ_Range").blur(function(){notCrossHoverFocusActive();});
+      $("#ADJ_Range").hover(()=>{isCrossHoverFocusActive();},()=>{if(!changed) notCrossHoverFocusActive();});
+      $("#ADJ_Range").blur(()=>{notCrossHoverFocusActive();});
       document.getElementById('back').addEventListener("mousedown touchstart",()=>{notCrossHoverFocusActive();});
       document.getElementById('next').addEventListener("mousedown touchstart",()=>{notCrossHoverFocusActive();});
       var inputRange = document.getElementById("ADJ_Range");
@@ -786,9 +869,16 @@
       cross.style.OTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
       cross.style.transform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
       cross.style.opacity = 1;
+      /*by jQuery UI*/
+      $( "#slider" ).slider("value",100-ADJ_Score[ADJ_i-1]);
+      $( "#custom-handle" ).show();  
     }
-    else cross.style.opacity = 0;
-  }
+    else{
+      cross.style.opacity = 0;
+      /*by jQuery UI*/
+      $( "#custom-handle" ).hide();  
+    }
+    }
   
 
   function isCrossHoverFocusActive(){
@@ -1050,5 +1140,5 @@
   //isFilled是要不要填，true代表我先輸好
   //scale有Range和RadioButton
   
-  //fillInData(true,1,1,1,'G01','RadioButton');
+  //fillInData(true,1,1,1,'G01','Range');
 </script>
