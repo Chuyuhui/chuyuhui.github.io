@@ -1,0 +1,1814 @@
+﻿<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <title>main</title>
+    <meta name="generator" content="Google Web Designer 8.0.3.0603">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="script_js.js"></script>
+    <style type="text/css" id="gwd-text-style">
+      p {
+        margin: 0px;
+      }
+      h1 {
+        margin: 0px;
+      }
+      h2 {
+        margin: 0px;
+      }
+      h3 {
+        margin: 0px;
+      }
+    </style>
+    <style type="text/css">
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+        font-size: 16px;
+      }
+      body {
+        background-color: transparent;
+        transform: perspective(1400px) matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        transform-style: preserve-3d;
+        text-align:center;
+        margin: 0px;
+        font-size:16px;
+        font-family:Microsoft JhengHei;
+      }
+      .mouse .stage_1{
+        width: 70%;
+        height: auto;
+        text-align:center;
+        vertical-align:middle;
+      }
+      .mouse .stage_2{
+        width: 50%;
+        height: auto;
+        text-align:center;
+        vertical-align:middle;
+      }
+      .description{
+        width: 50%;
+        height: auto;
+        text-align:center;
+        vertical-align:middle;
+      }
+      .explanation{
+        width: 100%;
+        height: auto;
+        text-align:center;
+        vertical-align:middle;
+        background:#ccc;
+      }
+      table .stage_basic, .stage_1, .stage_2{
+        table-layout:fixed;
+        text-align: center;
+        vertical-align:middle;
+        width:100%;
+      }
+      .questionnaire iframe{
+        width:100%;
+        height:50vw;
+      }
+      div{
+        margin: 0 auto;
+      }
+      div .stage_1, .stage_2{
+        width:100%;
+        vertical-align:middle;
+      }
+
+      .questionnaire{
+        width:100%;
+        height:50%;   
+      }
+      .container_video{
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+        overflow: hidden;
+      }
+      .container_video iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+
+    <style id="css_progress">
+      #pagedeck { overflow: hidden !important; }
+
+      div.progress {
+        margin: auto;
+        padding: 0;
+        width: 20%;
+        height: 20px;
+        background-color: #eef;
+        border: 2px solid black;
+      }
+
+      div.progressIndicator {
+        margin: 0;
+        padding: 0;
+        background-color: turquoise;
+        position: relative;
+        top: 0;
+        left: 0px;
+        width: 10%;
+        height: 100%;
+      }
+
+      div.progressVal  {
+        position: relative;
+        top: -22px;
+        margin: 0;
+        padding: 0;
+        height: 20px;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .hidden {
+        position: absolute !important;
+        top: -20rem;
+        left: -200rem;
+      }
+
+      .focus {
+        background-color: #eee !important;
+      }
+    </style>
+
+<style type="text/css" id="css_Range">
+
+    /*
+    thumbHeight = 20px,
+    thumbBorderWidth = 4px,
+    trackColor = #ccc,
+    activeTrackColor = #777,
+    trackHeight = 4px,
+    thumbColor = #bbb,
+    activeThumbColor = red
+    */
+
+    input[type="range"] {
+      width: 18rem; /*18rem配-9 17rem配-8.5 83.33333% 切圓中心：80.95238%*/
+      height: 1.5rem; /* thumbHeight + (2 x thumbBorderWidth)*/
+      -webkit-appearance: none; /*remove the line*/
+      outline: none;
+      /*background-color:cyan;*/
+      border: 0; /*for firefox on android*/
+      padding: 0px; /*for IE*/ /*空白格，對應下面那個margin*/
+      margin: auto;
+      background: none;
+      overflow: hidden;
+      position: relative;
+      vertical-align:middle;
+      pointer-events:all;
+      /*direction:rtl !important;不適用於iOS*/
+    }
+
+    /*chrome and opera*/
+    input[type="range"]::-webkit-slider-runnable-track {
+      background: #ccc; /*trackColor*/
+      height: 4px; /*trackHeight*/
+      border-radius: 4px; /*trackHeight*/
+    }
+
+    input[type="range"]:hover::-webkit-slider-runnable-track,
+    input[type="range"]:focus::-webkit-slider-runnable-track,
+    input[type="range"]:active::-webkit-slider-runnable-track{
+      background: #777; /*activeTrackColor*/
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      background: transparent; /*thumbColor*/
+      width: 0px; /* thumbHeight + (2 x thumbBorderWidth)*/
+      height: 1.5rem; /* thumbHeight + (2 x thumbBorderWidth)*/
+      margin-top: -12px; /* -[thumbHeight + (2 x thumbBorderWidth) - trackHeight]/2*/
+      cursor: pointer;
+      border: 0px solid #000; /*border-width should be equal to thumbBorderWidth if you want same border width across all browsers and border-color should match the background*/
+      visibility:visible;
+      background-image: url("https://imgur.com/06zVfHc.png");
+      background-size:100%,100%;
+    }
+
+    input[type="range"]:hover::-webkit-slider-thumb,
+    input[type="range"]:focus::-webkit-slider-thumb,
+    input[type="range"]:active::-webkit-slider-thumb {
+      background-image: url("https://imgur.com/94YyvTo.png");  /* red: https://imgur.com/EKjQInU.png */
+      background-size:100%,100%;
+    }
+
+    /*firefox*/
+    /*firefox*/
+    input[type="range"]::-moz-focus-outer {
+      border: 0;
+    }
+
+    input[type="range"]::-moz-range-track {
+      background: #ccc; /*trackColor*/
+      height: 4px; /*trackHeight*/
+      border-radius: 4px; /*trackHeight*/
+      /*background isn't animatable, so can't use transition*/
+    }
+
+    input[type="range"]:hover::-moz-range-track,
+    input[type="range"]:focus::-moz-range-track,
+    input[type="range"]:active::-moz-range-track {
+      background: #777; /*activeTrackColor*/
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      background: transparent; /*thumbColor*/
+      width: 0px; /*thumbHeight*/
+      height: 1.5rem; /*thumbHeight*/
+      cursor: pointer;
+      border: 0px solid #fff; /*border-width = thumbBorderWidth, border-color should match the background*/      
+      visibility:visible;
+      background-image: url("https://imgur.com/06zVfHc.png");
+      background-size:100%,100%;
+    }
+
+    input[type="range"]:hover::-moz-range-thumb,
+    input[type="range"]:focus::-moz-range-thumb,
+    input[type="range"]:active::-moz-range-thumb {
+      background-image: url("https://imgur.com/94YyvTo.png");  /* red: https://imgur.com/EKjQInU.png */
+      background-size:100%,100%;
+    }
+
+    input[type="range"]::-moz-range-progress {
+      background: #ccc; /*thumbColor*/
+      border-radius: 4px; /*trackHeight*/
+      height: 4px; /*trackHeight*/
+    }
+
+    input[type="range"]:hover::-moz-range-progress,
+    input[type="range"]:focus::-moz-range-progress,
+    input[type="range"]:active::-moz-range-progress {
+      background: #777; /*activeTrackColor*/
+    }
+
+    /*edge and IE*/
+    input[type="range"]::-ms-track {
+      background: #ccc; /*trackColor*/
+      height: 4px; /*trackHeight*/
+      border-radius: 4px; /*trackHeight*/
+      border: none;
+      color: transparent;
+    }
+
+    input[type="range"]:hover::-ms-track,
+    input[type="range"]:focus::-ms-track,
+    input[type="range"]:active::-ms-track {
+      background: #777; /*activeTrackColor*/
+    }
+
+    input[type="range"]::-ms-thumb {
+      background: transparent; /*thumbColor*/
+      width: 0px; /*thumbHeight*/
+      height: 1.5rem; /*thumbHeight*/
+      border: none;
+      margin: 0 0px 0; /*0 thumbBorderWidth 0*/
+      box-shadow: 0 0 0 0px #fff; /*0 0 0 thumbBorderWidth #fff, box-shadow color should match the background*/      
+      visibility:visible;
+      background-image: url("https://imgur.com/06zVfHc.png");
+      background-size:100%,100%;
+
+      /*cursor:pointer; doesn't work*/
+    }
+
+    input[type="range"]:hover::-ms-thumb,
+    input[type="range"]:focus::-ms-thumb,
+    input[type="range"]:active::-ms-thumb{
+      background-image: url("https://imgur.com/94YyvTo.png");  /* red: https://imgur.com/EKjQInU.png */
+      background-size:100%,100%;
+    }
+
+    input[type="range"]::-ms-tooltip {
+      display: none; /*tooltip makes thumb sliding lagy*/
+    }
+
+    input[type="range"]::-ms-fill-lower {
+      background: #ccc; /*trackColor*/
+      border-radius: 4px; /*trackHeight*/
+    }
+
+    input[type="range"]:hover::-ms-fill-lower,
+    input[type="range"]:focus::-ms-fill-lower,
+    input[type="range"]:active::-ms-fill-lower {
+      background: #777; /*activeTrackColor*/
+    }
+
+    .vertically-stacked-slider {
+      padding: 8px;
+    }
+
+    .vertically-stacked-slider > input[type="range"] {
+      padding: 0;
+    }
+
+    .horizontally-stacked-slider {
+      display: flex;
+      align-items: center;
+    }
+
+    .horizontally-stacked-slider > .title {
+      flex: 1;
+      padding: 8px;
+    }
+
+    .horizontally-stacked-slider > input[type="range"] {
+      flex: 1;
+    }
+    #container_overlay{
+      width: 21rem;
+      height:1.5rem;
+      position: absolute;
+      text-align:center;
+      margin:0px auto;
+      -webkit-transform: translateY(-100%);
+      -moz-transform: translateY(-100%);
+      -ms-transform: translateY(-100%);
+      -o-transform: translateY(-100%);
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+    .overlay {
+      margin:0px auto;
+      transition: .5s ease;
+      position: relative;
+      width: 19.5rem;
+      height:1.5rem;
+    }
+    #cross{
+      width:1.5rem;
+      height:1.5rem;
+      -webkit-transform: translateX(-9rem);
+      -moz-transform: translateX(-9rem);
+      -ms-transform: translateX(-9rem);
+      -o-transform: translateX(-9rem);
+      transform: translateX(-9rem);
+      padding:0;
+      opacity:0;
+      /*
+      width:0px;
+      height:0px;
+      padding: 14px;
+      background: url("https://imgur.com/06zVfHc.png");
+      background-repeat: no-repeat;
+      background-size:1.5rem 1.5rem;
+      */
+    }
+
+  </style>
+
+    <style type="text/css" id="css_RadioButton">
+      input[type="radio"]{
+        width:16px;
+        height:16px;
+        margin: 0px;
+        vertical-align:middle;
+      }
+    </style>
+
+    <style type="text/css" id="css_table">
+
+      table {
+        text-align:center;
+        vertical-align:middle;
+        margin: 0  auto;
+        white-space: nowrap !important;
+        padding:0px;
+      }
+
+    </style>
+
+    <style type="text/css" id="css_AnsButton">
+
+      .AnsButton {
+        background-color: #e7e7e7;
+        border: none;
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        font-family:Microsoft JhengHei;
+        font-weight: bold;
+      }
+
+    </style>
+  </head>
+
+  <body class="htmlNoPages">
+    <div id="page">
+      <div id="div_password">
+        <b>請輸入您收到的密碼</b><br>
+        <input id="password" type="text" placeholder="密碼">
+        <input type='button' value='送出' onclick="validation();">
+      </div>
+
+      <div id="container_basic"  style="display:none;">
+        <div id="beginning" class="explanation"><br>
+          您好，歡迎參加本次實驗。<br><br>
+          在實驗開始前，請閱讀下方實驗說明，並確認您符合我們的招募條件，若不符者恕無法參加本次實驗。<br><br>
+        </div><br>
+        <div class="tyJCtd mGzaTb baZpAe" style="width:50%">
+          <p style="margin-left: 0; margin-right: 0; padding-left: 5em; text-align: justify; text-indent: -5em; white-space: normal;">
+          <p dir="ltr" class="zfr3Q" style="margin-left: 0; margin-right: 0; padding-left: 5em; text-align: justify; text-indent: -5em; white-space: normal;">
+            <span><strong>研究目的：</strong></span>
+            <span>本研究旨在探討感性工學中的期望落差效應，將藉由問卷調查使用者在不同階段的消費流程中之滿意程度，以得知不同期望落差如何影響購買意願。本次研究以滑鼠做為目標產品進行。<br><br></span></p><p dir="ltr" class="zfr3Q" style="margin-left: 0; margin-right: 0; padding-left: 5em; text-align: justify; text-indent: -5em; white-space: normal;"><span ><strong>地<span class=" Apple-tab-span" style="white-space: pre;">	</span>點</strong></span><span >：國立清華大學 工程一館930室（新竹市光復路二段101號）<br><br></span></p><p dir="ltr" class="zfr3Q" style="margin-left: 0; margin-right: 0; padding-left: 5em; text-align: justify; text-indent: -5em; white-space: normal;"><span ><strong>內<span class=" Apple-tab-span" style="white-space: pre;">	</span>容</strong></span><span>：研究參與者抵達後，先由研究人員核對身分，隨後由研究人員檢查參與者是否符合研究標準，符合標準便接著閱讀、簽署研究參與者知情同意書，反之則必須中止以維護研究參與者的權利。若簽署完便進入正式研究，經施測人員說明實驗流程後，研究參與者需在不同階段體驗滑鼠，階段包含靜態視覺（網路瀏覽產品圖片）、靜態視覺與聽覺（網路瀏覽產品圖片+文字+影片）、實體視覺（僅有產品展示）、實體視覺與聽覺（產品展示+文字+影片）、藉遊戲體驗操作（滑鼠測試遊戲）及實際操作（電腦作業任務）六個階段，每個階段中對於各產品填寫感受問卷，總共約耗時120分鐘。實驗過程中，將使用眼動儀與攝影機側錄過程。<br><br></span></p><p dir="ltr" class="zfr3Q" style="margin-left: 0; margin-right: 0; padding-left: 5em; text-align: justify; text-indent: -5em; white-space: normal;"><span ><strong>酬<span class=" Apple-tab-span" style="white-space: pre;">	</span>金</strong></span><span >：以每小時計算，不足30分鐘以半小時計算，若超過30分鐘且未滿60分鐘則以一小時計算（以現金支付，需依規定簽妥領據）<br><br></span></p><p dir="ltr" class="zfr3Q" style="margin-left: 0; margin-right: 0; padding-left: 5em; text-align: justify; text-indent: -5em; white-space: normal;"><span ><strong>招募條件：</strong></span><span >（1）年紀在20至39歲</span></p><p dir="ltr" class="zfr3Q" style="margin-left: 60pt; margin-right: 0; padding-left: 3em; text-align: justify; text-indent: -3em; white-space: normal;"><span >（2）<span class=" Apple-tab-span" style="white-space: pre;"></span>教育程度國中以上</span></p><p dir="ltr" class="zfr3Q" style="margin-left: 60pt; margin-right: 0; padding-left: 3em; text-align: justify; text-indent: -3em; white-space: normal;"><span >（3）<span class=" Apple-tab-span" style="white-space: pre;"></span>手長介於157.7公厘至177.2公厘之間、手寬介於70.0公厘至80.3公厘之間</span></p><p dir="ltr" class="zfr3Q" style="margin-left: 60pt; margin-right: 0; padding-left: 3em; text-align: justify; text-indent: -3em; white-space: normal;"><span >（4）<span class=" Apple-tab-span" style="white-space: pre;"></span>配戴隱形眼鏡後兩眼視力可達0.8</span></p><p dir="ltr" class="zfr3Q" style="margin-left: 60pt; margin-right: 0; padding-left: 3em; text-align: justify; text-indent: -3em; white-space: normal;"><span >（5）<span class=" Apple-tab-span" style="white-space: pre;"></span>慣用手為右手</span></p><p dir="ltr" class="zfr3Q" style="margin-left: 60pt; margin-right: 0; padding-left: 3em; text-align: justify; text-indent: -3em; white-space: normal;"><span >（6）具有網路購物經驗      </span></p><p dir="ltr" class="zfr3Q" style="margin-left: 60pt; margin-right: 0; padding-left: 3em; text-align: justify; text-indent: -3em; white-space: normal;"><span >（7）目前使用無線滑鼠<br><br></span></p><p dir="ltr" class="zfr3Q" style="margin-left: 0; margin-right: 0; padding-left: 15pt; text-align: left; text-indent: -15pt;"><span >※ 蒐集資料僅供學術研究，不做個別分析，個人資料絕對保密，敬請安心。<br><br></span></p><p dir="ltr" class="zfr3Q" style="margin-left: 0; margin-right: 0; padding-left: 0; text-align: left; text-indent: 0;"><span ><strong>計畫主持人</strong></span><span >：   <span class=" Apple-tab-span" style="white-space: pre;">	</span>國立清華大學工業工程與工程管理學系 盧俊銘 助理教授</span></p><p dir="ltr" class="zfr3Q" style="margin-left: 0; margin-right: 0; padding-left: 0; text-align: left; text-indent: 0;"><span ><strong>聯絡人　　：</strong></span><span >  <span class=" Apple-tab-span" style="white-space: pre;">	</span>朱祐慧</span></p><p dir="ltr" class="zfr3Q" style="margin-left: 0; margin-right: 0; padding-left: 0; text-align: left; text-indent: 0;"><span ><strong>聯絡電話　：</strong></span><span >      <span class=" Apple-tab-span" style="white-space: pre;">	</span>0970860829     <span class=" Apple-tab-span" style="white-space: pre;">	</span></span></p><p dir="ltr" class="zfr3Q" style="margin-left: 0; margin-right: 0; padding-left: 0; text-align: left; text-indent: 0;"><span ><strong>電子郵件　：</strong></span><span >      <span class=" Apple-tab-span" style="white-space: pre;">	</span>m86082930730@gmail.com</span></p></div><br>
+        <div id="" class="explanation"><br>
+          本實驗需在六個階段體驗滑鼠，<br>
+其中前 <b>二個階段</b> 需要您根據本網站的指示，使用 <b>電腦</b> 完成填寫，<br>
+後 <b>四個階段</b> 則在 <b>清華大學工程一館930室</b> 進行。<br><br>
+關於實驗內容若有其他疑問，請與聯絡人聯繫詢問。<br>
+若沒有其他問題，請按下方按鈕開始填寫基本資料。<br><br>
+        </div><br>
+        <button id="begin_exp" class="button" onclick="showBeginQ();">
+          沒有問題，填寫基本資料
+        </button><br><br>
+        <b>（請務必使用電腦進行填寫）</b><br><br>
+        <table id="begin_exp_questionnaire" class="stage_basic" style="display:none;width:99%;height:100%;">
+            <tr>
+              <th>基本資料</th>
+              <th>形容詞與感官的對應關係</th>
+            </tr>
+            <tr>
+              <td class="" style="" >
+                <div id="basic_info" class="questionnaire" style="display:;" >
+                  <iframe id="iframe_basic_info" src="https://docs.google.com/forms/d/e/1FAIpQLScaDcVsJ-ftDVqsE7UaVKzvh4iQn-CFMu42l3WbWQI6Mz_TFQ/viewform?usp=pp_url&entry.793241340=23" style="" >
+                  </iframe>
+                </div>
+              </td>
+              <td>
+                <div id="ADJ_corresponding" class="questionnaire" >
+                  <iframe id="iframe_ADJ_corresponding" src="https://docs.google.com/forms/d/e/1FAIpQLScaDcVsJ-ftDVqsE7UaVKzvh4iQn-CFMu42l3WbWQI6Mz_TFQ/viewform?usp=pp_url&entry.793241340="  style="" >
+                  </iframe>
+                  </div>
+              </td>
+            </tr>
+          </table>
+        <div id="finish_Begin" style="display:none;">
+          <div  class="explanation"><br>
+
+            填畢上方兩份問卷後，<br><br>
+            請點擊下方按鈕開始階段一的滑鼠互動實驗。<br><br>
+          </div><br>
+          <button onclick="loadStage();">
+            開始互動
+          </button><br>
+        </div>
+      </div>
+        
+      <div id="interaction" style="display:none;">
+
+        <div id="container_stage">
+          <h1 id="stage_name_2" class="stage_1">階段一</h1>
+          <h1 id="stage_name_2" class="stage_2" style="display:none;">階段二</h1>
+
+          <table id="table_stage" >
+            <tr>
+              <td class="explanation stage_1" style="display:none;"><br>
+                在本階段中，您將會看到滑鼠的圖片。<br><br>
+                請根據該圖片給予您的感受，依照指示完成兩份感受形容詞量表的填寫。<br><br>
+              </td>
+              <td colspan="2" class="stage_2" style="display:none;"> 
+                <div id="explanation_stage_2" class="explanation stage_2">
+                  階段解釋2
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td >
+             <img id="stage_1_mouse_image" class="mouse stage_1" src="">
+
+              </td>
+            </tr>
+            <tr>
+              <td>
+                      <img id="stage_2_mouse_image" class="mouse stage_2" src="">
+              </td>
+              <td class="stage_2" >
+                <div class="container_video">
+                  <iframe id="stage_2_mouse_video"  src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                </div>
+
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="2" class="stage_2" style="display:none;">
+                <img id="stage_2_mouse_description" style="width:70%" class="description stage_2" src="">
+              </td>
+            </tr>
+            <tr>
+              <td class="stage_1 explanation"><br>
+                看完圖片後，請<b>依序</b>填寫下方兩份問卷。<br><br>
+                作答時，應填完問卷一後，再開始填答問卷二。<br><br>
+              </td>
+              <td colspan="2"  class="stage_2 explanation" style="display:none;"><br>
+                看完圖片、影片與文字描述後，請<b>依序</b>填寫下方兩份問卷。<br><br>
+                作答時，應填完問卷一後，再開始填答問卷二。<br><br>
+              </td>
+            </tr>
+
+          </table>
+
+
+
+
+        </div>
+        <div id="container_questionnaire" style="display:;">
+          <div id="container_Q1" class="questionnaire"  >
+
+          <h2 style="display:;background:#777; color:white;">
+            問卷一
+          </h2>
+          <div id="Q1" class="questionnaire" style="display:;" >
+            <div data-role="page" class="google form" id="SCALE" align="center">
+              <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;" ></iframe>
+              <form name="theme" action="" method="post" target="hidden_iframe">
+                <div id="part_Name_Stage_Order_Sample">
+                  <br>
+                  參與者編號：
+                  <input id="participant" type="text" name="entry.726136822" onchange="closeNoText()"><br>
+                  <br>
+                  體驗階段　：
+                  <input id="stage" type="text" name="entry.1175304058" onchange="closeNoText()"><br>
+                  <br>
+                  樣本順序　：
+                  <input id="order" type="text" name="entry.2006308307" onchange="closeNoText()"><br>
+                  <br>
+                  樣本代號　：
+                  <input id="sample" type="text" name="entry.972880170" onchange="closeNoText()"><br>
+                  <br>
+                  <table style="table-layout:fixed;width:10rem">
+                    <tr>
+                      <td>VAS</td>
+                      <td>5-Point</td>
+                    </tr>
+                    <tr>
+                      <td><input id="scaleType_Range" type="radio" name="scaleType" value="Range" onclick="changeScaleType(this.value);"></td>
+                      <td><input id="scaleType_RadioButton" type="radio" name="scaleType" value="RadioButton" onclick="changeScaleType(this.value);"></td>
+                    </tr>
+                  </table>
+                  <br>
+                  <div id="no text" style="display:none;color:red;">
+                    <b>尚有欄位未填</b><br><br>
+                  </div>
+                  <button type="button" style="font-family:Microsoft JhengHei;" onclick="javascript:showScale();" ontouchstart="javascript: showScale();">繼續</button>
+                </div>
+
+                <div id="part_ADJ" style="display:none;"><br>
+                  本問卷共有20組左右相反的形容詞。<br>
+                  <br>
+                  在每組形容詞中，<br>
+                  越 <b>中間</b> 代表對於兩邊的形容詞 <b>都沒有明顯的感受</b> ，<br>
+                  越往 <b>兩端</b> 則代表該感受越為 <b>強烈</b> 。<br><br>
+                  <p id="explanation">
+                    <img id="explanation_pic" src="" style="width:29rem;"><br>
+                    請您在與滑鼠互動後，<br>
+                    依序針對每組形容詞評價您所感受到的意象。<br><br><br>
+                  </p>
+
+                  <div id="example">
+
+                    <div id="example_Range" class="Range" style="display:none;">
+                      <b>---以下為填寫範例---</b><br><br>
+                      若您認為它 <b style="color:red;">不偏向</b> 華麗或樸素，感受處於中立，請點擊較 <b>中間</b> 的位置。<br>
+                      <img src="https://imgur.com/H06A9OA.png" style="width:29rem;"><br><br>
+
+                      若您認為它 <b style="color:red;">非常樸素</b>，請根據您感受的程度點擊偏 <b>右方</b> 的位置。（越靠近「樸素的」代表程度越 <b>大</b>）<br>
+                      <img src="https://imgur.com/tWhN3v9.png" style="width:29rem;"><br><br>
+
+                      若您認為它 <b style="color:red;">有點華麗</b>，請根據您感受的程度點擊偏 <b>左方</b> 的位置。（越靠近中央代表程度越 <b>小</b>）<br>
+                      <img src="https://imgur.com/CNILxlw.png" style="width:29rem;"><br><br>
+
+                    </div>
+
+                    <div id="example_RadioButton" class="RadioButton" style="display:none;">
+                      <b>---以下為填寫範例---</b><br><br>
+                      若您認為它 <b style="color:red;">不偏向</b> 華麗或樸素，感受處於中立，請點擊 <b>中間</b> 的一格。<br><br>
+                      <img src="https://imgur.com/dFMh4LZ.png" width="40%"><br><br>
+
+                      若您認為它 <b style="color:red;">非常樸素</b>，請根據點擊 <b>最右方</b> 的一格。（越靠近「樸素的」代表程度越 <b>大</b>）<br><br>
+                      <img src="https://imgur.com/UVuuHD7.png" width="40%"><br><br>
+
+                      若您認為它 <b style="color:red;">有點華麗</b>，請根據點擊 <b>中間偏左</b> 的一格。（越靠近中央代表程度越 <b>小</b>）<br><br>
+                      <img src="https://imgur.com/vhS0iy1.png" width="40%"><br><br>
+
+                    </div>
+
+                    <div id="start">
+                      <button type="button" style="font-family:Microsoft JhengHei;" onclick="javascript:startAnswer();" ontouchstart="javascript: startAnswer();">開始填答</button><br><br>
+                    </div>
+
+                  </div>
+
+                  <div id="container_progress&ADJ" style="display:none;">
+                    <div id="container_ADJ" class="ADJ">
+                      <table id="table_ADJ_Range" class="Range" style="display:none;min-width:36rem;" cellpadding="1px">
+                        <tr id="tr_ADJ" style="height:1.5rem;" >
+                          <td id="td_left_Range" align="right" style="width:8rem;">小巧的</td>
+                          <td colspan="5" id="td_middle" height="100%" style="width:21rem;" >
+                            <input type="range" name="entry.511407135" id="ADJ_Range" value="50" min="0" max="100" step="0.1" onclick="recordScore(this.value);"  onchange="recordScore(this.value);"  ontouchend="recordScore(this.value);" >
+                            <div id="container_overlay">
+                              <div class="overlay"><img id="cross" src="https://imgur.com/06zVfHc.png"></div>
+                            </div>
+
+                          </td>
+                          <td id="td_right_Range" align="left" style="width:8rem;">碩大的</td>
+                        </tr>
+                      </table>
+                      <table id="table_ADJ_RadioButton" class="RadioButton" style="display:none;" cellpadding="1px">
+                        <tr>
+                          <th style="width:8rem;">　　　　　　　　</th>
+                          <th style="width:4rem;">非常<span id="mid" style="width:0px;"></span>強烈</th>
+                          <th style="width:4rem;">　　　　</th>
+                          <th style="width:4rem;">不偏向<br>任何一邊</th>
+                          <th style="width:4rem;">　　　　</th>
+                          <th style="width:4rem;">非常強烈</th>
+                          <th style="width:8rem;">　　　　　　　　</th>
+                        </tr>
+                        <tr id="tr_ADJ">
+                          <td id="td_left_RadioButton" align="right">小巧的</td>
+                          <td><input type="radio" name="entry.511407135" id="ADJ_RadioButton_1" value="5" required onchange="recordScore(this.value)"></td>
+                          <td><input type="radio" name="entry.511407135" id="ADJ_RadioButton_2" value="4" onchange="recordScore(this.value)"></td>
+                          <td><input type="radio" name="entry.511407135" id="ADJ_RadioButton_3" value="3" onchange="recordScore(this.value)"></td>
+                          <td><input type="radio" name="entry.511407135" id="ADJ_RadioButton_4" value="2" onchange="recordScore(this.value)"></td>
+                          <td><input type="radio" name="entry.511407135" id="ADJ_RadioButton_5" value="1" onchange="recordScore(this.value)"></td>
+                          <td id="td_right_RadioButton" align="left">碩大的</td>
+                        </tr>
+                        <tr style="display:block;line-height:0.25rem;"><td>　</td></tr>
+                      </table>
+                    </div>
+
+                    <div id="not yet" style="display:none;color:red;">
+                      <b>尚未評價此形容詞</b>
+                    </div>
+
+                    <div class="button">
+                      <div id="button_Back_Next" style="position:relative;vertical-align: middle;">
+                        <span style="font-family:Microsoft JhengHei;">---填寫進度---</span><br>
+                        <table>
+                          <tr>
+                            <td><input class="back" id="back" type="button" value="Back <<" onclick="buttonBackADJ();" style="font-family:Microsoft JhengHei;" disabled="true"></td>
+                            <td><div id="pb1" class="progress" role="progressbar"   style="width:150px;" aria-labelledby="pb1_label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="20" tabindex="0" align="left"></div></td>  
+                            <td><input class="next" id="next" type="button" value="Next >>" onclick="buttonNextADJ();" style="font-family:Microsoft JhengHei;"></td>
+                          </tr>
+                        </table>
+                      </div>
+                      <br>
+                      <div id="button_Submit" style="display:none;">
+                        <input id="submit" type="submit" disabled="true" style="font-family:Microsoft JhengHei;"  onclick="submitForm();" ontouchstart="submitForm();" value="提交">
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <!--放分數的隱藏的表-->
+                <table id="table_ADJ_hidden" style="display:none;">
+                  <tr id="tr_ADJ_hidden">
+                  </tr>
+                </table>
+
+              </form>
+
+              <div id="finish" style="height:250px;display:none;">
+                <sapn style="font-size:5rem;line-height:250px;"><b>完成填寫</b></sapn><br>
+                <button id="fill_Q2" onclick="again();" style="display:none;">
+                  填寫問卷二
+                </button>
+              </div>
+            </div>
+          </div><br>
+
+            <div id="container_Q2" class="questionnaire"  >
+              <h2 style="display:;background:#777; color:white;">
+                問卷二
+              </h2>
+              <br><p id="Q1_first">請先填寫問卷一</p><br>
+              <div id="Q2" class="questionnaire" style="display:;background:#777;" >
+              </div>
+            </div>
+
+        </div>
+        
+        <div id="div_stage_end" class="stage_end"  style="display:none;" >
+          <div id="stage_end_1"class="explanation stage_1 stage_end" style="display:none;"><br>
+            本階段互動結束。<br><br>
+            在進入下一階段前，請先完成下方的問卷。<br><br>
+          </div>
+          
+          <div id="stage_end_2"class="explanation stage_2 stage_end" style="display:none;"><br>
+            本階段互動結束。<br><br>
+            在結束前，請先完成下方的問卷。<br><br>
+          </div>
+          
+          <div data-role="page" class="google form" id="SD" align="center" style="background:transparent;">
+            <iframe name="hidden_iframe_SD" id="hidden_iframe_SD" style="display: none;" ></iframe>
+            <form name="theme_SD" action="https://docs.google.com/forms/u/1/d/e/1FAIpQLSdDiacZzjfT32Tw5ArGH5FFLyokBbSTcUbgEaEkltSVdh1ncg/formResponse" method="post" target="hidden_iframe_SD">
+              <div id="part_Name_Stage"><br>
+                參與者編號：
+                <input id="participant_SD" type="text" name="entry.1986078417" onchange="closeNoText_SD()"><br>
+                <br>
+                體驗階段　：
+                <input id="stage_SD" type="text" name="entry.1079793000" onchange="closeNoText_SD()"><br>
+                <br>
+                <div id="no text_SD" style="display:none;color:red;">
+                  <b>尚有欄位未填</b><br><br>
+                </div>
+                <button type="button" style="font-family:Microsoft JhengHei;" onclick="javascript:showScale_SD();" ontouchstart="javascript: showScale_SD();">繼續</button>
+              </div>
+
+              <div id="part_Choose" style="display:none;"><br>
+                本問卷旨在了解不同體驗階段時，<br>
+                哪種感官感受是影響您評價的 <b>主要</b> 參考依據。<br><br>
+                請問您認為在 <b>這個階段</b> 與滑鼠互動後所產生的感受，<br>
+                主要是來自於何種 <b>感官</b> 接收到的刺激呢？<br><br>
+
+                <div id="explanation_SD">
+                  <b>————————————範例————————————</b><br><br>
+                  若您在可以<b>看見</b>、<b>聽見</b>、<b>觸摸</b>「頭戴式耳機」的情況下，<br>
+                  主要以它的「<b>跟耳朵接觸的部分</b>」進行感受評價，<br>
+                  「<b>聽起來的感覺</b>」次之，則在觸覺與聽覺之中選擇「<b>觸覺</b>」：<br><br>
+                  <!--
+            <b>*問題：</b>請問您剛才回答時，主要是依據何種感官刺激？<br>
+            ○ 觸覺<br>
+            ○ 聽覺<br><br>
+-->
+                  <img src="https://imgur.com/pC74pKe.png" style="width:24rem;"><br>
+                  看到上述問題時，選擇 <b style="color:red;">觸覺</b> 即可。<br><br><br>
+
+                  如您評價時受到「<b>音質</b>」影響較大，「<b>外觀</b>」影響較小，則填答下方問題<br><br>
+                  <!--
+            <b>*問題：</b>請問您剛才回答時，主要是依據何種感官刺激？<br>
+            ○ 視覺<br>
+            ○ 聽覺<br><br>
+-->
+                  <img src="https://imgur.com/77UEoDc.png" style="width:24rem;"><br>
+                  時，選擇 <b style="color:red;">聽覺</b> 即可。<br><br>
+
+                  如無其他問題，請按下方按鍵開始填答。<br><br>
+
+                  <div id="start_SD">
+                    <button type="button" style="font-family:Microsoft JhengHei;" onclick="startAnswer_SD();" ontouchstart="startAnswer_SD();">開始填答</button><br><br>
+                  </div>
+
+                </div>
+
+                <div id="container_progress&Radio" style="display:none;">
+                  <div id="SD_Q1" style="">
+                    <input type="button" name="entry.727990184" id="Button_1_V" value="視覺" class="AnsButton Q1Button" onclick="recordScore_SD(this.value,this.name,this.id);" ontouchstart="recordScore_SD(this.value,this.name,this.id);">&emsp;&emsp;
+                    <input type="button" name="entry.727990184" id="Button_1_T" value="觸覺" class="AnsButton Q1Button" onclick="recordScore_SD(this.value,this.name,this.id);" ontouchstart="recordScore_SD(this.value,this.name,this.id);">
+                  </div>
+
+                  <div id="SD_Q2" style="display:none;">
+                    <input type="button" name="entry.2073835214" id="Button_2_V" value="視覺" class="AnsButton Q2Button" onclick="recordScore_SD(this.value,this.name,this.id);" ontouchstart="recordScore_SD(this.value,this.name,this.id);">&emsp;&emsp;
+                    <input type="button" name="entry.2073835214" id="Button_2_A" value="聽覺" class="AnsButton Q2Button" onclick="recordScore_SD(this.value,this.name,this.id);" ontouchstart="recordScore_SD(this.value,this.name,this.id);">
+                  </div>
+
+                  <div id="SD_Q3" style="display:none;">
+                    <input type="button" name="entry.1677724600" id="Button_3_T" value="觸覺" class="AnsButton Q3Button" onclick="recordScore_SD(this.value,this.name,this.id);" ontouchstart="recordScore_SD(this.value,this.name,this.id);">&emsp;&emsp;
+                    <input type="button" name="entry.1677724600" id="Button_3_A" value="聽覺" class="AnsButton Q3Button" onclick="recordScore_SD(this.value,this.name,this.id);" ontouchstart="recordScore_SD(this.value,this.name,this.id);">
+                  </div>
+                  <br>
+                  <div id="not yet_SD" style="display:none;color:red;">
+                    <b>尚未答題</b>
+                  </div>
+
+                  <div class="button">
+                    <div id="button_Back_Next_SD" style="position:relative;vertical-align: middle;">
+                      <span style="font-family:Microsoft JhengHei;">---填寫進度---</span><br>
+                      <table>
+                        <tr>
+                          <td><input class="back" id="back_SD" type="button" value="Back <<" onclick="buttonBack_SD();" style="font-family:Microsoft JhengHei;" disabled="true"></td>
+                          <td><div id="pb1_SD" class="progress" role="progressbar"   style="width:150px;" aria-labelledby="pb1_label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="3" tabindex="0" align="left"></div></td>  
+                          <td><input class="next" id="next_SD" type="button" value="Next >>" onclick="buttonNext_SD();" style="font-family:Microsoft JhengHei;"></td>
+                        </tr>
+                      </table>
+                    </div>
+                    <br>
+                    <div id="button_Submit_SD" style="display:none;">
+                      <input id="submit_SD" type="submit" disabled="true" style="font-family:Microsoft JhengHei;"  onclick="submitForm_SD();" ontouchstart="submitForm_SD();" value="提交">
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              <!--放分數的隱藏的表-->
+              <table id="table_hidden_SD" style="display:none;">
+                <tr id="tr_hidden_SD">
+                </tr>
+              </table>
+
+            </form>
+
+            <div id="finish_SD" style="height:250px;display:none">
+              <span style="font-size:5rem;line-height:250px;"><b>完成填寫</b></span>
+            </div>
+          </div>
+        </div>
+                        
+        <div id="div_next">
+          <table>
+            <tr>
+              <td><button id="next_mouse" onclick="changeMouse();" ontouchstart="changeMouse();">下一個滑鼠</button></td>
+              <td><button id="next_stage" onclick="changeStage();" ontouchstart="changeStage();" disabled="true">下一個階段</button></td>
+              <td>
+                <button id="Q123" onclick="able();">解封</button>
+              </td>
+            </tr>  
+          </table>
+
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+
+</html>
+
+<script>
+function able(){
+  document.getElementById("next_mouse").disabled = false; document.getElementById("next_stage").disabled = false;
+}
+
+
+  var password = ['0110','0220','0330','0440','0550','0660','0770','0880','0990','1001','1111','1221','1331','1441','1551','1661','1771','1881','1991','2002','2112','2222','2332','2442','2552','2662','2772','2882','2992','3003'];
+  var participant;
+  var stage=1;
+  var mouse_order=1;
+  var mouse_sample = [
+    ['G01','G02','G03','G04'],      // #01
+    ['G01','G02','G04','G03'],      // #02
+    ['G01','G03','G02','G04'],      // #03
+    ['G01','G03','G04','G02'],      // #04
+    ['G01','G04','G02','G03'],      // #05
+    ['G01','G04','G03','G02'],      // #06
+    ['G02','G01','G03','G04'],      // #07
+    ['G02','G01','G04','G03'],      // #08
+    ['G02','G03','G01','G04'],      // #09
+    ['G02','G03','G04','G01'],      // #10
+    ['G02','G04','G01','G03'],      // #11
+    ['G02','G04','G03','G01'],      // #12
+    ['G03','G01','G02','G04'],      // #13
+    ['G03','G01','G04','G02'],      // #14
+    ['G03','G02','G01','G04'],      // #15
+    ['G03','G02','G04','G01'],      // #16
+    ['G03','G04','G01','G02'],      // #17
+    ['G03','G04','G02','G01'],      // #18
+    ['G04','G01','G02','G03'],      // #19
+    ['G04','G01','G03','G02'],      // #20
+    ['G04','G02','G01','G03'],      // #21
+    ['G04','G02','G03','G01'],      // #22
+    ['G04','G03','G01','G02'],      // #23
+    ['G04','G03','G02','G01'],      // #24
+    ['G01','G02','G03','G04'],      // #25
+    ['G02','G04','G01','G03'],      // #26
+    ['G03','G01','G04','G02'],      // #27
+    ['G04','G03','G02','G01'],      // #28
+    ['G01','G03','G04','G02'],      // #29
+    ['G04','G02','G03','G01']       // #30
+  ];
+  var q_order = 1;
+  var q_first =[
+    ['L','L'],      // #01
+    ['L','L'],      // #02
+    ['L','L'],      // #03
+    ['L','L'],      // #04
+    ['L','V'],      // #05
+    ['L','V'],      // #06
+    ['L','V'],      // #07
+    ['L','V'],      // #08
+    ['L','V'],      // #09
+    ['L','V'],      // #10
+    ['V','V'],      // #11
+    ['V','V'],      // #12
+    ['V','V'],      // #13
+    ['V','V'],      // #14
+    ['V','L'],      // #15
+    ['V','L'],      // #16
+    ['V','L'],      // #17
+    ['V','L'],      // #18
+    ['V','L'],      // #19
+    ['V','L'],      // #20
+    ['L','L'],      // #21
+    ['L','L'],      // #22
+    ['L','L'],      // #23
+    ['L','L'],      // #24
+    ['L','V'],      // #25
+    ['V','V'],      // #26
+    ['V','V'],      // #27
+    ['V','V'],      // #28
+    ['V','V'],      // #29
+    ['V','L']      // #30
+  ];
+  /*
+  var mouse_img_url = [
+    ['G01',"https://imgur.com/DfDHgo3.png"],   //靜音亮 G01
+    ['G02',"https://imgur.com/A3KoR9N.png"],   //靜音霧 G02
+    ['G03',"https://imgur.com/oXN5QL5.png"],   //有聲亮 G03
+    ['G04',"https://imgur.com/uyl6yof.png"]];  //有聲霧 G04
+  var mouse_video_url = [
+    ['G01',"1"],   //靜音亮 G01
+    ['G02',"2"],   //靜音霧 G02
+    ['G03',"3"],   //有聲亮 G03
+    ['G04',"4"]];  //有聲霧 G04
+  var mouse_description_url = [
+    ['G01',"https://imgur.com/5HZKPm1.png"],   //靜音亮 G01
+    ['G02',"https://imgur.com/F3yvUDn.png"],   //靜音霧 G02
+    ['G03',"https://imgur.com/GfLrtfL.png"],   //有聲亮 G03
+    ['G04',"https://imgur.com/pFrmyT9.png"]];  //有聲霧 G04
+    */
+
+  /*順序：img vid des*/
+  var mouse_media_url = [
+    ['G01',"https://imgur.com/DfDHgo3.png","https://youtube.com/embed/FN5_PK_7Vdo","https://imgur.com/5HZKPm1.png"],   //靜音亮 G01
+    ['G02',"https://imgur.com/A3KoR9N.png","https://youtube.com/embed/dI-Z-UDnMXY","https://imgur.com/F3yvUDn.png"],   //靜音霧 G02
+    ['G03',"https://imgur.com/oXN5QL5.png","https://youtube.com/embed/ypAiMNgoQoc","https://imgur.com/GfLrtfL.png"],   //有聲亮 G03
+    ['G04',"https://imgur.com/uyl6yof.png","https://youtube.com/embed/i0YIYBDOTiw","https://imgur.com/pFrmyT9.png"]];  //有聲霧 G04
+  
+  
+  function validation(){
+    var pw = document.getElementById("password").value;
+    for(i=0;i<30;i++){
+      if(password[i] == pw){
+        participant = i+1;
+        document.getElementById("iframe_ADJ_corresponding").src = "https://docs.google.com/forms/d/e/1FAIpQLScaDcVsJ-ftDVqsE7UaVKzvh4iQn-CFMu42l3WbWQI6Mz_TFQ/viewform?usp=pp_url&entry.793241340="+participant;
+            document.getElementById("div_password").style.display="none";
+
+        document.getElementById("container_basic").style.display ="";
+        break;
+      }
+    }
+    if(!participant) alert("密碼錯誤！");
+    else{
+
+    }
+  }
+  function showBeginQ(){
+    
+    document.getElementById('begin_exp_questionnaire').style.display = 'table';
+    document.getElementById('finish_Begin').style.display = '';
+    $('html,body').animate({scrollTop: $(document).height() }, 500);
+
+
+  }
+
+  function loadMediaAndData(){
+    if(stage==1){
+      for(i=0;i<4;i++){
+        if(mouse_sample[participant-1][mouse_order-1] == mouse_media_url[i][0]){
+          document.getElementById("stage_1_mouse_image").src = mouse_media_url[i][1];
+          break;
+        }
+      }
+    }
+    else if(stage==2){
+      for(i=0;i<4;i++){
+        if(mouse_sample[participant-1][mouse_order-1] == mouse_media_url[i][0]){
+          document.getElementById("stage_2_mouse_image").src =  mouse_media_url[i][1];
+          //document.getElementById("stage_2_mouse_video").src =  mouse_media_url[i][2];
+          $('#stage_2_mouse_video').attr('src', mouse_media_url[i][2]);
+          document.getElementById("stage_2_mouse_description").src =  mouse_media_url[i][3];
+          break;
+        }
+      }
+    }
+    again();
+}
+  function changeMouse(){
+    if(mouse_order<4){
+      mouse_order++;
+      loadMediaAndData();
+      if(mouse_order==4){
+        document.getElementById("next_mouse").disabled = true;
+        document.getElementById("next_stage").disabled = false;
+      }
+    }
+    for(i=0;i<2;i++) $('#iframe_Q'+i).attr('src', $('#iframe_Q'+i).attr('src'));
+    $('html,body').animate({scrollTop:0}, 2000);
+  }
+  function loadStage(){
+    if(stage==1) document.getElementById("container_basic").style.display ="none";
+    loadMediaAndData();
+    document.getElementById("interaction").style.display="";
+    document.getElementById("SD").style.display="none";
+    document.getElementById("stage_end_"+stage).style.display="none";
+    var stage_elements = document.getElementsByClassName("stage_"+stage);
+    for(i=0;i<stage_elements.length;i++) stage_elements[i].style.display = "";
+    var close_elements = document.getElementsByClassName("stage_"+(stage-1));
+    for(i=0;i<close_elements.length;i++) close_elements[i].style.display = "none";
+        $('html,body').animate({scrollTop:0}, 2000);
+  }
+  
+  function changeStage(){
+    mouse_order = 1;
+    stage++;
+    document.getElementById("next_mouse").disabled = false;
+    document.getElementById("next_stage").disabled = true;
+    loadStage();
+  }
+  
+  //自動填入
+  function again(){ //participant, stage, order, sample, scale
+    alert(participant +" "+ stage +" "+ mouse_order +" "+ mouse_sample[participant-1][mouse_order-1] +" "+ q_order);
+    for(i=0;i<ADJ_Score.length;i++){ADJ_Score[i] = null; if(ADJ_i!=1) buttonBackADJ();}
+    document.getElementById("part_ADJ").style.display = 'none';
+    var scaleType_elements = document.getElementsByClassName(scaleType);
+    for(var i = 0; i < scaleType_elements.length; i++) scaleType_elements[i].style.display = 'none';
+    if(scaleType=='Range')
+    {
+      document.getElementById('back').removeEventListener("mousedown touchstart",()=>{notCrossHoverFocusActive();});
+      document.getElementById('next').removeEventListener("mousedown touchstart",()=>{notCrossHoverFocusActive();});}
+    var q;
+    if(q_first[participant-1][stage-1]=='L'){
+      if(q_order==1)
+        q = 'RadioButton';
+      else
+        q = 'Range';
+    }
+    else if(q_first[participant-1][stage-1]=='V'){
+      if(q_order==1)
+        q = 'Range';
+      else
+        q = 'RadioButton';
+    }
+    fillInData(true,participant,stage,mouse_order,mouse_sample[participant-1][mouse_order-1],q);
+    document.getElementById("explanation").style.display = '';
+    document.getElementById('example').style.display = '';
+    document.getElementById('container_progress&ADJ').style.display = 'none';
+    document.getElementById('finish').style.display = 'none';
+    document.getElementById("fill_Q2").style.display='none';
+
+    if(q_order==1) $('#Q1').after($('#SCALE'));
+    else $('#Q2').after($('#SCALE'));
+  }
+  
+  /*共用，不需調整*/
+  function fillInData(isFilled, p, s, order, sample, scale){
+    if(isFilled){
+      document.getElementById('participant').value = p;
+      document.getElementById('stage').value = s;
+      document.getElementById('order').value = order;
+      document.getElementById('sample').value = sample;
+      scaleType = scale;
+      showScale();
+    }
+  }
+
+  function showScale() {
+    var participant = document.getElementById('participant').value;
+    var stage = document.getElementById('stage').value;
+    var order = document.getElementById('order').value;
+    var sample = document.getElementById('sample').value;
+    if(!participant || !stage || !order || !sample || !scaleType){
+      document.getElementById('no text').style.display = '';
+    }
+    else{
+      document.getElementById('no text').style.display = 'none'; 
+      document.getElementById('part_Name_Stage_Order_Sample').style.display = 'none';
+      document.getElementById('part_ADJ').style.display = '';
+      onLoadSetup();
+    }
+  }
+
+  function closeNoText(){
+    document.getElementById('no text').style.display = 'none'; 
+  }
+
+  function startAnswer() {
+    document.getElementById('explanation').style.display = 'none';
+    document.getElementById('example').style.display = 'none';
+    document.getElementById('container_progress&ADJ').style.display = '';
+    /*測試寬度用
+    alert($("#table_ADJ_Range").width());
+    alert($("#table_ADJ_RadioButton").width())
+    var bodyRect_B = document.body.getBoundingClientRect();
+    var elemRect_B = document.getElementById("ADJ_RadioButton_1").getBoundingClientRect();
+    var offset_B = elemRect_B.left - bodyRect_B.left;
+    alert(offset_B);
+    var bodyRect_R = document.body.getBoundingClientRect();
+    var elemRect_R = document.getElementById("ADJ_Range").getBoundingClientRect();
+    var offset_R   = elemRect_R.left - bodyRect_R.left;
+    alert(offset_R);
+    */
+  }
+
+  function DetectIsIE() {
+    var ua = window.navigator.userAgent;
+
+    var msie = ua.indexOf('MSIE ');
+    if (msie > 0) {
+      // 回傳版本 <=10 的版本
+      return parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
+    }
+
+    var trident = ua.indexOf('Trident/');
+    if (trident > 0) {
+      // 回傳版本 >=11 的版本
+      var rv = ua.indexOf('rv:');
+      return parseInt(ua.substring(rv + 3, ua.indexOf('.', rv)), 10);
+    }
+
+    var edge = ua.indexOf('Edge/');
+    if (edge > 0) {
+      // 判斷Edge
+      return parseInt(ua.substring(edge + 5, ua.indexOf('.', edge)), 10);
+    }
+
+    // other browser
+    return false;
+  }
+
+  function detectBrowser(){
+
+    var isFirefox = navigator.userAgent.search("Firefox") > -1;
+    var isOpera = navigator.userAgent.search("Opera") > -1;
+    var isSafari = navigator.userAgent.search("Safari") > -1;//Google瀏覽器是用這核心
+
+    var isIE =  DetectIsIE();
+
+    if (isFirefox) {
+      browser = 'Firefox';
+    }
+    if (isOpera) {
+      browser = 'Opera';
+    }
+    if (isSafari) {
+      browser = 'Safari/Chrome';
+    }
+    if (isIE) {
+      browser = 'IE';
+    }
+    return browser;
+  }
+
+  var browser = detectBrowser();
+
+  /*
+  var size = $("div").css('font-size');
+  alert(size);
+  var tdwidth = $("#td_middle").width();
+  alert(tdwidth);
+  */
+  var ADJ_i = 1;
+  var ADJ_Score = new Array();
+  var ADJ_Word = [
+    "小巧的","碩大的",
+    "細紋路的","粗紋路的",
+    "簡約的","複雜的",
+    "低噪的","非低噪的",
+    "有回饋的","無回饋的",
+    "回饋聲音清晰的","回饋聲音不清晰的",
+    "便攜的","不便攜的",
+    "手感明確的","手感不明確的",
+    "好按的","不好按的",
+    "輕鬆掌握的","無法輕鬆掌握的",
+    "舒適的","不舒適的",
+    "堅固的","不堅固的",
+    "輕薄的","厚重的",
+    "符合人體工學的","不符合人體工學的",
+    "包覆性的","非包覆性的",
+    "耐髒的","不耐髒的",
+    "靈敏的","不靈敏的",
+    "精準的","不精準的",
+    "滿意的","不滿意的",
+    "想購買的","不想購買的"];
+  var ADJ_Entry = [
+    "entry.511407135",
+    "entry.1152870785",
+    "entry.1079921585",
+    "entry.927862003",
+    "entry.1883799580",
+    "entry.1465052067",
+    "entry.985700968",
+    "entry.418613732",
+    "entry.94031112",
+    "entry.1120322361",
+    "entry.156344772",
+    "entry.1428082092",
+    "entry.1292637192",
+    "entry.423724387",
+    "entry.1755300774",
+    "entry.1164985306",
+    "entry.1902800109",
+    "entry.814714499",
+    "entry.202069723",
+    "entry.31311220"];
+
+  var entered = false;
+  var changed = false;
+  function recordScore(score){
+    changed = true;
+    if(scaleType=="Range") score = (100-score).toFixed(1);
+    ADJ_Score[ADJ_i - 1] = score;
+    document.getElementById('not yet').style.display = 'none';
+    if (ADJ_i == 20) document.getElementById('submit').disabled = false;
+    var input_exist = document.getElementById("ADJSCORE_" + ADJ_i);
+    if(input_exist) input_exist.value = ADJ_Score[ADJ_i-1];
+    else{
+      var tr = document.getElementById("tr_ADJ_hidden");
+      var td = document.createElement('td');
+      var input = document.createElement('input');
+      input.type = "hidden";
+      input.id = "ADJSCORE_" + ADJ_i;
+      input.name = ADJ_Entry[ADJ_i-1];
+      input.value = ADJ_Score[ADJ_i-1];
+      td.appendChild(input);
+      tr.appendChild(td);
+    }
+    /*
+     var c = document.getElementById('css').sheet;
+     if(c.cssRules.length > 0) c.deleteRule(0);
+     if(browser=='IE') c.insertRule("#ADJ_Range#ADJ_Range::-ms-thumb {visibility:visible;}", 0);
+     else if(browser=='Safari/Chrome') c.insertRule("#ADJ_Range#ADJ_Range::-webkit-slider-thumb {visibility:visible;}", 0);
+     else if(browser=='Firefox') c.insertRule("#ADJ_Range#ADJ_Range::-moz-range-thumb {visibility:visible;}", 0);
+     */
+    isCrossHoverFocusActive();
+  }
+  function buttonNextADJ() {
+    changed = false;
+    if(!ADJ_Score[ADJ_i - 1]) document.getElementById('not yet').style.display = '';
+    else{
+      document.getElementById('back').disabled = false;
+      document.getElementById('next').disabled = false;
+      document.getElementById('not yet').style.display = 'none';
+      ADJ_i += 1;
+      changeADJ();
+      doForwards();
+      if(scaleType=="Range") notCrossHoverFocusActive();
+      if (ADJ_i == 20){
+        document.getElementById('next').disabled = true;
+        document.getElementById('button_Submit').style.display = '';
+      }
+    }
+    return true;
+  }
+  function buttonBackADJ() {
+    changed = false;  
+    document.getElementById('back').disabled = false;
+    document.getElementById('next').disabled = false;
+    document.getElementById('not yet').style.display = 'none';
+    ADJ_i -= 1;
+    changeADJ();
+    doBackwards();
+    if(scaleType=="Range") notCrossHoverFocusActive();
+    if (ADJ_i == 1) document.getElementById('back').disabled = true;
+    return true;
+  }
+  //不清除的話題交置表單時最後顯示的那個選項會被重複填兩次
+  function clearInputName(){ 
+    document.getElementById("ADJ_Range").setAttribute("name","");
+    for(i=1;i<=5;i++) document.getElementById("ADJ_RadioButton_"+i).setAttribute("name","");
+  }
+  function submitForm(){
+    clearInputName();
+    document.getElementById("part_ADJ").style.display='none';
+    document.getElementById("finish").style.display='';
+    if(q_order==1) {
+      document.getElementById("fill_Q2").style.display='';
+      q_order++;
+    }
+    else{
+      if(mouse_order==4){
+
+        document.getElementById("div_stage_end").style.display = "";
+        document.getElementById("SD").style.display="";
+        fillInData_SD(true,participant,stage);
+      }
+      document.getElementById("Q1_first").style.display = "none";
+      q_order=1;
+    }
+    
+    document.getElementByName('theme').submit();
+  }
+
+  /*共用，注意Range 跟 RadioButton不同的地方用scaleType判斷。*/
+  var scaleType = ""; //設定本單形式： Range / RadioButton；不指定時可用radio選擇
+  function changeScaleType(value){
+    scaleType = value;
+  }
+  //設定表單目的地、解釋文字、圖片與填答格式
+  function onLoadSetup(){
+    if(scaleType=='Range'){
+      document.theme.action = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSfzOo5rmqiuAGwNdBlf8TQE1Rc1ZklReffOUk4cPqqOkbBnWA/formResponse";
+      document.getElementById('explanation_pic').src="https://imgur.com/OJjHpne.png";
+      var Ranges = document.getElementsByClassName('Range');
+      for(var i = 0; i < Ranges.length; i++) Ranges[i].style.display = '';
+      $("#ADJ_Range").hover(()=>{isCrossHoverFocusActive();},()=>{if(!changed) notCrossHoverFocusActive();});
+      $("#ADJ_Range").blur(()=>{notCrossHoverFocusActive();});
+      document.getElementById('back').addEventListener("mousedown touchstart",()=>{notCrossHoverFocusActive();});
+      document.getElementById('next').addEventListener("mousedown touchstart",()=>{notCrossHoverFocusActive();});
+      var inputRange = document.getElementById("ADJ_Range");
+      //RangeTouch.setup(inputRange);
+    }
+    else if(scaleType=='RadioButton'){
+      document.theme.action = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSflGs_MBw2e_ad5h2qzEu5Z7Rad5q6Zi2-U_DF1s03W7j1NNw/formResponse";
+      document.getElementById('explanation_pic').src="https://imgur.com/0JQRGFU.png";
+      var RadioButtons = document.getElementsByClassName('RadioButton');
+      for(var i = 0; i < RadioButtons.length; i++) RadioButtons[i].style.display = '';
+    }
+    else window.close();
+  }
+  //變換顯示table內容
+  function changeADJ(){
+    document.getElementById("td_left_" + scaleType).innerHTML = ADJ_Word[(ADJ_i-1)*2];
+    document.getElementById("td_right_" + scaleType).innerHTML = ADJ_Word[(ADJ_i-1)*2+1];
+    if(scaleType=='Range') changeADJRange();
+    else if(scaleType=='RadioButton') changeADJRadioButton();
+    else return false;
+  }
+
+  /*Range調整*/
+  function changeADJRange(){
+    /*
+    var c = document.getElementById('css').sheet;
+    if(c.cssRules.length > 0) c.deleteRule(0);
+    */
+    if(ADJ_Score[ADJ_i-1]){
+      document.getElementById("ADJ_Range").value = ADJ_Score[ADJ_i-1];
+      document.getElementById("ADJ_Range").setAttribute("name",ADJ_Entry[ADJ_i-1]);
+      /*
+      if(browser=='IE') c.insertRule("#ADJ_Range#ADJ_Range::-ms-thumb {visibility:visible;}", 0);
+      else if(browser=='Safari/Chrome') c.insertRule("#ADJ_Range#ADJ_Range::-webkit-slider-thumb {visibility:visible;}", 0);
+      else if(browser=='Firefox') c.insertRule("#ADJ_Range#ADJ_Range::-moz-range-thumb {visibility:visible;}", 0);
+      */
+
+    }
+    else{ 
+      document.getElementById("ADJ_Range").value = -1;
+      /*
+      if(browser=='IE') c.insertRule("#ADJ_Range#ADJ_Range::-ms-thumb {visibility:hidden;}", 0);
+      else if(browser=='Safari/Chrome') c.insertRule("#ADJ_Range#ADJ_Range::-webkit-slider-thumb {visibility:hidden;}", 0);
+      else if(browser=='Firefox') c.insertRule("#ADJ_Range#ADJ_Range::-moz-range-thumb {visibility:hidden;}", 0);
+      */
+    }
+    setCrossPosition();
+  }
+  function setCrossPosition(){
+    var cross = document.getElementById('cross');
+    if(ADJ_Score[ADJ_i-1]){
+      cross.style.webkitTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
+      cross.style.MozTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
+      cross.style.msTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
+      cross.style.OTransform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
+      cross.style.transform = "translateX("+(-9 + 18*(100-ADJ_Score[ADJ_i-1])/100)+"rem)";
+      cross.style.opacity = 1;
+    }
+    else{
+      cross.style.opacity = 0;
+    }
+  }
+
+
+  function isCrossHoverFocusActive(){
+    var cross = document.getElementById('cross');
+    cross.src= "https://imgur.com/94YyvTo.png";
+    setCrossPosition();
+  }
+  function notCrossHoverFocusActive(){
+    var cross = document.getElementById('cross');
+    cross.src= "https://imgur.com/06zVfHc.png";
+    setCrossPosition();
+  }
+
+  /*Radio Button調整*/
+  function changeADJRadioButton(){
+    for(i=1;i<=5;i++)
+    {
+      document.getElementById("ADJ_RadioButton_"+i).checked = false;
+      document.getElementById("ADJ_RadioButton_"+i).setAttribute("name",ADJ_Entry[ADJ_i-1]);
+      if(ADJ_Score[ADJ_i-1]){
+        if((6-i) == ADJ_Score[ADJ_i-1]) document.getElementById("ADJ_RadioButton_" + i).checked = true;
+      }
+    }
+  }
+  
+  /*感官主導性*/
+    function fillInData_SD(isFilled, participant, stage){
+    if(isFilled){
+      document.getElementById('participant_SD').value = participant;
+      document.getElementById('stage_SD').value = stage;
+      showScale_SD();
+    }
+  }
+ 
+  function showScale_SD() {
+    var participant = document.getElementById('participant_SD').value;
+    var stage = document.getElementById('stage_SD').value;
+    if(!participant || !stage){
+      document.getElementById('no text_SD').style.display = '';
+    }
+    else{
+      document.getElementById('no text_SD').style.display = 'none'; 
+      document.getElementById('part_Name_Stage').style.display = 'none';
+      document.getElementById('part_Choose').style.display = '';
+      onLoadSetup_SD();
+    }
+  }
+
+  function closeNoText_SD(){
+    document.getElementById('no text_SD').style.display = 'none'; 
+  }
+
+  function startAnswer_SD() {
+    document.getElementById('explanation_SD').style.display = 'none';
+    document.getElementById('container_progress&Radio').style.display = '';
+  }
+
+
+  var Ans_i = 1;
+  var Ans_Array = new Array();
+  function recordScore_SD(Ans,name,id){
+    Ans_Array[Ans_i - 1] = Ans;
+    var Buttons = document.getElementsByName(name);
+    for(i=0;i<Buttons.length;i++){
+      Buttons[i].style.backgroundColor = "#e7e7e7";
+      Buttons[i].style.color = "black";
+    }
+    document.getElementById(id).style.backgroundColor = "turquoise";
+    document.getElementById('not yet_SD').style.display = 'none';
+    if (Ans_i == 3) document.getElementById('submit_SD').disabled = false;
+    var input_exist = document.getElementById("Ans_" + Ans_i);
+    if(input_exist) input_exist.value = Ans_Array[Ans_i - 1];
+    else{
+      var tr = document.getElementById("tr_hidden_SD");
+      var td = document.createElement('td');
+      var input = document.createElement('input');
+      input.type = "hidden";
+      input.id = "Ans_" + Ans_i;
+      input.name = name;
+      input.value = Ans_Array[Ans_i - 1];
+      td.appendChild(input);
+      tr.appendChild(td);
+    }
+  }
+  function buttonNext_SD() {
+    if(!Ans_Array[Ans_i - 1]) document.getElementById('not yet_SD').style.display = '';
+    else{
+      document.getElementById('back_SD').disabled = false;
+      document.getElementById('next_SD').disabled = false;
+      document.getElementById('not yet_SD').style.display = 'none';
+      document.getElementById("SD_Q"+Ans_i).style.display='none';
+    Ans_i += 1;
+    document.getElementById("SD_Q"+Ans_i).style.display='';
+      doForwards();
+      if (Ans_i == 3){
+        document.getElementById('next_SD').disabled = true;
+        document.getElementById('button_Submit_SD').style.display = '';
+      }
+    }
+    return true;
+  }
+  function buttonBack_SD() {
+    document.getElementById('back_SD').disabled = false;
+    document.getElementById('next_SD').disabled = false;
+    document.getElementById('not yet_SD').style.display = 'none';
+    document.getElementById("SD_Q"+Ans_i).style.display='none';
+    Ans_i -= 1;
+    document.getElementById("SD_Q"+Ans_i).style.display='';
+    doBackwards();
+    if (Ans_i == 1) document.getElementById('back_SD').disabled = true;
+    return true;
+  }
+  function submitForm_SD(){
+    document.getElementById("part_Choose").style.display='none';
+    document.getElementById("finish_SD").style.display='';
+    document.getElementByName('theme_SD').submit();
+  }
+  /*進度條*/
+  var g_progress1 = null;
+  var g_$startButton = null;
+  var g_intervalID = null; // the handle of the interval set when the example is running
+  var g_curVal = 0;
+  var g_maxVal = 20;
+
+  // function increment() increments the value and passes the new value to the progress bar
+  // widget. If the progress bar is at 100%, it stops the increment.
+  //
+  function doForwards () {
+
+    if (g_progress1.getProgress() == 100) {
+      //clearInterval(g_intervalID);
+      //g_intervalID = null;
+
+      // make sure that the progress bar shows that it is full
+      g_progress1.$progDiv.css('width', '100%');
+
+      g_curVal = 0;
+      //g_$startButton.html('Reset Example');
+      return;
+    }
+
+    g_curVal = g_curVal + g_maxVal/20;
+    g_progress1.setValue(g_curVal);
+  }
+
+  function doBackwards () {
+
+    if (g_progress1.getProgress() == 100) {
+      //clearInterval(g_intervalID);
+      //g_intervalID = null;
+
+      // make sure that the progress bar shows that it is full
+      g_progress1.$progDiv.css('width', '100%');
+
+      g_curVal = 0;
+      //g_$startButton.html('Reset Example');
+      return;
+    }
+
+    g_curVal = g_curVal - g_maxVal/20;
+    g_progress1.setValue(g_curVal);
+  }
+
+  $(document).ready(function() {
+
+    var running = false; // true if example is running
+
+    // progress1 is a progress bar
+    g_progress1 = new progressbar('pb1', g_maxVal, true);
+
+    g_$startButton = $('#pb1_control');
+
+    // bind a click handler to the start  button
+    g_$startButton.click(function(e) {
+
+      if (g_progress1.getProgress() == 100) {
+        g_progress1.setValue(0);
+      }
+
+      if (running == true) {
+        //clearInterval(g_intervalID);
+        //g_intervalID = null;
+        //g_$startButton.html('Start Example');
+        running = false;
+      }
+      else {
+        // create an interval timer to increment the count every second
+
+        //g_intervalID = setInterval("doUpdate()", 100);
+        doUpdate();
+        //g_$startButton.html('Stop Example');
+
+        running = true;
+      }
+    });
+
+  }); // end document ready
+
+  ////////////////////////////////////////////////////
+  //
+  // function progressbar() is a class to define an ARIA-enabled progressbar widget.
+  //
+  // @param(container_id string) container_id is the containing div for the progressbar
+  //
+  // @param(max integer) max is the maximum value for the values being set. Used to calculate percent progress
+  //
+  // @param(showVal boolean) showVal is true if the current progress value should be shown
+  //
+  // @return N/A
+  //
+  function progressbar(container_id, max, showVal) {
+
+    // define progressbar object properties
+
+    this.$container = $('#' + container_id);
+    this.valMax = max;
+    this.showVal = showVal;
+    this.divWidth = 0;
+
+    // Store the size of the progress bar
+    this.width = this.$container.width();
+
+    // Store the page position of the widget
+    this.left = Math.round(this.$container.offset().left);
+    this.top = Math.round(this.$container.offset().top);
+
+    // Create and initialize the progress indicator
+    this.$container.append('<div id="progDiv" class="progressIndicator" ></div>');
+    this.$progDiv = $('#progDiv');
+    this.$progDiv.css('width', '5%');
+
+    // Create and initialize the value box
+    this.$container.append('<div id="progVal" class="progressVal" aria-hidden="false"></div>');
+    this.$progVal = $('#progVal');
+    this.$progVal.html('1/20');
+
+    if (this.showVal == false) {
+      this.$progVal.addClass('hidden').attr('aria-hidden', 'true');
+    }
+
+  } // end progressbar constructor
+
+  //
+  // function setValue() is a member function to set the value of the progress bar.
+  //
+  // @param(val integer) val is the new value to calculate the progress from
+  //
+  // @return N/A
+  //
+  progressbar.prototype.setValue = function(val)  {
+
+    var percent = val * 100 / this.valMax;
+
+    if (percent <= 100.0) {
+      this.$container.attr('aria-valuenow', Math.round(percent));
+      this.$progDiv.css('width', percent+5 + '%'); //Math.round(percent) + '%');
+      this.$progVal.html((this.$container.attr('aria-valuenow')/5+1) + '/20');
+    }
+  }
+
+  //
+  // function getProgress() is a member function to return the percent progress
+  //
+  // @return (integer) Returns the percent progress in integer form (e.g. 50 represents 50%)
+  //
+  progressbar.prototype.getProgress = function()  {
+
+    return this.$container.attr('aria-valuenow');
+  }
+
+  //
+  // function positionHandle() is a member function to position a handle at the specified value for the
+  // progressbar. If showVal is true, it also positions and updates the displayed value container.
+  //
+  // @param($handle object) $handle is a pointer to the handle jQuery object to manipulate
+  //
+  // @param (val integer) val is the new value of the progressbar
+  //
+  // @return N/A
+  //
+  progressbar.prototype.positionHandle = function($handle, val) {
+
+    var handleHeight = $handle.outerHeight(); // the total height of the handle
+    var handleWidth = $handle.outerWidth(); // the total width of the handle
+    var handleOffset; // the distance from the value position for centering the handle
+    var xPos; // calculated horizontal position of the handle;
+    var yPos; // calculated vertical position of the handle;
+    var valPos; //calculated new pixel position for the value;
+
+
+    // calculate the horizontal pixel position of the specified value
+    valPos = ((val - this.min) / (this.max - this.min)) * this.width + this.left;
+
+    xPos = Math.round(valPos - (handleWidth / 2));
+    yPos = Math.round(this.top + (this.height / 2) - (handleHeight / 2));
+
+    // Set the position of the handle
+    $handle.css('top', yPos + 'px');
+    $handle.css('left', xPos + 'px');
+
+    // Set the aria-valuenow position of the handle
+    $handle.attr('aria-valuenow', val);
+
+    // Update the stored handle values
+    if (/1$/.test($handle.attr('id')) == true) {
+      // first handle
+      this.val1 = val;
+    }
+    else {
+      // second handle
+      this.val2 = val;
+    }
+
+    // if showVal is true, update the value container
+    if (this.showVals == true) {
+      this.updateValBox($handle, Math.round(valPos));
+    }
+
+  } // end positionHandle()
+
+  //
+  // function updateValBox() is a member function to reposition a handle value box and update its contents
+  //
+  // @return N/A
+  //
+  progressbar.prototype.updateValBox = function() {
+
+    var $valBox = $('#' + $handle.attr('id') + '_val');
+
+    var xPos; // horizontal pixel position of the box
+    var yPos; // vertical pixel position of the box
+
+    // Set the position of the handle
+    var boxWidth = $valBox.outerWidth();
+
+    yPos = $handle.css('top');
+
+    // Adjust the horizontal position to center the value box on the value position
+    xPos = Math.round(valPos - (boxWidth / 2)) + 'px';
+
+    // Set the position of the value box
+    $valBox.css('top', yPos);
+    $valBox.css('left', xPos);
+
+    // Set the text in the box to the handle value
+    $valBox.text($handle.attr('aria-valuenow'));
+
+  } // end updateValBox()
+
+  /*進度條_SD*/
+    var g_progress1_SD = null;
+  var g_$startButton_SD = null;
+  var g_intervalID_SD = null; // the handle of the interval set when the example is running
+  var g_curVal_SD = 0;
+  var g_maxVal_SD = 3;
+
+  // function increment() increments the value and passes the new value to the progress bar
+  // widget. If the progress bar is at 100%, it stops the increment.
+  //
+  function doForwards_SD () {
+
+    if (g_progress1_SD.getProgress() == 100) {
+      //clearInterval(g_intervalID);
+      //g_intervalID = null;
+
+      // make sure that the progress bar shows that it is full
+      g_progress1_SD.$progDiv.css('width', '100%');
+
+      g_curVal_SD = 0;
+      //g_$startButton.html('Reset Example');
+      return;
+    }
+
+    g_curVal_SD = g_curVal_SD + g_maxVal_SD/3;
+    g_progress1_SD.setValue(g_curVal_SD);
+  }
+
+  function doBackwards_SD () {
+
+    if (g_progress1_SD.getProgress() == 100) {
+      //clearInterval(g_intervalID);
+      //g_intervalID = null;
+
+      // make sure that the progress bar shows that it is full
+      g_progress1_SD.$progDiv.css('width', '100%');
+
+      g_curVal_SD = 0;
+      //g_$startButton.html('Reset Example');
+      return;
+    }
+
+    g_curVal_SD = g_curVal_SD - g_maxVal_SD/3;
+    g_progress1_SD.setValue(g_curVal_SD);
+  }
+
+  $(document).ready(function() {
+
+    var running = false; // true if example is running
+
+    // progress1 is a progress bar
+    g_progress1_SD = new progressbar('pb1_SD', g_maxVal_SD, true);
+
+    g_$startButton_SD = $('#pb1_control_SD');
+
+    // bind a click handler to the start  button
+    g_$startButton_SD.click(function(e) {
+
+      if (g_progress1.getProgress() == 100) {
+        g_progress1_SD.setValue(0);
+      }
+
+      if (running == true) {
+        //clearInterval(g_intervalID);
+        //g_intervalID = null;
+        //g_$startButton.html('Start Example');
+        running = false;
+      }
+      else {
+        // create an interval timer to increment the count every second
+
+        //g_intervalID = setInterval("doUpdate()", 100);
+        doUpdate();
+        //g_$startButton.html('Stop Example');
+
+        running = true;
+      }
+    });
+
+  }); // end document ready
+
+  //順序：isFilled, participant, stage, order, sample, scale
+  //isFilled是要不要填，true代表我先輸好
+  //scale有Range和RadioButton
+
+  //fillInData(true,1,1,1,'G01','Range');
+
+</script>
