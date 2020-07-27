@@ -245,8 +245,8 @@ function showBasicInfo(){
 
 }
 //var to count times iframe has loaded
-var timesRefreshed_basic_info = 3; // = 4 為提交
-var timesRefreshed_ADJ_corresponding = 3; // = 4 為提交
+var timesRefreshed_basic_info = 0; // = 4 為提交
+var timesRefreshed_ADJ_corresponding = 0; // = 4 為提交
 
 function checkpost_basic_info(e){
   timesRefreshed_basic_info++;
