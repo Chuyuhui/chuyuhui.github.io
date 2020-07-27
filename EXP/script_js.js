@@ -53,7 +53,7 @@ $(function(){
 var password = ['0110','0220','0330','0440','0550','0660','0770','0880','0990','1001','1111','1221','1331','1441','1551','1661','1771','1881','1991','2002','2112','2222','2332','2442','2552','2662','2772','2882','2992','3003'];
 var participant;
 var stage=1;
-var mouse_order = 1;
+var mouse_order = 4;
 var mouse_sample = [
   ['G01','G02','G03','G04'],      // #01
   ['G01','G02','G04','G03'],      // #02
@@ -309,23 +309,19 @@ function changeMouse(){
   $('html,body').animate({scrollTop:$('#container_questionnaire').offset().top}, 250);
 }
 function loadStage(){
-  alert("loadStage");
 
   if(stage==1) document.getElementById("container_basic").style.display ="none";
   loadMediaAndData();
-  alert("lMAD end");
 
   document.getElementById("interaction").style.display="";
   document.getElementById('container_stage').style.display = '';
   document.getElementById("container_questionnaire").style.display = '';
   document.getElementById("container_SD").style.display="none";
   document.getElementById("div_stage_end").style.display="none";
-  alert("start open");
 
   var stage_elements = document.getElementsByClassName("stage_"+stage);
   for(i=0;i<stage_elements.length;i++) stage_elements[i].style.display = "";
   
-    alert("start close");
 
   var close_elements = document.getElementsByClassName("stage_"+(stage % 2+1));
   for(i=0;i<close_elements.length;i++) close_elements[i].style.display = "none";
@@ -335,14 +331,13 @@ function loadStage(){
 function changeStage(){
   mouse_order = 1;
   stage++;
-  alert("stage++");
   for(var l=1;l<g_maxVal_STAGE;l++) doBackwards_STAGE();
-    alert("backwardsStage");
 
   document.getElementById("finish_SD").style.display = "none";
   document.getElementById("container_SD").style.display = "none";
   document.getElementById("next_mouse").disabled = false;
-  document.getElementById("next_stage").disabled = true;
+  //EXP版要關這個
+  //document.getElementById("next_stage").disabled = true;
   
   loadStage();
   countDown();
