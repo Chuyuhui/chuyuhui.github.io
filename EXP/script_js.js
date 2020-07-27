@@ -162,8 +162,8 @@ function countDown(){
   time_used = start - startExp + 1000 * 60 * 5;
 
   // Set the date we're counting down to
-  //var countDownDate = new Date(start + 1000 * 60 *5 + 5000);
-  var countDownDate = new Date(start + 5000 + 5000);
+  var countDownDate = new Date(start + 1000 * 60 *5 + 5000);
+  //var countDownDate = new Date(start + 5000 + 5000);
 
   var fiveminutes = false;
   // Update the count down every 1 second

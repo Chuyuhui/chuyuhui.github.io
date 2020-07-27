@@ -191,7 +191,7 @@ function countDown(){
 
     if (distance < 5000 && fiveminutes == false) {
       fiveminutes = true;
-      document.getElementById("container_countdown").innerHTML = "<br>已經過5分鐘，可以開始階段二。<br>"
+      document.getElementById("container_countdown").innerHTML = "<br>已經過5分鐘，可以開始階段二。<br><br>5秒後顯示頁面...<br><br>"
       var sound = document.getElementById("audio");
       sound.play();
     }
@@ -282,6 +282,7 @@ function loadMediaAndData(){
     }
   }
   else if(stage==2){
+
     for(i=0;i<4;i++){
       if(mouse_sample[participant-1][mouse_order-1] == mouse_media_url[i][0]){
         //document.getElementById("stage_2_mouse_image").src =  mouse_media_url[i][1];
@@ -300,7 +301,8 @@ function changeMouse(){
     doForwards_STAGE();
     if(mouse_order==4){
       document.getElementById("next_mouse").disabled = true;
-      document.getElementById("next_stage").disabled = false;
+      //EXP版要關這個
+      //document.getElementById("next_stage").disabled = false;
     }
   }
   //for(i=0;i<2;i++) $('#iframe_Q'+i).attr('src', $('#iframe_Q'+i).attr('src'));
@@ -319,6 +321,8 @@ function loadStage(){
 
   var stage_elements = document.getElementsByClassName("stage_"+stage);
   for(i=0;i<stage_elements.length;i++) stage_elements[i].style.display = "";
+  
+
   var close_elements = document.getElementsByClassName("stage_"+(stage % 2+1));
   for(i=0;i<close_elements.length;i++) close_elements[i].style.display = "none";
   $('html,body').animate({scrollTop:0}, 250);
@@ -328,10 +332,13 @@ function changeStage(){
   mouse_order = 1;
   stage++;
   for(var l=1;l<g_maxVal_STAGE;l++) doBackwards_STAGE();
+
   document.getElementById("finish_SD").style.display = "none";
   document.getElementById("container_SD").style.display = "none";
   document.getElementById("next_mouse").disabled = false;
-  document.getElementById("next_stage").disabled = true;
+  //EXP版要關這個
+  //document.getElementById("next_stage").disabled = true;
+  
   loadStage();
   countDown();
 }
