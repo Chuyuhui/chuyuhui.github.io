@@ -53,7 +53,7 @@ $(function(){
 var password = ['0110','0220','0330','0440','0550','0660','0770','0880','0990','1001','1111','1221','1331','1441','1551','1661','1771','1881','1991','2002','2112','2222','2332','2442','2552','2662','2772','2882','2992','3003'];
 var participant;
 var stage=1;
-var mouse_order = 4;
+var mouse_order = 1;
 var mouse_sample = [
   ['G01','G02','G03','G04'],      // #01
   ['G01','G02','G04','G03'],      // #02
@@ -245,8 +245,8 @@ function showBasicInfo(){
 
 }
 //var to count times iframe has loaded
-var timesRefreshed_basic_info = 3; // = 4 為提交
-var timesRefreshed_ADJ_corresponding = 3; // = 4 為提交
+var timesRefreshed_basic_info = 0; // = 4 為提交
+var timesRefreshed_ADJ_corresponding = 0; // = 4 為提交
 
 function checkpost_basic_info(e){
   timesRefreshed_basic_info++;
@@ -282,7 +282,6 @@ function loadMediaAndData(){
     }
   }
   else if(stage==2){
-      alert("inlMAD");
 
     for(i=0;i<4;i++){
       if(mouse_sample[participant-1][mouse_order-1] == mouse_media_url[i][0]){
@@ -302,7 +301,8 @@ function changeMouse(){
     doForwards_STAGE();
     if(mouse_order==4){
       document.getElementById("next_mouse").disabled = true;
-      document.getElementById("next_stage").disabled = false;
+      //EXP版要關這個
+      //document.getElementById("next_stage").disabled = false;
     }
   }
   //for(i=0;i<2;i++) $('#iframe_Q'+i).attr('src', $('#iframe_Q'+i).attr('src'));
