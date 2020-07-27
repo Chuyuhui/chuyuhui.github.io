@@ -1,4 +1,4 @@
-function able(){
+﻿function able(){
   document.getElementById("next_mouse").disabled = false; document.getElementById("next_stage").disabled = false;
 }
 function auto(){
@@ -129,10 +129,10 @@ var q_first =[
 
 /*順序：img vid des*/
 var mouse_media_url = [
-  ['G01',"https://imgur.com/JKzJqwW.png","https://youtube.com/embed/BnYSWKm9caI","https://imgur.com/TbSu8yt.png"],   //靜音亮 G01
-  ['G02',"https://imgur.com/bGjgjHX.png","https://youtube.com/embed/rlCQnh7jfvo","https://imgur.com/ZM8oCoY.png"],   //靜音霧 G02
-  ['G03',"https://imgur.com/6oQMH1g.png","https://youtube.com/embed/kz5nh7_h3z4","https://imgur.com/ocGV0wt.png"],   //有聲亮 G03
-  ['G04',"https://imgur.com/gg0FxHy.png","https://youtube.com/embed/MDPhWTU3Wn4","https://imgur.com/zxzdrYX.png"]];  //有聲霧 G04
+  ['G01',"https://imgur.com/JKzJqwW.png","https://youtube.com/embed/BnYSWKm9caI","https://imgur.com/nYRA7BN.png"],   //靜音亮 G01
+  ['G02',"https://imgur.com/bGjgjHX.png","https://youtube.com/embed/rlCQnh7jfvo","https://imgur.com/sgP7wyI.png"],   //靜音霧 G02
+  ['G03',"https://imgur.com/6oQMH1g.png","https://youtube.com/embed/kz5nh7_h3z4","https://imgur.com/V4KqnSQ.png"],   //有聲亮 G03
+  ['G04',"https://imgur.com/gg0FxHy.png","https://youtube.com/embed/MDPhWTU3Wn4","https://imgur.com/eGmqzbO.png"]];  //有聲霧 G04
 
 var time_used=0;
 var startExp;
@@ -152,7 +152,7 @@ function countDown(){
   time_used = start - startExp + 1000 * 60 * 5;
 
   // Set the date we're counting down to
-  var countDownDate = new Date(start + 1000 * 60 *5);
+  var countDownDate = new Date(start + 5000);
   // Update the count down every 1 second
   var x = setInterval(function() {
     var now = new Date().getTime();
@@ -216,7 +216,7 @@ function validation(){
     }
   }
   if(!participant) alert("密碼錯誤！");
-
+  return;
 }
 function showBasicInfo(){
   document.getElementById('welcome').style.display = 'none';
@@ -225,19 +225,25 @@ function showBasicInfo(){
 
 }
 //var to count times iframe has loaded
-var timesRefreshed_basic_info = 0; // = 4 為提交
-var timesRefreshed_ADJ_corresponding = 0; // = 4 為提交
+var timesRefreshed_basic_info = 4; // = 4 為提交
+var timesRefreshed_ADJ_corresponding = 4; // = 4 為提交
 
 function checkpost_basic_info(e){
   timesRefreshed_basic_info++;
-  if(timesRefreshed_basic_info>2) $('html,body').animate({scrollTop:0}, 500);
-  if(timesRefreshed_basic_info>=4) document.getElementById("buttonshowADJCorresponding").disabled = false;
+  if(timesRefreshed_basic_info>2 && timesRefreshed_basic_info<4) $('html,body').animate({scrollTop:0}, 500);
+  if(timesRefreshed_basic_info>=4) {
+    document.getElementById("buttonshowADJCorresponding").disabled = false;
+    $('html,body').animate({scrollTop:$(document).height()}, 500);
+  }
 }
 
 function checkpost_ADJ_corresponding(e){
   timesRefreshed_ADJ_corresponding++;
-  if(timesRefreshed_ADJ_corresponding>2) $('html,body').animate({scrollTop:0}, 500);
-  if(timesRefreshed_ADJ_corresponding>=4) document.getElementById("startstage_1").disabled = false;
+  if(timesRefreshed_basic_info>2 && timesRefreshed_basic_info<4) $('html,body').animate({scrollTop:0}, 500);
+  if(timesRefreshed_ADJ_corresponding>=4) {
+    document.getElementById("startstage_1").disabled = false;
+    $('html,body').animate({scrollTop:$(document).height()}, 500);
+  }
 }
 function showADJCorresponding(){
 
@@ -313,7 +319,7 @@ function changeStage(){
 //淨空填畢問卷，並自動填入問卷資料
 function changeQuestionnaire(){ //participant, stage, order, sample, scale
   //alert(participant +" "+ stage +" "+ mouse_order +" "+ mouse_sample[participant-1][mouse_order-1] +" "+ q_order);
-
+  
   //重置ADJ分數，不可放在submitForm()，否則會報錯
   for(k=0;k<ADJ_Score.length;k++){
     ADJ_Score[k] = null;
@@ -337,14 +343,20 @@ function changeQuestionnaire(){ //participant, stage, order, sample, scale
       q = 'RadioButton';
   }
   fillInData(true,participant,stage,mouse_order,mouse_sample[participant-1][mouse_order-1],q);
+  if(q=='RadioButton'){
+    for(var y=1;y<=5;y++){
+      document.getElementById("ADJ_RadioButton_"+y).name = ADJ_Entry[0];
+    }
+  }
+  
   document.getElementById("explanation").style.display = '';
   document.getElementById('example').style.display = '';
   document.getElementById('container_progressADJ').style.display = 'none';
   document.getElementById('finish').style.display = 'none';
   document.getElementById("fill_Q2").style.display='none';
   document.getElementById("next_mouse").style.display='none';
-  document.getElementById('submit').style.display = 'none';
-  document.getElementById('submit').disabled = true;
+  document.getElementById('submit_LV').style.display = 'none';
+  document.getElementById('submit_LV').disabled = true;
   if(q_order==1){
     document.getElementById("container_Q1").style.display = "";
     document.getElementById("container_Q2").style.display = "none";
@@ -392,6 +404,7 @@ function closeNoText(){
 }
 
 function startAnswer() {
+
   document.getElementById('explanation').style.display = 'none';
   document.getElementById('example').style.display = 'none';
   document.getElementById('container_progressADJ').style.display = '';
@@ -477,6 +490,8 @@ var ADJ_Word = [
   "滿意的","不滿意的",
   "想購買的","不想購買的"];
 
+
+
 /* 有html換行字元的版本，寬度各需5字元，min-width設20+5*2=30rem */
 /* 長得很怪，不用 */
 /*
@@ -488,7 +503,7 @@ var ADJ_Word = [
   "有回饋的","無回饋的",
   "回饋聲音<br>清晰的","回饋聲音<br>不清晰的",
   "便攜的","不便攜的",
-  "手感<br>明確的","手感<br>不明確的",
+  "手感明確的","手感不明確的",
   "好按的","不好按的",
   "輕鬆掌握的","無法<br>輕鬆掌握的",
   "舒適的","不舒適的",
@@ -524,10 +539,32 @@ var ADJ_Entry = [
   "entry.202069723",
   "entry.31311220"];
 
+var explanation_pic_Range_url = "https://imgur.com/zLAh7o4.png";
+var explanation_pic_RadioButton_url = "https://imgur.com/wBvRcLw.png";
+
+var example_Range_image_url=[
+"https://imgur.com/Q81cRSD.gif",  //V-不偏向
+"https://imgur.com/mqfkq3V.gif",  //V-非常樸素
+"https://imgur.com/UnjBgfS.gif"   //V-有點華麗
+];
+
+var example_RadioButton_image_url=[
+"https://imgur.com/0BLzP3q.gif",  //L-不偏向
+"https://imgur.com/K1pllpS.gif",  //L-非常樸素
+"https://imgur.com/gQaIVyd.gif"   //L-有點華麗
+];
+
+$(function(){
+  for(var w=1;w<=3;w++){
+    $("#example_Range_image_" + w).attr('src', example_Range_image_url[w-1]);
+    $("#example_RadioButton_image_" + w).attr('src', example_RadioButton_image_url[w-1]);
+  }
+});
+
 function recordScore(score){
   ADJ_Score[ADJ_i - 1] = score;
   document.getElementById('not yet').style.display = 'none';
-  if (ADJ_i == 20) document.getElementById('submit').disabled = false;
+  if (ADJ_i == 20) document.getElementById('submit_LV').disabled = false;
   var input_exist = document.getElementById("ADJSCORE_" + ADJ_i);
   if(input_exist) input_exist.value = ADJ_Score[ADJ_i-1];
   else{
@@ -544,6 +581,18 @@ function recordScore(score){
   setCrossPosition();
 }
 function buttonNextADJ() {
+    /*
+    var bodyRect_L = document.body.getBoundingClientRect();
+    var elemRect_L = document.getElementById("ADJ_RadioButton_1").getBoundingClientRect();
+    var offset_L = elemRect_L.left - bodyRect_L.left;
+    alert(offset_L);
+    var bodyRect_R = document.body.getBoundingClientRect();
+    var elemRect_R = document.getElementById("ADJ_RadioButton_5").getBoundingClientRect();
+    var offset_R   = elemRect_R.left - bodyRect_R.left;
+    alert(offset_R);
+    alert("length = " + offset_R-offset_L);
+    */
+  
   if(!ADJ_Score[ADJ_i - 1]) document.getElementById('not yet').style.display = '';
   else{
     document.getElementById('back').disabled = false;
@@ -554,7 +603,7 @@ function buttonNextADJ() {
     doForwards();
     if (ADJ_i == 20){
       document.getElementById('next').disabled = true;
-      document.getElementById('submit').style.display = '';
+      document.getElementById('submit_LV').style.display = '';
     }
   }
   return true;
@@ -571,7 +620,9 @@ function buttonBackADJ() {
 }
 //不清除的話題交置表單時最後顯示的那個選項會被重複填兩次
 function clearInputName(){ 
-}
+    for(i=1;i<=5;i++) document.getElementById("ADJ_RadioButton_"+i).setAttribute("name","");
+  }
+
 function submitForm(){
   clearInputName();
 
@@ -599,6 +650,7 @@ function submitForm(){
   document.getElementByName('theme').submit();
 }
 
+
 /*共用，注意Range 跟 RadioButton不同的地方用scaleType判斷。*/
 var scaleType = ""; //設定本單形式： Range / RadioButton；不指定時可用radio選擇
 
@@ -606,7 +658,7 @@ var scaleType = ""; //設定本單形式： Range / RadioButton；不指定時�
 function onLoadSetup(){
   if(scaleType=='Range'){
     document.theme.action = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSfzOo5rmqiuAGwNdBlf8TQE1Rc1ZklReffOUk4cPqqOkbBnWA/formResponse";
-    document.getElementById('explanation_pic').src="https://imgur.com/WUPMeRd.png";
+    document.getElementById('explanation_pic').src= explanation_pic_Range_url ;
     var Ranges = document.getElementsByClassName('Range');
     for(var i = 0; i < Ranges.length; i++) Ranges[i].style.display = '';
     document.getElementById('back').addEventListener("mousedown touchstart",()=>{setCrossPosition();});
@@ -614,7 +666,7 @@ function onLoadSetup(){
   }
     else if(scaleType=='RadioButton'){
       document.theme.action = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSflGs_MBw2e_ad5h2qzEu5Z7Rad5q6Zi2-U_DF1s03W7j1NNw/formResponse";
-      document.getElementById('explanation_pic').src="https://imgur.com/QmAHmy6.png";
+      document.getElementById('explanation_pic').src= explanation_pic_RadioButton_url;
       var RadioButtons = document.getElementsByClassName('RadioButton');
       for(var i = 0; i < RadioButtons.length; i++) RadioButtons[i].style.display = '';
     }
@@ -865,6 +917,7 @@ function buttonBack_SD() {
 function submitForm_SD(){
   document.getElementById("part_Choose").style.display='none';
   document.getElementById("finish_SD").style.display='';
+  $('html,body').animate({scrollTop:$(document).height()}, 500);
   if(stage<2) document.getElementById("startstage_"+(stage+1)).disabled = '';
   else recordTime();
   document.getElementById('button_Submit_SD').style.display = 'none';

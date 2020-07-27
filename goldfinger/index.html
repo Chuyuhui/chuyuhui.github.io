@@ -69,12 +69,12 @@
         background: rgb(204, 204, 204);
       }
       .example {
-        width: 30rem;
+        width: 23rem !important;
       }
 
       .questionnaire iframe {
         width: 100%;
-        height: 50vw;
+        height: 50vh;
       }
       div {
         margin: 0px auto;
@@ -108,6 +108,20 @@
         display: block;
         position:absolute;
       }
+      #next_mouse{
+        border: 0.125rem black solid;
+        background: turquoise;
+        font-weight: bold;
+      }
+      
+      .ADJ_Word{
+        height: 1.5rem;
+        width: 8rem;
+        display: table-cell;
+        vertical-align: middle; 
+        font-weight: bold;
+        padding:0;
+      }
     </style>
     <style id="css_progress">
       #pagedeck {
@@ -133,12 +147,22 @@
       }
       div.progressVal {
         position: relative;
-        top: -1.3rem;
+        top: -1.375rem;
         margin: 0px;
         padding: 0px;
         height: 1.25rem;
         text-align: center;
         font-weight: bold;
+      }
+      #pbSTAGE .progressVal {
+        position: relative;
+        top: -1.875rem;
+        margin: 0px;
+        padding: 0px;
+        height: 1.75rem;
+        text-align: center;
+        font-weight: bold;
+        font-size:1.5rem;
       }
       .hidden {
         top: -20rem;
@@ -263,6 +287,9 @@
         vertical-align: middle;
         cursor: pointer;
       }
+      .td_RadioButton{
+        line-height:1.5rem;
+      }
     </style>
     <style type="text/css" id="css_table">
       table {
@@ -321,9 +348,9 @@
     <div id="page">
       <div id="div_password">
         <h1><b>請務必使用電腦進行填寫</b><br></h1>
-        <span style="line-height:3rem;white-space:nowrap;">由於瀏覽器及電腦的字體大小設定差異可能影響版面呈現與填答，為確保填答流程順利，在開始前，請先確認您能夠看到本行文字的<span style="color:red;font-weight:bold;">句點</span>，無法看見時請縮小頁面。</span><br>
+        <span style="line-height:3rem;white-space:nowrap;">在開始前，請先確認您能夠看到本行文字的<span style="color:red;font-weight:bold;">句點</span>：由於瀏覽器及電腦的字體大小設定差異可能影響版面呈現與填答，為確保填答流程順利，無法看見時請縮小頁面。</span><br>
         <span style="line-height:3rem;">另外，請點擊下方橫線任一位置，並確認點擊後 X 會跟著變換位置。</span>
-              <div id="sliderTest" style="width:18rem;" >
+              <div id="sliderTest" style="width:14rem;" >
           <div id="custom-handleTest" class="ui-slider-handle" ></div>
         </div><br>
       <span style="line-height:3rem;"><b>若您的裝置皆符合上述說明，請輸入您收到的密碼</b><br></span>
@@ -398,33 +425,10 @@
           <br>
 
         </div>
-        <!--一頁兩問卷版   
-      <table id="begin_exp_questionnaire" class="stage_basic" style="display: none; width: 99%; height: 100%;">
-        <tbody>
-          <tr>
-            <th>基本資料</th>
-            <th>形容詞與感官的對應關係</th>
-          </tr>
-          <tr>
-            <td class="">
-              <div id="basic_info" class="questionnaire">
-                <iframe id="iframe_basic_info" src="https://docs.google.com/forms/d/e/1FAIpQLScaDcVsJ-ftDVqsE7UaVKzvh4iQn-CFMu42l3WbWQI6Mz_TFQ/viewform?usp=pp_url&amp;entry.793241340=23">
-                </iframe>
-              </div>
-            </td>
-            <td>
-              <div id="ADJ_corresponding" class="questionnaire">
-                <iframe id="iframe_ADJ_corresponding" src="https://docs.google.com/forms/d/e/1FAIpQLScaDcVsJ-ftDVqsE7UaVKzvh4iQn-CFMu42l3WbWQI6Mz_TFQ/viewform?usp=pp_url&amp;entry.793241340=">
-                </iframe>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
--->
+
         <div id="basic_info" style="display: none;" class="questionnaire">
           <h1>基本資料</h1>
-          <iframe id="iframe_basic_info" onload="checkpost_basic_info();" src="">
+          <iframe id="iframe_basic_info" onload="checkpost_basic_info();" src="" data-is-first-page="false">
           </iframe>
           <div class="explanation"><br>
             填畢基本資料後，<br>
@@ -506,18 +510,20 @@
             <tr>
               <td>
 
-                <table class="stage_media">
+                <table class="stage_media" style="border-spacing: 0px;">
                   <tr>
+                    <td style="width:15rem;" >
+                      <h2 >
+                      本階段滑鼠互動進度
+                    </h2>
+                    </td>
                     <td>
-                      <div>
-                        本階段滑鼠互動進度：
-                      </div>
-                      <div id="pbSTAGE" class="progress" role="progressbar" style="width: 99.5%" aria-labelledby="pbSTAGE_label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4" tabindex="0" align="left"></div>
+                      <div id="pbSTAGE" class="progress" role="progressbar" style="width: 99.5%; height:1.75rem;" aria-labelledby="pbSTAGE_label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="4" tabindex="0" align="left"></div>
                     </td>
                   </tr>
                   <tr>
                     
-                    <td class="stage_1" style="display:none;">
+                    <td colspan="2" class="stage_1" style="display:none;">
 
                       <img id="stage_1_mouse_image" class="mousePic" src="">
                       <div id="enlarge_stage_1_mouse_image" class="enlargePic" >
@@ -551,7 +557,7 @@
 
                 </table>
               </td>
-              <td >
+              <td>
                 <div id="container_questionnaire" >
 <!--互動進度位置也可以放這裡
                       <div>
@@ -566,7 +572,7 @@
                     <div id="Q1" class="questionnaire">
                       <div data-role="page" class="google form" id="SCALE" align="center">
                         <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
-                        <form name="theme" action="" method="post" target="hidden_iframe">
+                        <form name="theme" action="" method="POST" target="hidden_iframe">
                           <div id="part_Name_Stage_Order_Sample"><br>
                             參與者編號：
                             <input id="participant" type="text" name="entry.726136822" onchange="closeNoText()"><br>
@@ -606,62 +612,59 @@
                             <button type="button" style="font-family: Microsoft JhengHei;" ontouchstart="javascript: showScale();" onclick="javascript:showScale();">繼續</button>
                           </div>
                           <div id="part_ADJ" style="display: none;"><br>
-                            本問卷共有20組左右相反的形容詞。<br>
-                            <br>
-                            在每組形容詞中，<br>
-                            越 <b>中間</b> 代表對於兩邊的形容詞 <b>都沒有明顯的感受</b> ，<br>
-                            越往 <b>兩端</b> 則代表該感受越為 <b>強烈</b> 。<br>
-                            <br>
+                            本問卷共有20組左右相反的形容詞。<br><br>                          
 
                             <p id="explanation">
+                              在每組形容詞中，<br>
+                              越 <b>中間</b> 代表對於兩邊的形容詞 <b>都沒有明顯的感受</b> ，<br>
+                              越往 <b>兩端</b> 則代表該感受越為 <b>強烈</b> 。<br>
+                              <br>
                               <img id="explanation_pic" class="example" src=""><br>
-                              請您在與滑鼠互動後，<br>
-                              依序針對每組形容詞評價您所感受到的意象。<br>
-                              <br>
-                              <br>
-
                             </p>
+
+                            請您在與滑鼠互動後，<br>
+                            根據您的感受來評價每組成對形容詞意象。<br><br>
+
+                            
                             <div id="example">
                               <div id="example_Range" class="Range" style="display: none;">
                                 <b>---以下為填寫範例---</b><br>
                                 <br>
                                 若您認為它 <b style="color: red;">不偏向</b> 華麗或樸素，感受處於中立，請點擊較 <b>中間</b> 的位置。<br>
-
-                                <img src="https://imgur.com/sqSvR74.gif" class="example"><br>
+                                <img id="example_Range_image_1" src="" class="example">
+                                
                                 <br>
                                 若您認為它 <b style="color: red;">非常樸素</b>，請根據您感受的程度點擊偏 <b>右方</b> 的位置。<br>
                                 （越靠近「樸素的」代表程度越 <b>大</b>）<br>
-
-                                <img src="https://imgur.com/lXqOzfo.gif" class="example"><br>
+                                <img id="example_Range_image_2" src="" class="example">
+                                
                                 <br>
                                 若您認為它 <b style="color: red;">有點華麗</b>，請根據您感受的程度點擊偏 <b>左方</b> 的位置。<br>
                                 （越靠近中央代表程度越 <b>小</b>）<br>
-
-                                <img src="https://imgur.com/YQLLagU.gif" class="example"><br>
+                                <img id="example_Range_image_3" src="" class="example">
+                                
                                 <br>
-
                               </div>
-                              <div id="example_RadioButton" class="RadioButton example" style="display: none;">
+                              <div id="example_RadioButton" class="RadioButton" style="display: none;">
                                 <b>---以下為填寫範例---</b><br>
                                 <br>
                                 若您認為它 <b style="color: red;">不偏向</b> 華麗或樸素，感受處於中立，請點擊 <b>中間</b> 的一格。<br>
                                 <br>
-
-                                <img src="https://imgur.com/ASDzzQ6.gif" class="example"><br>
+                                <img id="example_RadioButton_image_1" src="" class="example">
+                                
                                 <br>
-                                若您認為它 <b style="color: red;">非常樸素</b>，請根據點擊 <b>最右方</b> 的一格。<br>
+                                若您認為它 <b style="color: red;">非常樸素</b>，請點擊 <b>最右方</b> 的一格。<br>
                                 （越靠近「樸素的」代表程度越 <b>大</b>）<br>
                                 <br>
-
-                                <img src="https://imgur.com/XnNyhab.gif" class="example"><br>
+                                <img id="example_RadioButton_image_2" src="" class="example">
+                                
                                 <br>
-                                若您認為它 <b style="color: red;">有點華麗</b>，請根據點擊 <b>中間偏左</b> 的一格。<br>
+                                若您認為它 <b style="color: red;">有點華麗</b>，請點擊 <b>中間偏左</b> 的一格。<br>
                                 （越靠近中央代表程度越 <b>小</b>）<br>
                                 <br>
-
-                                <img src="https://imgur.com/hvgdqOO.gif" class="example"><br>
+                                <img id="example_RadioButton_image_3" src="" class="example">
+                                
                                 <br>
-
                               </div>
                               <div id="start">
                                 <button type="button" style="font-family: Microsoft JhengHei;" ontouchstart="javascript: startAnswer();" onclick="javascript:startAnswer();">開始填答</button><br>
@@ -671,13 +674,13 @@
                             </div>
                             <div id="container_progressADJ" style="display: none;">
                               <div id="container_ADJ" class="ADJ">
-                                <table id="table_ADJ_Range" class="Range" style="display: none; min-width: 36rem;" cellpadding="1px">
+                                <table id="table_ADJ_Range" class="Range" style="display: none; min-width: 32rem;" cellpadding="1px">
                                   <tbody>
                                     <tr id="tr_ADJ" style="height: 1.5rem;">
-                                      <td id="td_left_Range" align="right" style="width: 8rem;">小巧的</td>
-                                      <td colspan="5" id="td_middle" height="100%" style="width: 21rem;">
+                                      <td align="right"><div id="td_left_Range" class="ADJ_Word">小巧的</div></td>
+                                      <td colspan="5" id="td_middle" height="100%" style="width: 16rem;">
 
-                                        <div id="slider" style="width:18rem;" class="Range">
+                                        <div id="slider" style="width:14rem;" class="Range">
                                           <div id="custom-handle" class="ui-slider-handle"></div>
                                         </div>
 
@@ -690,41 +693,40 @@
                                         </div>
 -->
                                       </td>
-                                      <td id="td_right_Range" align="left" style="width: 8rem;">碩大的</td>
+                                      <td align="left"><div id="td_right_Range" class="ADJ_Word">碩大的</div></td>
                                     </tr>
                                   </tbody>
                                 </table>
-                                <table id="table_ADJ_RadioButton" class="RadioButton" style="display: none;" cellpadding="1px">
+                                <table id="table_ADJ_RadioButton" class="RadioButton" style="display: none; min-width: 32rem;" cellpadding="1px" cellpadding="1px">
                                   <tbody>
-                                    <tr>
-                                      <th style="width: 8rem;">　　　　　　　　</th>
-                                      <th style="width: 4rem;">非常<span id="mid" style="width: 0px;"></span>強烈</th>
-                                      <th style="width: 4rem;">　　　　</th>
-                                      <th style="width: 4rem;">不偏向<br>
-                                        任何一邊
-                                      </th>
-                                      <th style="width: 4rem;">　　　　</th>
-                                      <th style="width: 4rem;">非常強烈</th>
-                                      <th style="width: 8rem;">　　　　　　　　</th>
+                                    <tr >
+                                      <td></td>
+                                      <td style="width: 3rem;"><br>非常</td>
+                                      <td style="width: 3rem;"><br>有點</td>
+                                      <td style="width: 3rem;">不偏向<br>任一邊
+                                      </td>
+                                      <td style="width: 3rem;"><br>有點</td>
+                                      <td style="width: 3rem;"><br>非常</td>
+                                      <td></td>
                                     </tr>
                                     <tr id="tr_ADJ">
-                                      <td id="td_left_RadioButton" align="right">小巧的</td>
-                                      <td>
+                                      <td align="right"><div id="td_left_RadioButton" class="ADJ_Word">小巧的</div></td>
+                                      <td class="td_RadioButton">
                                         <input type="radio" name="entry.511407135" id="ADJ_RadioButton_1" value="5" required="" onchange="recordScore(this.value)">
                                       </td>
-                                      <td>
+                                      <td class="td_RadioButton">
                                         <input type="radio" name="entry.511407135" id="ADJ_RadioButton_2" value="4" onchange="recordScore(this.value)">
                                       </td>
-                                      <td>
+                                      <td class="td_RadioButton">
                                         <input type="radio" name="entry.511407135" id="ADJ_RadioButton_3" value="3" onchange="recordScore(this.value)">
                                       </td>
-                                      <td>
+                                      <td class="td_RadioButton">
                                         <input type="radio" name="entry.511407135" id="ADJ_RadioButton_4" value="2" onchange="recordScore(this.value)">
                                       </td>
-                                      <td>
+                                      <td class="td_RadioButton">
                                         <input type="radio" name="entry.511407135" id="ADJ_RadioButton_5" value="1" onchange="recordScore(this.value)">
                                       </td>
-                                      <td id="td_right_RadioButton" align="left">碩大的</td>
+                                      <td align="left"><div id="td_right_RadioButton" class="ADJ_Word">碩大的</div></td>
                                     </tr>
                                   </tbody>
                                 </table><br>
@@ -755,7 +757,7 @@
                                 </div>
                                 <div id="button_Submit"><br>
 
-                                  <input id="submit" type="submit" disabled="true" ontouchstart="submitForm();" value="提交" onclick="submitForm();"><br>
+                                  <input id="submit_LV" type="submit" disabled="true" ontouchstart="submitForm();" value="提交" onclick="submitForm();"><br>
 
                                 </div><br>
 
@@ -799,7 +801,7 @@
               <div class="explanation"><br>
                 本階段互動結束。<br>
                 <br>
-                在進入階段二前，請先點擊下方按鈕填寫階段一的互動體驗問卷。<br>
+                請點擊下方按鈕填寫階段一的互動體驗問卷。<br>
                 <br>
 
               </div><br>
