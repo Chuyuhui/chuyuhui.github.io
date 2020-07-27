@@ -162,8 +162,8 @@ function countDown(){
   time_used = start - startExp + 1000 * 60 * 5;
 
   // Set the date we're counting down to
-  var countDownDate = new Date(start + 1000 * 60 *5 + 5000);
-  //var countDownDate = new Date(start + 5000 + 5000);
+  //var countDownDate = new Date(start + 1000 * 60 *5 + 5000);
+  var countDownDate = new Date(start + 5000 + 5000);
 
   var fiveminutes = false;
   // Update the count down every 1 second
@@ -191,7 +191,7 @@ function countDown(){
 
     if (distance < 5000 && fiveminutes == false) {
       fiveminutes = true;
-      document.getElementById("container_countdown").innerHTML = "<br>已經過5分鐘，可以開始階段二。<br>"
+      document.getElementById("container_countdown").innerHTML = "<br>已經過5分鐘，可以開始階段二。<br><br>5秒後顯示頁面...<br><br>"
       var sound = document.getElementById("audio");
       sound.play();
     }
@@ -245,8 +245,8 @@ function showBasicInfo(){
 
 }
 //var to count times iframe has loaded
-var timesRefreshed_basic_info = 0; // = 4 為提交
-var timesRefreshed_ADJ_corresponding = 0; // = 4 為提交
+var timesRefreshed_basic_info = 3; // = 4 為提交
+var timesRefreshed_ADJ_corresponding = 3; // = 4 為提交
 
 function checkpost_basic_info(e){
   timesRefreshed_basic_info++;
@@ -282,6 +282,8 @@ function loadMediaAndData(){
     }
   }
   else if(stage==2){
+      alert("inlMAD");
+
     for(i=0;i<4;i++){
       if(mouse_sample[participant-1][mouse_order-1] == mouse_media_url[i][0]){
         //document.getElementById("stage_2_mouse_image").src =  mouse_media_url[i][1];
@@ -307,18 +309,24 @@ function changeMouse(){
   $('html,body').animate({scrollTop:$('#container_questionnaire').offset().top}, 250);
 }
 function loadStage(){
+  alert("loadStage");
 
   if(stage==1) document.getElementById("container_basic").style.display ="none";
   loadMediaAndData();
+  alert("lMAD end");
 
   document.getElementById("interaction").style.display="";
   document.getElementById('container_stage').style.display = '';
   document.getElementById("container_questionnaire").style.display = '';
   document.getElementById("container_SD").style.display="none";
   document.getElementById("div_stage_end").style.display="none";
+  alert("start open");
 
   var stage_elements = document.getElementsByClassName("stage_"+stage);
   for(i=0;i<stage_elements.length;i++) stage_elements[i].style.display = "";
+  
+    alert("start close");
+
   var close_elements = document.getElementsByClassName("stage_"+(stage % 2+1));
   for(i=0;i<close_elements.length;i++) close_elements[i].style.display = "none";
   $('html,body').animate({scrollTop:0}, 250);
@@ -327,11 +335,15 @@ function loadStage(){
 function changeStage(){
   mouse_order = 1;
   stage++;
+  alert("stage++");
   for(var l=1;l<g_maxVal_STAGE;l++) doBackwards_STAGE();
+    alert("backwardsStage");
+
   document.getElementById("finish_SD").style.display = "none";
   document.getElementById("container_SD").style.display = "none";
   document.getElementById("next_mouse").disabled = false;
   document.getElementById("next_stage").disabled = true;
+  
   loadStage();
   countDown();
 }
