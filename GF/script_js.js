@@ -245,31 +245,31 @@ function showBasicInfo(){
 
 }
 //var to count times iframe has loaded
-var timesRefreshed_basic_info = 0; // = 4 為提交
-var timesRefreshed_ADJ_corresponding = 0; // = 4 為提交
+var timesRefreshed_basic_info = 3; // = 4 為提交
+var timesRefreshed_ADJ_corresponding = 3; // = 4 為提交
 
 function checkpost_basic_info(e){
   timesRefreshed_basic_info++;
-  if(timesRefreshed_basic_info>2 && timesRefreshed_basic_info<4) $('html,body').animate({scrollTop:0}, 500);
+  if(timesRefreshed_basic_info>2 && timesRefreshed_basic_info<4) $('html,body').animate({scrollTop:0}, 250);
   if(timesRefreshed_basic_info>=4) {
     document.getElementById("buttonshowADJCorresponding").disabled = false;
-    $('html,body').animate({scrollTop:$(document).height()}, 500);
+    $('html,body').animate({scrollTop:$(document).height()}, 250);
   }
 }
 
 function checkpost_ADJ_corresponding(e){
   timesRefreshed_ADJ_corresponding++;
-  if(timesRefreshed_basic_info>2 && timesRefreshed_basic_info<4) $('html,body').animate({scrollTop:0}, 500);
+  if(timesRefreshed_basic_info>2 && timesRefreshed_basic_info<4) $('html,body').animate({scrollTop:0}, 250);
   if(timesRefreshed_ADJ_corresponding>=4) {
     document.getElementById("startstage_1").disabled = false;
-    $('html,body').animate({scrollTop:$(document).height()}, 500);
+    $('html,body').animate({scrollTop:$(document).height()}, 250);
   }
 }
 function showADJCorresponding(){
 
   document.getElementById('basic_info').style.display = 'none';
   document.getElementById('ADJ_corresponding').style.display = '';
-  $('html,body').animate({scrollTop:0}, 500);
+  $('html,body').animate({scrollTop:0}, 250);
 }
 function loadMediaAndData(){
   if(stage==1){
@@ -304,7 +304,7 @@ function changeMouse(){
     }
   }
   //for(i=0;i<2;i++) $('#iframe_Q'+i).attr('src', $('#iframe_Q'+i).attr('src'));
-  $('html,body').animate({scrollTop:$('#container_questionnaire').offset().top}, 500);
+  $('html,body').animate({scrollTop:$('#container_questionnaire').offset().top}, 250);
 }
 function loadStage(){
 
@@ -321,7 +321,7 @@ function loadStage(){
   for(i=0;i<stage_elements.length;i++) stage_elements[i].style.display = "";
   var close_elements = document.getElementsByClassName("stage_"+(stage % 2+1));
   for(i=0;i<close_elements.length;i++) close_elements[i].style.display = "none";
-  $('html,body').animate({scrollTop:0}, 500);
+  $('html,body').animate({scrollTop:0}, 250);
 }
 
 function changeStage(){
@@ -657,7 +657,7 @@ function submitForm(){
     if(q_order==2){
       if(mouse_order==4){
         document.getElementById("div_stage_end").style.display = "";
-        $('html,body').animate({scrollTop:$(document).height()}, 500);
+        $('html,body').animate({scrollTop:$(document).height()}, 250);
         fillInData_SD(true,participant,stage);
       }
       else{
@@ -811,7 +811,7 @@ function showSD() {
   var stage = document.getElementById('stage_SD').value;
   document.getElementById('container_stage').style.display = 'none';
   document.getElementById('container_SD').style.display = '';
-  $('html,body').animate({scrollTop:0}, 500);
+  $('html,body').animate({scrollTop:0}, 250);
 
   if(!participant || !stage){
     document.getElementById('no text_SD').style.display = '';
@@ -937,7 +937,7 @@ function buttonBack_SD() {
 function submitForm_SD(){
   document.getElementById("part_Choose").style.display='none';
   document.getElementById("finish_SD").style.display='';
-  $('html,body').animate({scrollTop:$(document).height()}, 500);
+  $('html,body').animate({scrollTop:$(document).height()}, 250);
   if(stage<2) document.getElementById("startstage_"+(stage+1)).disabled = '';
   else recordTime();
   document.getElementById('button_Submit_SD').style.display = 'none';
