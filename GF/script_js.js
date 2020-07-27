@@ -245,8 +245,8 @@ function showBasicInfo(){
 
 }
 //var to count times iframe has loaded
-var timesRefreshed_basic_info = 3; // = 4 為提交
-var timesRefreshed_ADJ_corresponding = 3; // = 4 為提交
+var timesRefreshed_basic_info = 4; // = 4 為提交
+var timesRefreshed_ADJ_corresponding = 4; // = 4 為提交
 
 function checkpost_basic_info(e){
   timesRefreshed_basic_info++;
@@ -302,7 +302,7 @@ function changeMouse(){
     if(mouse_order==4){
       document.getElementById("next_mouse").disabled = true;
       //EXP版要關這個
-      //document.getElementById("next_stage").disabled = false;
+      document.getElementById("next_stage").disabled = false;
     }
   }
   //for(i=0;i<2;i++) $('#iframe_Q'+i).attr('src', $('#iframe_Q'+i).attr('src'));
@@ -337,7 +337,7 @@ function changeStage(){
   document.getElementById("container_SD").style.display = "none";
   document.getElementById("next_mouse").disabled = false;
   //EXP版要關這個
-  //document.getElementById("next_stage").disabled = true;
+  document.getElementById("next_stage").disabled = true;
   
   loadStage();
   countDown();
