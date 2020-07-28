@@ -1,4 +1,4 @@
-var participant;
+﻿var participant;
 var stage;
 var mouse_order;
 //sample
