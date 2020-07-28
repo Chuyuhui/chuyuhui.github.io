@@ -259,7 +259,16 @@
                 </table>
               </div>
               <div id="button_Submit_SD" style="display: none;"><br>
-
+                <!--放分數的隱藏的表-->
+                <table id="table_hidden_SD" style="display: none;">
+                  <tbody>
+                    <tr id="tr_hidden_SD">
+                      <td><input type="hidden" id="Ans_1" value="1"></td>
+                      <td><input type="hidden" id="Ans_2" value="1"></td>
+                      <td><input type="hidden" id="Ans_3" value="1"></td>
+                    </tr>
+                  </tbody>
+                </table>
                 <input id="submit_SD" type="submit" disabled="true" ontouchstart="submitForm_SD();" value="提交" onclick="submitForm_SD();"><br>
 
               </div><br>
@@ -267,16 +276,7 @@
             </div>
           </div>
         </div>
-        <!--放分數的隱藏的表-->
-        <table id="table_hidden_SD" style="display: none;">
-          <tbody>
-            <tr id="tr_hidden_SD">
-              <td><input type="hidden" id="Ans_1" value="1"></td>
-              <td><input type="hidden" id="Ans_2" value="1"></td>
-              <td><input type="hidden" id="Ans_3" value="1"></td>
-            </tr>
-          </tbody>
-        </table>
+   
       </form>
       <div id="finish_SD" style="height: 15rem; display: none;">
         <span style="font-size: 5rem; line-height: 15rem;"><b>完成填寫</b></span>
