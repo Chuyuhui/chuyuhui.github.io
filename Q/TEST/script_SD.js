@@ -184,6 +184,52 @@ function buttonBack_SD() {
   if (Ans_i == 1) document.getElementById('back_SD').disabled = true;
   return true;
 }
+
+// Process contact form
+$('#theme').submit(function(event) {
+  event.preventDefault();
+  setTimeout(function() {
+    // Get data
+    var data = {
+      'entry.1986078417' : $('#participant_SD').val(),
+      'entry.1079793000': $('#stage_SD').val(),
+      Ans_Entry[0] : $('#Ans_0').val(),
+        Ans_Entry[1] : $('#Ans_1').val(),
+          Ans_Entry[2] : $('#Ans_2').val()
+  };
+
+    // Validate form
+    var formSuccess = true;
+    Object.keys(data).forEach(function(key, index) {
+      if (!data[key]) {
+        formSuccess = false;
+        alert("failed");
+        //$('#feedback').html('<label class="text-danger">Please complete all fields</label>');
+      }
+    });
+
+    if (formSuccess) {
+      // Send request
+      $.ajax({
+        url: 'https://docs.google.com/forms/u/1/d/e/1FAIpQLSdDiacZzjfT32Tw5ArGH5FFLyokBbSTcUbgEaEkltSVdh1ncg/formResponse',
+        type: 'POST',
+        crossDomain: true,
+        dataType: "xml",
+        data: data,
+        success: function(jqXHR, textStatus, errorThrown) {
+          alert('Enter on success');
+          submitForm_SD();
+          //$('#feedback').html('<label class="text-success">Message sent!</label>');
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          alert('Enter on error');
+          //$('#feedback').html('<label class="text-success">Message sent!</label>');
+        }
+      });
+    }
+  }, 300);
+});
+
 function submitForm_SD(){
   document.getElementById("part_Choose").style.display='none';
   document.getElementById("finish_SD").style.display='';
@@ -191,12 +237,11 @@ function submitForm_SD(){
   if(stage<2) document.getElementById("startstage_"+(stage+1)).disabled = '';
   else recordTime();
   document.getElementById('button_Submit_SD').style.display = 'none';
-  document.getElementById('button_Submit_SD').disabled = 'true';
+  document.getElementById('submit_SD').disabled = 'true';
   for(j=0 ; j<Ans_Array.length;j++){
     Ans_Array[j] = null;
     if(Ans_i!=1) buttonBack_SD();
   }
-  document.getElementByName('theme_SD').submit();
 }
 
 /*進度條_SD*/
