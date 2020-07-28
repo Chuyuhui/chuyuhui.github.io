@@ -1,4 +1,4 @@
-
+﻿
 /*共用，不需調整*/
 function DetectIsIE() {
   var ua = window.navigator.userAgent;
