@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
-    <script src="script_LV.js"></script>
+    <script src="script_123.js"></script>
     <style type="text/css" id="gwd-text-style">
 
     </style>
@@ -87,7 +87,7 @@
     </style>
 
     <style type="text/css" id="css_Slider">
-      #custom-handle {
+      .custom-handle {
         width: 1.5rem;
         height: 1.5rem;
         text-align: center;
@@ -99,7 +99,7 @@
         outline:none;
         cursor:pointer;
       }
-      #slider{
+      .slider{
         background: #ccc;
         border: 0px black solid;
         width: 36rem;
@@ -111,18 +111,7 @@
       }
 
     </style>                                       
-    <style type="text/css" id="css_RadioButton">
-      input[type="radio"] {
-        width: 1rem;
-        height: 1rem;
-        margin: 0px;
-        vertical-align: middle;
-        cursor: pointer;
-      }
-      .td_RadioButton{
-        line-height:1.5rem;
-      }
-    </style>
+
     <style type="text/css" id="css_table">
       table {
         text-align: center;
@@ -132,6 +121,7 @@
         white-space: nowrap !important;
       }
     </style>
+
     <style id="css_progress">
       #pagedeck {
         overflow: hidden !important;
@@ -182,133 +172,44 @@
         
         <div id="Q1" class="questionnaire">
           <div data-role="page" class="google form" id="SCALE" align="center">
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
             <form id="theme" name="theme" action="" method="POST" target="hidden_iframe">
-              <div id="part_Name_Stage_Order_Sample"><br>
-                參與者編號：
-                <input id="participant" type="text" name="entry.726136822" onchange="closeNoText()"><br>
-                <br>
-		樣本順序：
-                <input id="order" type="text" type="hidden" name="entry.972880170" onchange="closeNoText()"><br>
-                <br>
-                樣本代號：
-                <input id="sample" type="text" type="hidden" name="entry.972880170" onchange="closeNoText()"><br>
-                <br>
+              
 
-                <div id="no text" style="display: none; color: red;">
-                  <b>尚有欄位未填</b><br>
-                  <br>
-
-                </div>
-                <button type="button" style="font-family: Microsoft JhengHei;" ontouchstart="javascript:  checkText();" onclick="javascript: checkText();">繼續</button>
-              </div>
-              <div id="part_ADJ" style="display: none;"><br>
-                本問卷共有18組左右相反的形容詞。<br><br>                          
-
-                <p id="explanation">
-                  在每組形容詞中，<br>
-                  越 <b>中間</b> 代表對於兩邊的形容詞 <b>都沒有明顯的感受</b> ，<br>
-                  越往 <b>兩端</b> 則代表該感受越為 <b>強烈</b> 。<br>
-                  <br>
-                  <img id="explanation_pic" class="example" src=""><br>
-                </p>
-
-                請您在與滑鼠互動後，<br>
-                根據您的感受來評價每組成對形容詞意象。<br><br>
-
-
-                <div id="example">
-                  <div id="example_Range" class="Range" style="display: none;">
-                    <b>---以下為填寫範例---</b><br>
-                    <br>
-                    若您認為它 <b style="color: red;">不偏向</b> 華麗或樸素，感受處於中立，請點擊較 <b>中間</b> 的位置。<br>
-                    <img id="example_Range_image_1" src="" class="example">
-
-                    <br>
-                    若您認為它 <b style="color: red;">非常樸素</b>，請根據您感受的程度點擊偏 <b>右方</b> 的位置。<br>
-                    （越靠近「樸素的」代表程度越 <b>大</b>）<br>
-                    <img id="example_Range_image_2" src="" class="example">
-
-                    <br>
-                    若您認為它 <b style="color: red;">有點華麗</b>，請根據您感受的程度點擊偏 <b>左方</b> 的位置。<br>
-                    （越靠近中央代表程度越 <b>小</b>）<br>
-                    <img id="example_Range_image_3" src="" class="example">
-
-                    <br>
-                  </div>
-
-                  <div id="start">
-                    <button type="button" style="font-family: Microsoft JhengHei;" ontouchstart="javascript: startAnswer();" onclick="javascript:startAnswer();">開始填答</button><br>
-                    <br>
-
-                  </div>
-                </div>
-                <div id="container_progressADJ" style="display: none;">
+                <div id="container_progressADJ" style="display: ;">
                   <div id="container_ADJ" class="ADJ">
-                    <table id="table_ADJ_Range" class="Range" style="display: none; min-width: 32rem;" cellpadding="1px">
+                    <table id="table_ADJ_Range" class="Range" style="display: ; min-width: 32rem;" cellpadding="1px">
                       <tbody>
-                        <tr id="tr_ADJ" style="height: 1.5rem;">
-                          <td align="right"><div id="td_left_Range" class="ADJ_Word">小巧的</div></td>
-                          <td colspan="5" id="td_middle" height="100%" style="width: 16rem;">
+                        <tr id="tr_ADJ_1" style="height: 1.5rem;">
+                          <td align="right"><div id="td_left_Range_1" class="ADJ_Word">小巧的</div></td>
+                          <td colspan="5" id="td_middle_1" height="100%" style="width: 16rem;">
 
-                            <div id="slider" style="width:14rem;" class="Range">
-                              <div id="custom-handle" class="ui-slider-handle"></div>
+                            <div id="slider_1" style="width:14rem;" class="Range slider">
+                              <div id="custom-handle_1" class="ui-slider-handle custom-handle"></div>
                             </div>
                           </td>
-                          <td align="left"><div id="td_right_Range" class="ADJ_Word">碩大的</div></td>
+                          <td align="left"><div id="td_right_Range_2" class="ADJ_Word">碩大的</div></td>
+                        </tr>
+                        <tr id="tr_ADJ_2" style="height: 1.5rem;">
+                          <td align="right"><div id="td_left_Range_2" class="ADJ_Word">34的</div></td>
+                          <td colspan="5" id="td_middle_1" height="100%" style="width: 16rem;">
+
+                            <div id="slider_2" style="width:14rem;" class="Range slider">
+                              <div id="custom-handle_2" class="ui-slider-handle custom-handle"></div>
+                            </div>
+                          </td>
+                          <td align="left"><div id="td_right_Range_2" class="ADJ_Word">12的</div></td>
                         </tr>
                       </tbody>
                     </table>
  
                   </div>
-                  <div id="not yet" style="display: none; color: red;">
-                    <b>尚未評價此形容詞</b>
-                  </div>
-                  <div class="button">
-                    <div id="button_Back_Next" style="position: relative; vertical-align: middle;">
-                      <span style="font-family: Microsoft JhengHei;">---填寫進度---</span><br>
 
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <input class="back" id="back" type="button" value="<< 前一個" style="font-family: Microsoft JhengHei;" disabled="true" onclick="buttonBackADJ();">
-                            </td>
-                            <td>
-                              <div id="pbLV" class="progress" role="progressbar" style="width: 10rem;" aria-labelledby="pbLV_label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="20" tabindex="0" align="left"></div>
-                            </td>
-                            <td>
-                              <input class="next" id="next" type="button" value="下一個 >>" onclick="buttonNextADJ();">
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                  <div class="button">
                     <div id="button_Submit"><br>
                       <!--放分數的隱藏的表-->
                       <table id="table_ADJ_hidden" style="display: none;">
                         <tbody>
                           <tr id="tr_ADJ_hidden">
-                            <td><input type="hidden" id='ADJSCORE_1' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_2' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_3' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_4' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_5' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_6' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_7' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_8' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_9' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_10' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_11' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_12' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_13' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_14' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_15' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_16' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_17' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_18' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_19' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_20' value="-1"></td>
                           </tr>
                         </tbody>
                       </table>
@@ -339,10 +240,6 @@
         // Get data
         var data = {
 
-          'entry.726136822': $('#participant').val(),
-          'entry.1175304058': $('#stage').val(),
-          'entry.2006308307': $('#order').val(),
-          'entry.972880170': $('#sample').val(),
           'entry.511407135': $('#ADJSCORE_1').val(),
           'entry.1152870785': $('#ADJSCORE_2').val(),
           'entry.1079921585': $('#ADJSCORE_3').val(),
@@ -360,9 +257,7 @@
           'entry.1755300774': $('#ADJSCORE_15').val(),
           'entry.1164985306': $('#ADJSCORE_16').val(),
           'entry.1902800109': $('#ADJSCORE_17').val(),
-          'entry.814714499': $('#ADJSCORE_18').val(),
-          'entry.202069723': $('#ADJSCORE_19').val(),
-          'entry.31311220': $('#ADJSCORE_20').val()
+          'entry.814714499': $('#ADJSCORE_18').val()
         };
 
         // Validate form
@@ -391,5 +286,49 @@
         }
       }, 300);
     });
+
+
+/*jquery UI Slider*/
+$( function() {
+  $(".slider").each(function(index,element) {
+
+  var track = $(".slider:first", this);
+  var handle =  $(".custom-handle:first", this)
+
+  track.slider({
+    range:false,
+    step: 0.1,
+    min:-100,
+    max:0,
+    create: function() {
+      handle.css("background-size", "cover");
+      handle.css("background-color", "transparent");
+      handle.css("border", "0px black solid");
+    },
+    slide: function( event, ui ) {
+      recordScore(Math.abs(ui.value));
+      handle.css("background-image", "url('https://imgur.com/94YyvTo.png')");
+      track.css("background","#777");
+    }});
+  track.hover(()=>{
+    track.css("background","#777");
+    handle.css("background-image", "url('https://imgur.com/94YyvTo.png')");
+  },()=>{
+    track.css("background","#ccc");
+    handle.css("background-image", "url('https://imgur.com/06zVfHc.png')");});
+  track.focus(()=>{
+    track.css("background","#777");
+    handle.css("background-image", "url('https://imgur.com/94YyvTo.png')");
+  });
+  track.blur(()=>{
+    track.css("background","#ccc");
+    handle.css("background-image", "url('https://imgur.com/06zVfHc.png')");});
+  }
+	});
+});
+
+
+
+
   </script>
 </html>
