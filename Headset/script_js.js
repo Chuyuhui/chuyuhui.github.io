@@ -85,15 +85,15 @@ var ADJ_Word = [
     tr.id = "tr_ADJ_" + i;
     $(tr).attr("style", "height:1.5rem");
     var td_Left = document.createElement('td');
-  $(td_Left).attr("align", "right");
-  var div_Left = document.createElement('div');
+    $(td_Left).attr("align", "right");
+    var div_Left = document.createElement('div');
     div_Left.id = "div_ADJ_Left_" + i;
     div_Left.className = "ADJ_Word";
     $(div_Left).text(ADJ_Word[(i-1)*2]);
   
-  var td_Right = document.createElement('td');
-  $(td_Right).attr("align", "left");
-  var div_Right = document.createElement('div');
+    var td_Right = document.createElement('td');
+    $(td_Right).attr("align", "left");
+    var div_Right = document.createElement('div');
     div_Right.id = "div_ADJ_Right_" + i;
     div_Right.className = "ADJ_Word";
     $(div_Right).text(ADJ_Word[(i-1)*2+1]);
@@ -108,10 +108,32 @@ var ADJ_Word = [
     var div_slider = document.createElement('div');
     div_slider.id = "slider_" + i;
     div_slider.className = "Range slider";
+    $(div_slider).css({
+        background: #ccc;
+        border: 0px black solid;
+        width: 36rem;
+        top:0rem;
+        height:0.25rem;
+        line-height: 1.5rem;
+        margin: 0 auto;
+        cursor:pointer;
+      });
     $(div_slider).attr("style", "width:14rem");
     var div_handle = document.createElement('div');
     div_handle.id = "custom-handle_" + i;
     div_handle.className = "ui-slider-handle custom-handle";
+    $(div_handle).css({
+        width: 1.5rem;
+        height: 1.5rem;
+        text-align: center;
+        line-height: 1.5rem;
+        top:-0.625rem;
+        background-image: url("https://imgur.com/06zVfHc.png");
+        background-size: cover;
+        border: 0px black solid;
+        outline:none;
+        cursor:pointer;
+      });
  
     div_slider.appendChild(div_handle);
     div_container_slider.appendChild(div_slider);
