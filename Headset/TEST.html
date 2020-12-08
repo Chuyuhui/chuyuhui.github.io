@@ -87,7 +87,7 @@
     </style>
 
     <style type="text/css" id="css_Slider">
-      #custom-handle {
+      .custom-handle {
         width: 1.5rem;
         height: 1.5rem;
         text-align: center;
@@ -99,7 +99,7 @@
         outline:none;
         cursor:pointer;
       }
-      #slider{
+      .slider{
         background: #ccc;
         border: 0px black solid;
         width: 36rem;
@@ -111,18 +111,7 @@
       }
 
     </style>                                       
-    <style type="text/css" id="css_RadioButton">
-      input[type="radio"] {
-        width: 1rem;
-        height: 1rem;
-        margin: 0px;
-        vertical-align: middle;
-        cursor: pointer;
-      }
-      .td_RadioButton{
-        line-height:1.5rem;
-      }
-    </style>
+
     <style type="text/css" id="css_table">
       table {
         text-align: center;
@@ -132,6 +121,7 @@
         white-space: nowrap !important;
       }
     </style>
+
     <style id="css_progress">
       #pagedeck {
         overflow: hidden !important;
@@ -182,17 +172,17 @@
         
         <div id="Q1" class="questionnaire">
           <div data-role="page" class="google form" id="SCALE" align="center">
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display: none;"></iframe>
             <form id="theme" name="theme" action="" method="POST" target="hidden_iframe">
-              <div id="part_Name_Stage_Order_Sample"><br>
+              
+	      <div id="part_Name_Stage_Order_Sample"><br>
                 參與者編號：
                 <input id="participant" type="text" name="entry.726136822" onchange="closeNoText()"><br>
                 <br>
 		樣本順序：
-                <input id="order" type="text" type="hidden" name="entry.972880170" onchange="closeNoText()"><br>
+                <input id="order" type="text" name="entry.2006308307" onchange="closeNoText()"><br>
                 <br>
                 樣本代號：
-                <input id="sample" type="text" type="hidden" name="entry.972880170" onchange="closeNoText()"><br>
+                <input id="sample" type="text" name="entry.972880170" onchange="closeNoText()"><br>
                 <br>
 
                 <div id="no text" style="display: none; color: red;">
@@ -202,7 +192,8 @@
                 </div>
                 <button type="button" style="font-family: Microsoft JhengHei;" ontouchstart="javascript:  checkText();" onclick="javascript: checkText();">繼續</button>
               </div>
-              <div id="part_ADJ" style="display: none;"><br>
+
+              <div id="part_ADJ" style="display: ;"><br>
                 本問卷共有18組左右相反的形容詞。<br><br>                          
 
                 <p id="explanation">
@@ -218,7 +209,7 @@
 
 
                 <div id="example">
-                  <div id="example_Range" class="Range" style="display: none;">
+                  <div id="example_Range" class="Range" style="display: ;">
                     <b>---以下為填寫範例---</b><br>
                     <br>
                     若您認為它 <b style="color: red;">不偏向</b> 華麗或樸素，感受處於中立，請點擊較 <b>中間</b> 的位置。<br>
@@ -243,19 +234,29 @@
 
                   </div>
                 </div>
-                <div id="container_progressADJ" style="display: none;">
+                <div id="container_progressADJ" style="display: ;">
                   <div id="container_ADJ" class="ADJ">
-                    <table id="table_ADJ_Range" class="Range" style="display: none; min-width: 32rem;" cellpadding="1px">
+                    <table id="table_ADJ_Range" class="Range" style="display: ; min-width: 32rem;" cellpadding="1px">
                       <tbody>
-                        <tr id="tr_ADJ" style="height: 1.5rem;">
-                          <td align="right"><div id="td_left_Range" class="ADJ_Word">小巧的</div></td>
-                          <td colspan="5" id="td_middle" height="100%" style="width: 16rem;">
+                        <tr id="tr_ADJ_1" style="height: 1.5rem;">
+                          <td align="right"><div id="td_left_Range_1" class="ADJ_Word">小巧的</div></td>
+                          <td colspan="5" id="td_middle_1" height="100%" style="width: 16rem;">
 
-                            <div id="slider" style="width:14rem;" class="Range">
-                              <div id="custom-handle" class="ui-slider-handle"></div>
+                            <div id="slider_1" style="width:14rem;" class="Range slider">
+                              <div id="custom-handle_1" class="ui-slider-handle custom-handle"></div>
                             </div>
                           </td>
-                          <td align="left"><div id="td_right_Range" class="ADJ_Word">碩大的</div></td>
+                          <td align="left"><div id="td_right_Range_2" class="ADJ_Word">碩大的</div></td>
+                        </tr>
+                        <tr id="tr_ADJ_2" style="height: 1.5rem;">
+                          <td align="right"><div id="td_left_Range_2" class="ADJ_Word">34的</div></td>
+                          <td colspan="5" id="td_middle_1" height="100%" style="width: 16rem;">
+
+                            <div id="slider_2" style="width:14rem;" class="Range slider">
+                              <div id="custom-handle_2" class="ui-slider-handle custom-handle"></div>
+                            </div>
+                          </td>
+                          <td align="left"><div id="td_right_Range_2" class="ADJ_Word">12的</div></td>
                         </tr>
                       </tbody>
                     </table>
@@ -265,25 +266,6 @@
                     <b>尚未評價此形容詞</b>
                   </div>
                   <div class="button">
-                    <div id="button_Back_Next" style="position: relative; vertical-align: middle;">
-                      <span style="font-family: Microsoft JhengHei;">---填寫進度---</span><br>
-
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <input class="back" id="back" type="button" value="<< 前一個" style="font-family: Microsoft JhengHei;" disabled="true" onclick="buttonBackADJ();">
-                            </td>
-                            <td>
-                              <div id="pbLV" class="progress" role="progressbar" style="width: 10rem;" aria-labelledby="pbLV_label" aria-valuenow="0" aria-valuemin="0" aria-valuemax="20" tabindex="0" align="left"></div>
-                            </td>
-                            <td>
-                              <input class="next" id="next" type="button" value="下一個 >>" onclick="buttonNextADJ();">
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
                     <div id="button_Submit"><br>
                       <!--放分數的隱藏的表-->
                       <table id="table_ADJ_hidden" style="display: none;">
@@ -307,8 +289,6 @@
                             <td><input type="hidden" id='ADJSCORE_16' value="-1"></td>
                             <td><input type="hidden" id='ADJSCORE_17' value="-1"></td>
                             <td><input type="hidden" id='ADJSCORE_18' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_19' value="-1"></td>
-                            <td><input type="hidden" id='ADJSCORE_20' value="-1"></td>
                           </tr>
                         </tbody>
                       </table>
@@ -340,7 +320,6 @@
         var data = {
 
           'entry.726136822': $('#participant').val(),
-          'entry.1175304058': $('#stage').val(),
           'entry.2006308307': $('#order').val(),
           'entry.972880170': $('#sample').val(),
           'entry.511407135': $('#ADJSCORE_1').val(),
@@ -360,9 +339,7 @@
           'entry.1755300774': $('#ADJSCORE_15').val(),
           'entry.1164985306': $('#ADJSCORE_16').val(),
           'entry.1902800109': $('#ADJSCORE_17').val(),
-          'entry.814714499': $('#ADJSCORE_18').val(),
-          'entry.202069723': $('#ADJSCORE_19').val(),
-          'entry.31311220': $('#ADJSCORE_20').val()
+          'entry.814714499': $('#ADJSCORE_18').val()
         };
 
         // Validate form
