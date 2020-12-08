@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>AAA</title>
+    <title>ASS</title>
     <meta name="generator" content="Google Web Designer 8.0.3.0603">
     <script integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
@@ -269,7 +269,7 @@
 
 
 /*jquery UI Slider*/
-$( function() {
+$(document).ready( function() {
     var tbody = document.getElementById("tbody_SDS");
 
     for(var i=1; i<=ADJ_Total; i++){
@@ -317,10 +317,10 @@ $( function() {
     div_container_slider.appendChild(div_slider);
     td_Middle.appendChild(div_container_slider);
 
-    tr.appendChild(td_Left);
-    tr.appendChild(td_Middle);
-    tr.appendChild(td_Right);
-    tbody.appendChild(tr);
+    td_Left.appendTo(tr);
+    td_Middle.appendTo(tr);
+    td_Right.appendTo(tr);
+    tr.appendTo(tbody);
     }
 
 });
