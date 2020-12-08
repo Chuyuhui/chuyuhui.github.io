@@ -182,20 +182,22 @@
                         <tr id="tr_ADJ_1" style="height: 1.5rem;">
                           <td align="right"><div id="td_left_Range_1" class="ADJ_Word">小巧的</div></td>
                           <td colspan="5" id="td_middle_1" height="100%" style="width: 16rem;">
-
+			   <div class="sss">
                             <div id="slider_1" style="width:14rem;" class="Range slider">
                               <div id="custom-handle_1" class="ui-slider-handle custom-handle"></div>
                             </div>
+			   </div>
                           </td>
                           <td align="left"><div id="td_right_Range_2" class="ADJ_Word">碩大的</div></td>
                         </tr>
                         <tr id="tr_ADJ_2" style="height: 1.5rem;">
                           <td align="right"><div id="td_left_Range_2" class="ADJ_Word">34的</div></td>
                           <td colspan="5" id="td_middle_1" height="100%" style="width: 16rem;">
-
+			   <div class="sss">
                             <div id="slider_2" style="width:14rem;" class="Range slider">
                               <div id="custom-handle_2" class="ui-slider-handle custom-handle"></div>
                             </div>
+			   </div>
                           </td>
                           <td align="left"><div id="td_right_Range_2" class="ADJ_Word">12的</div></td>
                         </tr>
@@ -290,7 +292,7 @@
 
 /*jquery UI Slider*/
 $( function() {
-  $(".slider").each(function(index,element) {
+  $(".sss").each(function(index,element) {
 
   var track = $(".slider:first", this);
   var handle =  $(".custom-handle:first", this)
