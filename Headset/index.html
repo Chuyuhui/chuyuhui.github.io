@@ -308,6 +308,7 @@ $( function() {
     },
     slide: function( event, ui ) {
       recordScore(Math.abs(ui.value));
+      Adj_i = index + 1;
       handle.css("background-image", "url('https://imgur.com/94YyvTo.png')");
       track.css("background","#777");
     }});
@@ -328,7 +329,40 @@ $( function() {
 	});
 });
 
+var ADJ_i = 1;
+var ADJ_Score = new Array();
 
+function recordScore(score){
+  ADJ_Score[ADJ_i - 1] = score;
+  //document.getElementById('not yet').style.display = 'none';
+  //if (ADJ_i == 2) document.getElementById('submit_LV').disabled = false;
+  var input_exist = document.getElementById("ADJSCORE_" + ADJ_i);
+  if(input_exist) input_exist.value = ADJ_Score[ADJ_i-1];
+  else{
+    var tr = document.getElementById("tr_ADJ_hidden");
+    var td = document.createElement('td');
+    var input = document.createElement('input');
+    input.type = "hidden";
+    input.id = "ADJSCORE_" + ADJ_i;
+    input.name = ADJ_Entry[ADJ_i-1];
+    input.value = ADJ_Score[ADJ_i-1];
+    td.appendChild(input);
+    tr.appendChild(td);
+  }
+  setCrossPosition();
+}
+
+function setCrossPosition(){
+  if(ADJ_Score[ADJ_i-1] && ADJ_Score[ADJ_i-1]!=null){
+    /*by jQuery UI*/
+    $( "#slider_" + ADJ_i ).slider("value",-ADJ_Score[ADJ_i-1]);
+    $( "#custom-handle_" + ADJ_i ).show();  
+  }
+  else{
+    /*by jQuery UI*/
+    $( "#custom-handle_" + ADJ_i ).hide();  
+  }
+}
 
 
   </script>
