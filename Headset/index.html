@@ -3,7 +3,7 @@
 
   <head>
     <meta charset="utf-8">
-    <title>ZZZ</title>
+    <title>TTT</title>
     <meta name="generator" content="Google Web Designer 8.0.3.0603">
     <script integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
       <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
@@ -177,29 +177,8 @@
                 <div id="container_progressADJ" style="display: ;">
                   <div id="container_ADJ" class="ADJ">
                     <table id="table_ADJ_Range" class="Range" style="display: ; min-width: 32rem;" cellpadding="1px">
-                      <tbody>
-                        <tr id="tr_ADJ_1" style="height: 1.5rem;">
-                          <td align="right"><div id="td_left_Range_1" class="ADJ_Word">小巧的</div></td>
-                          <td colspan="5" id="td_middle_1" height="100%" style="width: 16rem;">
-			   <div class="sss">
-                            <div id="slider_1" style="width:14rem;" class="Range slider">
-                              <div id="custom-handle_1" class="ui-slider-handle custom-handle"></div>
-                            </div>
-			   </div>
-                          </td>
-                          <td align="left"><div id="td_right_Range_2" class="ADJ_Word">碩大的</div></td>
-                        </tr>
-                        <tr id="tr_ADJ_2" style="height: 1.5rem;">
-                          <td align="right"><div id="td_left_Range_2" class="ADJ_Word">34的</div></td>
-                          <td colspan="5" id="td_middle_1" height="100%" style="width: 16rem;">
-			   <div class="sss">
-                            <div id="slider_2" style="width:14rem;" class="Range slider">
-                              <div id="custom-handle_2" class="ui-slider-handle custom-handle"></div>
-                            </div>
-			   </div>
-                          </td>
-                          <td align="left"><div id="td_right_Range_2" class="ADJ_Word">12的</div></td>
-                        </tr>
+                      <tbody id="tbody_SDS">
+                        
                       </tbody>
                     </table>
  
@@ -291,7 +270,62 @@
 
 /*jquery UI Slider*/
 $( function() {
-  $(".sss").each(function(index,element) {
+    var tbody = document.getElementById("tbody_SDS");
+
+    for(var i=1; i<=ADJ_Total; i++){
+
+    var tr = document.createElement('tr');
+    tr.id("tr_ADJ_"+i);
+    tr.attr("style", "height:1.5rem");
+
+    var td_Left = document.createElement('td');
+    td_Left.attr("align", "right");
+
+    var div_Left = document.createElement('div');
+    div_Left.id = "div_ADJ_Left_" + i;
+    div_Left.class = "ADJ_Word";
+    div_Left.text(ADJ_Word[(i-1)*2]);
+
+    var td_Right = document.createElement('td');
+    td_Right.attr("align", "left");
+
+    var div_Right = document.createElement('div');
+    div_Right.id = "div_ADJ_Right_" + i;
+    div_Right.class = "ADJ_Word";
+    div_Right.text(ADJ_Word[(i-1)*2 + 1]);
+
+    var td_Middle = document.createElement('td');
+    td_Middle.attr("colspan", "5");
+    td_Middle.attr("height", "100%");
+    td_Middle.attr("style", "width:16rem");
+    
+    var div_container_slider = document.createElement('div');
+    div_container_slider.class = "container_slider";
+    var div_slider = document.createElement('div');
+    div_slider.id = "slider_" + i;
+    div_slider.class = "Range slider">
+    div_slider.attr("style", "width:14rem");
+    var div_handle = document.createElement('div');
+    div_handle.id = "custom-handle_" + i;
+    div_handle.class = "ui-slider-handle custom-handle">
+    
+    //append進去
+    td_Left.appendChild(div_Left);
+    td_Right.appendChild(div_Right);
+
+    div_slider.appendChild(div_handle);
+    div_container_slider.appendChild(div_slider);
+    td_Middle.appendChild(div_container_slider);
+
+    tr.appendChild(td_Left);
+    tr.appendChild(td_Middle);
+    tr.appendChild(td_Right);
+    }
+
+});
+
+$( function() {
+  $(".container_slider").each(function(index,element) {
 
   var track = $("#slider_"+(index+1), this);
   var handle =  $("#custom-handle_"+(index+1), this);
@@ -336,6 +370,9 @@ var ADJ_Total = 2;
 var ADJ_Answered = 0;
 var ADJ_Score = new Array();
 var ADJ_Entry = ["QQ1", "QQ2"];
+var ADJ_Word = [
+  "小巧的","碩大的",
+  "細紋路的","粗紋路的"];
 
 function recordScore(score){
   ADJ_Score[ADJ_i - 1] = score;
