@@ -270,59 +270,79 @@
 
 /*jquery UI Slider*/
 $(document).ready( function() {
+  
+var ADJ_Word = [
+  "小巧的","碩大的",
+  "細紋路的","粗紋路的",
+  "簡約的","複雜的",
+  "低噪的","非低噪的",
+  "有回饋的","無回饋的",
+  "回饋聲音清晰的","回饋聲音不清晰的",
+  "便攜的","不便攜的",
+  "手感明確的","手感不明確的",
+  "好按的","不好按的",
+  "輕鬆掌握的","無法輕鬆掌握的",
+  "舒適的","不舒適的",
+  "堅固的","不堅固的",
+  "輕薄的","厚重的",
+  "符合人體工學的","不符合人體工學的",
+  "包覆性的","非包覆性的",
+  "耐髒的","不耐髒的",
+  "靈敏的","不靈敏的",
+  "精準的","不精準的",
+  "滿意的","不滿意的",
+  "想購買的","不想購買的"];
+  
     var tbody = document.getElementById("tbody_SDS");
 
-    for(var i=1; i<=ADJ_Total; i++){
+for(var i=1; i<=18; i++){
 
     var tr = document.createElement('tr');
-    tr.id("tr_ADJ_"+i);
-    tr.attr("style", "height:1.5rem");
-
+  
+    tr.id = "tr_ADJ_" + i;
+    $(tr).attr("style", "height:1.5rem");
     var td_Left = document.createElement('td');
-    td_Left.attr("align", "right");
-
-    var div_Left = document.createElement('div');
+  $(td_Left).attr("align", "right");
+  var div_Left = document.createElement('div');
     div_Left.id = "div_ADJ_Left_" + i;
     div_Left.class = "ADJ_Word";
-    div_Left.text(ADJ_Word[(i-1)*2]);
-
-    var td_Right = document.createElement('td');
-    td_Right.attr("align", "left");
-
-    var div_Right = document.createElement('div');
+    $(div_Left).text(ADJ_Word[(i-1)*2]);
+  
+  var td_Right = document.createElement('td');
+  $(td_Right).attr("align", "left");
+  var div_Right = document.createElement('div');
     div_Right.id = "div_ADJ_Right_" + i;
     div_Right.class = "ADJ_Word";
-    div_Right.text(ADJ_Word[(i-1)*2 + 1]);
+    $(div_Right).text(ADJ_Word[(i-1)*2+1]);
 
-    var td_Middle = document.createElement('td');
-    td_Middle.attr("colspan", "5");
-    td_Middle.attr("height", "100%");
-    td_Middle.attr("style", "width:16rem");
+      var td_Middle = document.createElement('td');
+    $(td_Middle).attr("colspan", "5");
+    $(td_Middle).attr("height", "100%");
+    $(td_Middle).attr("style", "width:16rem");
     
     var div_container_slider = document.createElement('div');
     div_container_slider.class = "container_slider";
     var div_slider = document.createElement('div');
     div_slider.id = "slider_" + i;
-    div_slider.class = "Range slider">
-    div_slider.attr("style", "width:14rem");
+    div_slider.class = "Range slider";
+    $(div_slider).attr("style", "width:14rem");
     var div_handle = document.createElement('div');
     div_handle.id = "custom-handle_" + i;
-    div_handle.class = "ui-slider-handle custom-handle">
-    
-    //append進去
-    td_Left.appendChild(div_Left);
-    td_Right.appendChild(div_Right);
-
+    div_handle.class = "ui-slider-handle custom-handle";
+ 
     div_slider.appendChild(div_handle);
     div_container_slider.appendChild(div_slider);
     td_Middle.appendChild(div_container_slider);
-
-    td_Left.appendTo(tr);
-    td_Middle.appendTo(tr);
-    td_Right.appendTo(tr);
-    tr.appendTo(tbody);
-    }
-
+  
+  $("#tbody_SDS").append(tr);
+  tr.append(td_Left);
+  tr.append(td_Middle);
+  tr.append(td_Right);
+  
+  //append進去
+  td_Left.appendChild(div_Left);
+  td_Right.appendChild(div_Right);
+}
 });
 
 $( function() {
