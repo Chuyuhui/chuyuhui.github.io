@@ -427,6 +427,7 @@ function recordScore(score){
     input.value = ADJ_Score[ADJ_i-1];
     td.appendChild(input);
     tr.appendChild(td);
+    $("#tr_" + ADJ_i).color("blue");
     ADJ_Answered++;
   }
   setCrossPosition();
@@ -440,8 +441,5 @@ function setCrossPosition(){
     alert(ADJ_Score[ADJ_i-1]);
   
 }
-
-
-
   </script>
 </html>
