@@ -109,30 +109,30 @@ var ADJ_Word = [
     div_slider.id = "slider_" + i;
     div_slider.className = "Range slider";
     $(div_slider).css({
-        background: #ccc;
-        border: 0px black solid;
-        width: 36rem;
-        top:0rem;
-        height:0.25rem;
-        line-height: 1.5rem;
-        margin: 0 auto;
-        cursor:pointer;
+        'background': '#ccc',
+        'border': '0px black solid',
+        'width': '36rem',
+        'top':'0rem',
+        'height':'0.25rem',
+        'line-height': '1.5rem',
+        'margin': '0 auto',
+        'cursor':'pointer'
       });
     $(div_slider).attr("style", "width:14rem");
     var div_handle = document.createElement('div');
     div_handle.id = "custom-handle_" + i;
     div_handle.className = "ui-slider-handle custom-handle";
     $(div_handle).css({
-        width: 1.5rem;
-        height: 1.5rem;
-        text-align: center;
-        line-height: 1.5rem;
-        top:-0.625rem;
-        background-image: url("https://imgur.com/06zVfHc.png");
-        background-size: cover;
-        border: 0px black solid;
-        outline:none;
-        cursor:pointer;
+        'width': '1.5rem',
+        'height': '1.5rem',
+        'text-align': 'center',
+        'line-height': '1.5rem',
+        'top':'-0.625rem',
+        'background-image': 'url("https://imgur.com/06zVfHc.png")',
+        'background-size': 'cover',
+        'border': '0px black solid',
+        'outline':'none',
+        'cursor':'pointer'
       });
  
     div_slider.appendChild(div_handle);
