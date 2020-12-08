@@ -273,7 +273,7 @@ $( function() {
 
 
 function setCrossPosition(){
-  if(ADJ_Score[ADJ_i-1] && ADJ_Score[ADJ_i-1]!=null){
+  if(ADJ_Score[ADJ_i-1]){
     /*by jQuery UI*/
     $( "#slider_" + i ).slider("value",-ADJ_Score[ADJ_i-1]);
     $( "#custom-handle_" + i ).show();  
