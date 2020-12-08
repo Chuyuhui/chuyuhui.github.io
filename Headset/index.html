@@ -167,25 +167,78 @@
   <body class="htmlNoPages">
 
     <div id="container_questionnaire" >
-      <div id="container_Q1" class="questionnaire" style="">
+      <div id="container_Q" class="questionnaire" style="">
         
-        <div id="Q1" class="questionnaire">
-          <div data-role="page" class="google form" id="SCALE" align="center">
+        <div id="Q" class="questionnaire">
             <form id="theme" name="theme" action="" method="POST" target="hidden_iframe">
-              
+               <div id="part_Name_Order_Sample"><br>
+                參與者編號：
+                <input id="participant" type="text" name="entry.726136822" onchange="closeNoText()"><br>
+                <br>
+                樣本順序　：
+                <input id="order" type="text" name="entry.2006308307" onchange="closeNoText()"><br>
+                <br>
+                樣本代號　：
+                <input id="sample" type="hidden" name="entry.972880170"  ><br>
+                <br>
 
-                <div id="container_progressADJ" style="display: ;">
+                <div id="no text" style="display: none; color: red;">
+                  <b>尚有欄位未填</b><br>
+                  <br>
+
+                </div>
+                <button type="button" style="font-family: Microsoft JhengHei;" ontouchstart="javascript:  checkText();" onclick="javascript: checkText();">繼續</button>
+              </div>
+              <div id="part_ADJ" style="display: none;"><br>
+                本問卷共有20組左右相反的形容詞。<br><br>                          
+
+                <p id="explanation">
+                  在每組形容詞中，<br>
+                  越 <b>中間</b> 代表對於兩邊的形容詞 <b>都沒有明顯的感受</b> ，<br>
+                  越往 <b>兩端</b> 則代表該感受越為 <b>強烈</b> 。<br>
+                  <br>
+                  <img id="explanation_pic" class="example" src=""><br>
+                </p>
+
+                請您在與滑鼠互動後，<br>
+                根據您的感受來評價每組成對形容詞意象。<br><br>
+
+
+                <div id="example">
+                  <div id="example_Range" class="Range" style="display: none;">
+                    <b>---以下為填寫範例---</b><br>
+                    <br>
+                    若您認為它 <b style="color: red;">不偏向</b> 華麗或樸素，感受處於中立，請點擊較 <b>中間</b> 的位置。<br>
+                    <img id="example_Range_image_1" src="" class="example">
+
+                    <br>
+                    若您認為它 <b style="color: red;">非常樸素</b>，請根據您感受的程度點擊偏 <b>右方</b> 的位置。<br>
+                    （越靠近「樸素的」代表程度越 <b>大</b>）<br>
+                    <img id="example_Range_image_2" src="" class="example">
+
+                    <br>
+                    若您認為它 <b style="color: red;">有點華麗</b>，請根據您感受的程度點擊偏 <b>左方</b> 的位置。<br>
+                    （越靠近中央代表程度越 <b>小</b>）<br>
+                    <img id="example_Range_image_3" src="" class="example">
+
+                    <br>
+                  </div>
+		  <div id="start">
+                    <button type="button" style="font-family: Microsoft JhengHei;" ontouchstart="javascript: startAnswer();" onclick="javascript:startAnswer();">開始填答</button><br>
+                    <br>
+
+                  </div>
+
                   <div id="container_ADJ" class="ADJ">
                     <table id="table_ADJ_Range" class="Range" style="display: ; min-width: 32rem;" cellpadding="1px">
-                      <tbody id="tbody_SDS">
-                        
+                      <tbody id="tbody_SDS">                      
                       </tbody>
                     </table>
  
                   </div>
 
-                  <div class="button">
-                    <div id="button_Submit"><br>
+                  <div class="button"><br>
+                    <div id="button_Submit">
                       <!--放分數的隱藏的表-->
                       <table id="table_ADJ_hidden" style="display: none;">
                         <tbody>
@@ -194,9 +247,7 @@
                         </tbody>
                       </table>
                       <input id="submit_LV" type="submit" disabled="true" ontouchstart="submitForm();" value="提交" onclick="submitForm();"><br>
-
                     </div><br>
-
                   </div>
                 </div>
               </div>
