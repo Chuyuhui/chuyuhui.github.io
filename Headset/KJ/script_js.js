@@ -26,7 +26,7 @@
       $("#UnKJ").append(newspan);
       $(newspan).text(ADJ_Word_SD[i-1]);
       $(newspan).draggable();
-      $(newspan)object.addEventListener("dragstart",function(event){Drag(event)});
+      $(newspan)object.addEventListener("dragstart",function(event){Drag(event);});
     }
   });
 function AllowDrop(event){
