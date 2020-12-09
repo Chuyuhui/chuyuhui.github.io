@@ -1,0 +1,36 @@
+<html>
+  <head>
+     <script src="script_js.js"></script>
+  
+<style type="text/css">
+.Box{
+    width:15rem;
+    height:15rem;
+    padding:0.5rem;
+    border:0.1rem #ccc dashed;
+    float:left;
+    margin-right:0.5rem;
+}
+  .item {
+    height:1rem;
+    background: lightgray;
+    margin:0.25rem 0;
+    padding: 0.25rem;
+    text-align: center;
+    display: block;
+  }
+</style>
+
+  </head>
+    <body>
+<div id="UnKJ" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+</div>
+<div id="Box2" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)">
+ 
+    <img id="Img2" src="https://i.pinimg.com/736x/62/2f/9d/622f9d0cfaf3bdd69fba4046103363e2.jpg" draggable="true" ondragstart="Drag(event)" class="item">
+</div>
+<div id="Box3" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+<div id="Box4" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+<div style="clear:both;"></div>
+    </body>
+</html>
