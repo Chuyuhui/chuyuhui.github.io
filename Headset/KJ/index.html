@@ -1,23 +1,108 @@
-<html>
-  <head>
-     <script src="script_js.js"></script>
+<html><head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script type="text/javascript">
+ $(document).ready(function(){
+    var ADJ_Word_SD =
+        ["有負擔的－沒有負擔的",
+         "不符合人體工學的－符合人體工學的",
+         "不親膚的－親膚的",
+         "沒有包圍感的－有包圍感的",
+         "悶熱的－不悶熱的",
+         "有異物感的－沒有異物感的",
+         "刺刺癢癢的－不刺刺癢癢的",
+         "不寬鬆的－寬鬆的",
+         "不透氣的－透氣的",
+         "不自然的－自然的",
+         "不輕巧的－輕巧的",
+         "不服貼的－服貼的",
+         "不穩定的－穩定的",
+         "不柔軟的－柔軟的",
+         "沒有彈性的－有彈性的",
+         "壓耳的－不壓耳的",
+         "不舒適的－舒適的",
+         "不想要購買的－想要購買的"];
+      for(var i=1; i<=18; i++){
+      var newspan = document.createElement('span');
+      newspan.id = "span_KJ_ADJ_" + i;
+      newspan.className = "item";
+      $("#UnKJ").append(newspan);
+      $(newspan).text(ADJ_Word_SD[i-1]);
+      $(newspan).attr("draggable","true");
+      //jquery UI的
+      //$(newspan).draggable("true");
+      $(newspan).on("dragstart",function(){Drag(event);});
+   }
+  });
+
+function AllowDrop(event){
+    event.preventDefault();
+}
+function Drag(event){
+    event.dataTransfer.setData("text",event.currentTarget.id);
+}
+function Drop(event){
+    event.preventDefault();
+    var data=event.dataTransfer.getData("text");
+    event.currentTarget.appendChild(document.getElementById(data));
+    alert(event.target.id);
+}
+</script>
   
 <style type="text/css">
-.Box{
-    width:15rem;
+#UnKJ{
+    width:100%;
     height:15rem;
     padding:0.5rem;
     border:0.1rem #ccc dashed;
     float:left;
     margin-right:0.5rem;
 }
-  .item {
-    height:1rem;
-    background: lightgray;
-    margin:0.25rem 0;
-    padding: 0.25rem;
+
+ .Box{
+    width:20rem;
+    height:15rem;
+    padding:0.5rem;
+    border:0.1rem #ccc dashed;
+    float:left;
+    margin-right:0.5rem;
     text-align: center;
-    display: block;
+}
+  .item {
+    width:18rem;
+    height:1rem;
+    line-height: 1rem;
+    background: lightgray;
+    margin:0.25rem 0.25rem;
+    padding: 0.25rem;
+    display: inline-block;
+    text-align: center;
+  }
+ #Box1 .item{
+  background: #FA8072;
+}
+ #Box2 .item{
+  background: #DEB887;
+  }
+
+ #Box3 .item{
+  background: #66CDAA;
+  }
+
+ #Box4 .item{
+  background: #FF8C00;
+  }
+
+ #Box5 .item{
+  background: #FFFACD;
+  }
+
+ #Box6 .item{
+  background: YellowGreen;
+  }
+
+ #Box7 .item{
+  background: LightSkyBlue;
   }
 </style>
 
@@ -25,12 +110,14 @@
     <body>
 <div id="UnKJ" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)">
 </div>
-<div id="Box2" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)">
- 
-    <img id="Img2" src="https://i.pinimg.com/736x/62/2f/9d/622f9d0cfaf3bdd69fba4046103363e2.jpg" draggable="true" ondragstart="Drag(event)" class="item">
-</div>
+<div id="Box1" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+<div id="Box2" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
 <div id="Box3" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
 <div id="Box4" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+<div id="Box5" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+<div id="Box6" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+<div id="Box7" class="Box" ondrop="Drop(event)" ondragover="AllowDrop(event)"></div>
+
 <div style="clear:both;"></div>
-    </body>
-</html>
+    
+</body></html>
